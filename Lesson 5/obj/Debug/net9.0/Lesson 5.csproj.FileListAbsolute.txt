@@ -1,0 +1,14 @@
+C:\Users\Shivaar\source\repos\Lesson 5\bin\Debug\net9.0\Lesson 5.exe
+C:\Users\Shivaar\source\repos\Lesson 5\bin\Debug\net9.0\Lesson 5.deps.json
+C:\Users\Shivaar\source\repos\Lesson 5\bin\Debug\net9.0\Lesson 5.runtimeconfig.json
+C:\Users\Shivaar\source\repos\Lesson 5\bin\Debug\net9.0\Lesson 5.dll
+C:\Users\Shivaar\source\repos\Lesson 5\bin\Debug\net9.0\Lesson 5.pdb
+C:\Users\Shivaar\source\repos\Lesson 5\obj\Debug\net9.0\Lesson 5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shivaar\source\repos\Lesson 5\obj\Debug\net9.0\Lesson 5.AssemblyInfoInputs.cache
+C:\Users\Shivaar\source\repos\Lesson 5\obj\Debug\net9.0\Lesson 5.AssemblyInfo.cs
+C:\Users\Shivaar\source\repos\Lesson 5\obj\Debug\net9.0\Lesson 5.csproj.CoreCompileInputs.cache
+C:\Users\Shivaar\source\repos\Lesson 5\obj\Debug\net9.0\Lesson 5.dll
+C:\Users\Shivaar\source\repos\Lesson 5\obj\Debug\net9.0\refint\Lesson 5.dll
+C:\Users\Shivaar\source\repos\Lesson 5\obj\Debug\net9.0\Lesson 5.pdb
+C:\Users\Shivaar\source\repos\Lesson 5\obj\Debug\net9.0\Lesson 5.genruntimeconfig.cache
+C:\Users\Shivaar\source\repos\Lesson 5\obj\Debug\net9.0\ref\Lesson 5.dll
