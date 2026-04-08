@@ -1,0 +1,14 @@
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\bin\Debug\net9.0\IntroLesson.exe
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\bin\Debug\net9.0\IntroLesson.deps.json
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\bin\Debug\net9.0\IntroLesson.runtimeconfig.json
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\bin\Debug\net9.0\IntroLesson.dll
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\bin\Debug\net9.0\IntroLesson.pdb
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\obj\Debug\net9.0\IntroLesson.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\obj\Debug\net9.0\IntroLesson.AssemblyInfoInputs.cache
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\obj\Debug\net9.0\IntroLesson.AssemblyInfo.cs
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\obj\Debug\net9.0\IntroLesson.csproj.CoreCompileInputs.cache
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\obj\Debug\net9.0\IntroLesson.dll
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\obj\Debug\net9.0\refint\IntroLesson.dll
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\obj\Debug\net9.0\IntroLesson.pdb
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\obj\Debug\net9.0\IntroLesson.genruntimeconfig.cache
+C:\Users\Shivaar\source\repos\IntroLessonsame\IntroLesson\obj\Debug\net9.0\ref\IntroLesson.dll
