@@ -1,3 +1,60 @@
+
+//15/04/2026
+// Multidimensional array:A multidimensional array is basically an array of arrays.
+//int[,] grid = {
+//    {1,2,3 },
+//    {4,5,6 },
+//    {7,8,9}
+//};
+
+//for (int row = 0; row < grid.GetLength(0); row++)
+//{
+//    for (int col = 0; col < grid.GetLength(1); col++) 
+//    {
+//        Console.Write($"{grid[row,col]}");
+//    }
+//}
+//Console.WriteLine(); // new line after each row
+
+// Using foreach loop for the above
+
+//foreach (int val in grid)
+//{
+//    Console.WriteLine($"{val}");
+//}
+
+//Jagged array:an "array of arrays" where member arrays can have different lengths, resulting in rows with variable column sizes
+
+//Declare a jagged array with 3 rows
+int[][] jagged = new int[3][];
+
+//Intialize each row seprately (each have different lengths)
+
+jagged[0] = new int[] { 1, 2, 3 };
+jagged[1] = new int[] { 4, 5, };
+jagged[2] = new int[] { 6, 7, 8, 9 };
+
+// Initialie at declation (less common)
+int[][] jagged2 = new int[][]
+{
+    new int[] {1,2,3, },
+    new int[] {4,5, },
+    new int[] {6,7,8,9 }
+};
+
+int value = jagged[1][0]; // row 1, column 0 -> 4
+jagged[0][2] = 99; // Modify element
+for (int row = 0; row < jagged.Length; row++)
+{
+    for (int col = 0; col < jagged[row].Length; col++)
+    {
+        Console.Write($"{jagged[row][col]}");
+    }
+    Console.WriteLine();
+}
+
+
+//The exercises were done before
 //Exercise 1:
 //int[] temps = {22,25,19,21,28,24,26 };
 
@@ -529,100 +586,100 @@
 
 //Mini project:
 
-        double[] sales = new double[7];
-        string[] dayNames = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+//double[] sales = new double[7];
+//string[] dayNames = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
-        // --- Input: Read and validate 7 days of sales ---
-        Console.WriteLine("===== SHOP SALES ENTRY =====");
-        for (int i = 0; i < sales.Length; i++)
-        {
-            Console.Write("Enter sales for " + dayNames[i] + ": R ");
-            sales[i] = double.Parse(Console.ReadLine());
+//// --- Input: Read and validate 7 days of sales ---
+//Console.WriteLine("===== SHOP SALES ENTRY =====");
+//for (int i = 0; i < sales.Length; i++)
+//{
+//    Console.Write("Enter sales for " + dayNames[i] + ": R ");
+//    sales[i] = double.Parse(Console.ReadLine());
 
-            while (sales[i] < 0)
-            {
-                Console.WriteLine("  Invalid! Sales cannot be negative. Please try again.");
-                Console.Write("Enter sales for " + dayNames[i] + ": R ");
-                sales[i] = double.Parse(Console.ReadLine());
-            }
-        }
+//    while (sales[i] < 0)
+//    {
+//        Console.WriteLine("  Invalid! Sales cannot be negative. Please try again.");
+//        Console.Write("Enter sales for " + dayNames[i] + ": R ");
+//        sales[i] = double.Parse(Console.ReadLine());
+//    }
+//}
 
-        // --- Total and Average ---
-        double total = 0;
-        for (int i = 0; i < sales.Length; i++)
-        {
-            total += sales[i];
-        }
-        double average = total / sales.Length;
+//// --- Total and Average ---
+//double total = 0;
+//for (int i = 0; i < sales.Length; i++)
+//{
+//    total += sales[i];
+//}
+//double average = total / sales.Length;
 
-        // --- Highest and Lowest day ---
-        int highestIndex = 0;
-        int lowestIndex = 0;
+//// --- Highest and Lowest day ---
+//int highestIndex = 0;
+//int lowestIndex = 0;
 
-        for (int i = 1; i < sales.Length; i++)
-        {
-            if (sales[i] > sales[highestIndex])
-                highestIndex = i;
+//for (int i = 1; i < sales.Length; i++)
+//{
+//    if (sales[i] > sales[highestIndex])
+//        highestIndex = i;
 
-            if (sales[i] < sales[lowestIndex])
-                lowestIndex = i;
-        }
+//    if (sales[i] < sales[lowestIndex])
+//        lowestIndex = i;
+//}
 
-        // --- Count days above average ---
-        int aboveAverage = 0;
-        for (int i = 0; i < sales.Length; i++)
-        {
-            if (sales[i] > average)
-                aboveAverage++;
-        }
+//// --- Count days above average ---
+//int aboveAverage = 0;
+//for (int i = 0; i < sales.Length; i++)
+//{
+//    if (sales[i] > average)
+//        aboveAverage++;
+//}
 
-        // --- Sort a copy from highest to lowest (Bubble Sort) ---
-        double[] sorted = new double[sales.Length];
-        for (int i = 0; i < sales.Length; i++)
-        {
-            sorted[i] = sales[i];
-        }
+//// --- Sort a copy from highest to lowest (Bubble Sort) ---
+//double[] sorted = new double[sales.Length];
+//for (int i = 0; i < sales.Length; i++)
+//{
+//    sorted[i] = sales[i];
+//}
 
-        for (int i = 0; i < sorted.Length - 1; i++)
-        {
-            for (int j = 0; j < sorted.Length - 1 - i; j++)
-            {
-                if (sorted[j] < sorted[j + 1])
-                {
-                    double temp = sorted[j];
-                    sorted[j] = sorted[j + 1];
-                    sorted[j + 1] = temp;
-                }
-            }
-        }
+//for (int i = 0; i < sorted.Length - 1; i++)
+//{
+//    for (int j = 0; j < sorted.Length - 1 - i; j++)
+//    {
+//        if (sorted[j] < sorted[j + 1])
+//        {
+//            double temp = sorted[j];
+//            sorted[j] = sorted[j + 1];
+//            sorted[j + 1] = temp;
+//        }
+//    }
+//}
 
-        // --- Display the full report ---
-        Console.WriteLine();
-        Console.WriteLine("========================================");
-        Console.WriteLine("         WEEKLY SALES REPORT            ");
-        Console.WriteLine("========================================");
+//// --- Display the full report ---
+//Console.WriteLine();
+//Console.WriteLine("========================================");
+//Console.WriteLine("         WEEKLY SALES REPORT            ");
+//Console.WriteLine("========================================");
 
-        Console.WriteLine();
-        Console.WriteLine("----- Daily Sales Entered -----");
-        for (int i = 0; i < sales.Length; i++)
-        {
-            Console.WriteLine("  " + dayNames[i] + ": \t R " + sales[i].ToString("F2"));
-        }
+//Console.WriteLine();
+//Console.WriteLine("----- Daily Sales Entered -----");
+//for (int i = 0; i < sales.Length; i++)
+//{
+//    Console.WriteLine("  " + dayNames[i] + ": \t R " + sales[i].ToString("F2"));
+//}
 
-        Console.WriteLine();
-        Console.WriteLine("----- Summary -----");
-        Console.WriteLine("  Total sales for the week:    R " + total.ToString("F2"));
-        Console.WriteLine("  Average daily sales:         R " + average.ToString("F2"));
-        Console.WriteLine("  Highest sales day:           " + dayNames[highestIndex] + " (R " + sales[highestIndex].ToString("F2") + ")");
-        Console.WriteLine("  Lowest sales day:            " + dayNames[lowestIndex] + " (R " + sales[lowestIndex].ToString("F2") + ")");
-        Console.WriteLine("  Days above average:          " + aboveAverage + " day(s)");
+//Console.WriteLine();
+//Console.WriteLine("----- Summary -----");
+//Console.WriteLine("  Total sales for the week:    R " + total.ToString("F2"));
+//Console.WriteLine("  Average daily sales:         R " + average.ToString("F2"));
+//Console.WriteLine("  Highest sales day:           " + dayNames[highestIndex] + " (R " + sales[highestIndex].ToString("F2") + ")");
+//Console.WriteLine("  Lowest sales day:            " + dayNames[lowestIndex] + " (R " + sales[lowestIndex].ToString("F2") + ")");
+//Console.WriteLine("  Days above average:          " + aboveAverage + " day(s)");
 
-        Console.WriteLine();
-        Console.WriteLine("----- Sales Ranked Highest to Lowest -----");
-        for (int i = 0; i < sorted.Length; i++)
-        {
-            Console.WriteLine("  " + (i + 1) + ". R " + sorted[i].ToString("F2"));
-        }
+//Console.WriteLine();
+//Console.WriteLine("----- Sales Ranked Highest to Lowest -----");
+//for (int i = 0; i < sorted.Length; i++)
+//{
+//    Console.WriteLine("  " + (i + 1) + ". R " + sorted[i].ToString("F2"));
+//}
 
-        Console.WriteLine();
-        Console.WriteLine("========================================");
+//Console.WriteLine();
+//Console.WriteLine("========================================");
