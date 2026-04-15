@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Shivaar\\source\\repos\\Arrays\\Arrays.csproj",
+      "projectUniqueName": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\Arrays\\Arrays.csproj",
       "projectName": "Arrays",
-      "projectPath": "C:\\Users\\Shivaar\\source\\repos\\Arrays\\Arrays.csproj",
+      "projectPath": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\Arrays\\Arrays.csproj",
       "packagesPath": "C:\\Users\\Shivaar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Shivaar\\source\\repos\\Arrays\\obj\\",
+      "outputPath": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\Arrays\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
