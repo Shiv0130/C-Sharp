@@ -1,0 +1,15 @@
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\obj\Debug\net8.0\class_polymorphism.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\obj\Debug\net8.0\class_polymorphism.AssemblyInfoInputs.cache
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\obj\Debug\net8.0\class_polymorphism.AssemblyInfo.cs
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\obj\Debug\net8.0\class_polymorphism.csproj.CoreCompileInputs.cache
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\obj\Debug\net8.0\class_polymorphism.sourcelink.json
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\bin\Debug\net8.0\class_polymorphism.exe
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\bin\Debug\net8.0\class_polymorphism.deps.json
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\bin\Debug\net8.0\class_polymorphism.runtimeconfig.json
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\bin\Debug\net8.0\class_polymorphism.dll
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\bin\Debug\net8.0\class_polymorphism.pdb
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\obj\Debug\net8.0\class_polymorphism.dll
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\obj\Debug\net8.0\refint\class_polymorphism.dll
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\obj\Debug\net8.0\class_polymorphism.pdb
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\obj\Debug\net8.0\class_polymorphism.genruntimeconfig.cache
+C:\Users\ShavaarSewnarain\source\repos\Shiv0130\C-Sharp\class_polymorphism\class_polymorphism\obj\Debug\net8.0\ref\class_polymorphism.dll
