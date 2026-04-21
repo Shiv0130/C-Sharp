@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace BankAccountClass
 {
-    internal class CurrentAccount
+    public class CurrentAccount : BankAccount
+    {
+        private double overdraftLimit = 500;
+        //Polymorphism (different behaviour)
+        public override void Withdraw(double amount)
+        {
+            if (amount <= balance+ overdraftLimit) 
+            {
+                balance -= amount;
+                Console.WriteLine("Withdrawal successful (Current with overdraft)");
+            } 
+            else 
     {
     }
 }
