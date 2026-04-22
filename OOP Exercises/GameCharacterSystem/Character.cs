@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -10,22 +10,33 @@ namespace GameCharacterSystem
     public abstract class Character
     {
         protected int health;
+        //My attempt
+        //public void SetHealth() 
+        //{
+        //    this.health = 0;
+        //}
 
-        public void SetHealth() 
+        public Character(int health) 
         {
-            this.health = 0;
+            this.health = health;
         }
 
         public void TakeDamage(int amount)
         {
-            if (amount  >= 0)
+            //My attempt code
+            //if (amount  >= 0)
+            //{
+            //    health -= amount;
+            //    Console.WriteLine("You have taken damage. Current health " + health);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Health cannot go below 0.");
+            //}
+
+            if (health > 0 && health>=0) 
             {
                 health -= amount;
-                Console.WriteLine("You have taken damage. Current health " + health);
-            }
-            else
-            {
-                Console.WriteLine("Health cannot go below 0.");
             }
         }
         public abstract string Attack();
