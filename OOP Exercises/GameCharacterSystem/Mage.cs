@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,11 @@ namespace GameCharacterSystem
 {
     public class Mage : Character
     {
+        //correction - added constructor to set health for Mage
+        public Mage(int health) : base(health)
+        {
+
+        }
         public override string Attack() 
         {
             return "Mage casts a fireball";
