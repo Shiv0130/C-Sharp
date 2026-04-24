@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\VehicleSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{427E8A7F-B480-4CDA-9B3F-5F4CEFE47A06}|VehicleSystem.csproj|c:\\users\\shivaar\\source\\repos\\shiv0130\\c-sharp\\oop exercises\\vehiclesystem\\vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{427E8A7F-B480-4CDA-9B3F-5F4CEFE47A06}|VehicleSystem.csproj|solutionrelative:vehicle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{427E8A7F-B480-4CDA-9B3F-5F4CEFE47A06}|VehicleSystem.csproj|c:\\users\\shivaar\\source\\repos\\shiv0130\\c-sharp\\oop exercises\\vehiclesystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{427E8A7F-B480-4CDA-9B3F-5F4CEFE47A06}|VehicleSystem.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{427E8A7F-B480-4CDA-9B3F-5F4CEFE47A06}|VehicleSystem.csproj|c:\\users\\shivaar\\source\\repos\\shiv0130\\c-sharp\\oop exercises\\vehiclesystem\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{427E8A7F-B480-4CDA-9B3F-5F4CEFE47A06}|VehicleSystem.csproj|solutionrelative:car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{427E8A7F-B480-4CDA-9B3F-5F4CEFE47A06}|VehicleSystem.csproj|c:\\users\\shivaar\\source\\repos\\shiv0130\\c-sharp\\oop exercises\\vehiclesystem\\motorcycle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{427E8A7F-B480-4CDA-9B3F-5F4CEFE47A06}|VehicleSystem.csproj|solutionrelative:motorcycle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Motorcycle.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\VehicleSystem\\Motorcycle.cs",
+              "RelativeDocumentMoniker": "Motorcycle.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\VehicleSystem\\Motorcycle.cs",
+              "RelativeToolTip": "Motorcycle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T17:34:48.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Car.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\VehicleSystem\\Car.cs",
+              "RelativeDocumentMoniker": "Car.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\VehicleSystem\\Car.cs",
+              "RelativeToolTip": "Car.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T13:07:05.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Vehicle.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\VehicleSystem\\Vehicle.cs",
+              "RelativeDocumentMoniker": "Vehicle.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\VehicleSystem\\Vehicle.cs",
+              "RelativeToolTip": "Vehicle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T12:48:55.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\VehicleSystem\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\VehicleSystem\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-21T12:48:02.665Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
