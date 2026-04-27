@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿using EmployeePayrollSystem;
+using EmployeePayrollSystem;
 
 //Employee fulltimeepmloyee = new FullTimeEmployee("Shivaar");
 //Employee contractor = new Contractor("James");
@@ -14,12 +13,4 @@ Employee employee2 = new Contractor("Mike", 100, 160);
 
 Console.WriteLine(employee1.CalculateSalary());
 Console.WriteLine(employee2.CalculateSalary());
-=======
-﻿using EmployeePayrollSystem;
 
-Employee fulltimeepmloyee = new FullTimeEmployee("Shivaar");
-Employee contractor = new Contractor("James");
-
-Console.WriteLine(fulltimeepmloyee.CalculateSalary());
-Console.WriteLine(contractor.CalculateSalary());
->>>>>>> dc12548130aeb50905ddce44b8ba16c469423f90

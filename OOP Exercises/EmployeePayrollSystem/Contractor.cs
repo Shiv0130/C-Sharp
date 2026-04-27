@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,4 +60,3 @@ namespace EmployeePayrollSystem
         }
     }
 }
->>>>>>> dc12548130aeb50905ddce44b8ba16c469423f90
