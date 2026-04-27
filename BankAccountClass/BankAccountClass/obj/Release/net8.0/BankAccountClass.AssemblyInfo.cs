@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankAccountClass")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0cde9d26e2f8d8a495945c728d87707007423aa7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+882e730f1459508deb8af6f072ccae958d40f9d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankAccountClass")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankAccountClass")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

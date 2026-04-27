@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\bin\Debug\net9.0\SchoolSystem.exe
 C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\bin\Debug\net9.0\SchoolSystem.deps.json
 C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\bin\Debug\net9.0\SchoolSystem.runtimeconfig.json
@@ -13,3 +14,20 @@ C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\De
 C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\SchoolSystem.pdb
 C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\SchoolSystem.genruntimeconfig.cache
 C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\ref\SchoolSystem.dll
+=======
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\bin\Debug\net9.0\SchoolSystem.exe
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\bin\Debug\net9.0\SchoolSystem.deps.json
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\bin\Debug\net9.0\SchoolSystem.runtimeconfig.json
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\bin\Debug\net9.0\SchoolSystem.dll
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\bin\Debug\net9.0\SchoolSystem.pdb
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\SchoolSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\SchoolSystem.AssemblyInfoInputs.cache
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\SchoolSystem.AssemblyInfo.cs
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\SchoolSystem.csproj.CoreCompileInputs.cache
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\SchoolSystem.sourcelink.json
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\SchoolSystem.dll
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\refint\SchoolSystem.dll
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\SchoolSystem.pdb
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\SchoolSystem.genruntimeconfig.cache
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\SchoolSystem\obj\Debug\net9.0\ref\SchoolSystem.dll
+>>>>>>> dc12548130aeb50905ddce44b8ba16c469423f90

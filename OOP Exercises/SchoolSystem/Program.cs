@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using SchoolSystem;
 
 //Person student = new Student();
@@ -39,3 +40,18 @@ foreach (Person person in people)
 {
     Console.WriteLine($"Name: {person.Name}, Role: {person.GetRole()}");
 }
+=======
+﻿using SchoolSystem;
+
+Person student = new Student();
+Console.WriteLine("Enter student name:");
+student.Name = Console.ReadLine();
+Console.WriteLine($"Student name: {student.Name}");
+Console.WriteLine($"Role:{student.GetRole()}");
+
+Person lecturer = new Lecturer();
+Console.WriteLine("Enter lecturer name:");
+lecturer.Name = Console.ReadLine();
+Console.WriteLine($"Lecturer name: {lecturer.Name}");
+Console.WriteLine($"Role:{lecturer.GetRole()}");
+>>>>>>> dc12548130aeb50905ddce44b8ba16c469423f90

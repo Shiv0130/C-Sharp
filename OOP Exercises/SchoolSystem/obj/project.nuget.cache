@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "version": 2,
   "dgSpecHash": "RI9krZxhy3k=",
@@ -5,4 +6,13 @@
   "projectFilePath": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\SchoolSystem\\SchoolSystem.csproj",
   "expectedPackageFiles": [],
   "logs": []
+=======
+{
+  "version": 2,
+  "dgSpecHash": "RI9krZxhy3k=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\SchoolSystem\\SchoolSystem.csproj",
+  "expectedPackageFiles": [],
+  "logs": []
+>>>>>>> dc12548130aeb50905ddce44b8ba16c469423f90
 }
