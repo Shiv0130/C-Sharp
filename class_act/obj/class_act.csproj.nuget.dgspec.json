@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Shivaar\\source\\repos\\class_act\\class_act\\class_act.csproj": {}
+    "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\class_act\\class_act.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Shivaar\\source\\repos\\class_act\\class_act\\class_act.csproj": {
+    "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\class_act\\class_act.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Shivaar\\source\\repos\\class_act\\class_act\\class_act.csproj",
+        "projectUniqueName": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\class_act\\class_act.csproj",
         "projectName": "class_act",
-        "projectPath": "C:\\Users\\Shivaar\\source\\repos\\class_act\\class_act\\class_act.csproj",
+        "projectPath": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\class_act\\class_act.csproj",
         "packagesPath": "C:\\Users\\Shivaar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Shivaar\\source\\repos\\class_act\\class_act\\obj\\",
+        "outputPath": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\class_act\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConsoleNotes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac52ab8c1b958c587fb6c687a4cf4b6d2307d30b")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConsoleNotes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConsoleNotes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

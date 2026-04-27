@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\EmployeePayrollSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{12F93A32-3DB1-401B-95F6-195C8C88A9F0}|EmployeePayrollSystem.csproj|c:\\users\\shivaar\\source\\repos\\shiv0130\\c-sharp\\oop exercises\\employeepayrollsystem\\contractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F93A32-3DB1-401B-95F6-195C8C88A9F0}|EmployeePayrollSystem.csproj|solutionrelative:contractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F93A32-3DB1-401B-95F6-195C8C88A9F0}|EmployeePayrollSystem.csproj|c:\\users\\shivaar\\source\\repos\\shiv0130\\c-sharp\\oop exercises\\employeepayrollsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F93A32-3DB1-401B-95F6-195C8C88A9F0}|EmployeePayrollSystem.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F93A32-3DB1-401B-95F6-195C8C88A9F0}|EmployeePayrollSystem.csproj|c:\\users\\shivaar\\source\\repos\\shiv0130\\c-sharp\\oop exercises\\employeepayrollsystem\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F93A32-3DB1-401B-95F6-195C8C88A9F0}|EmployeePayrollSystem.csproj|solutionrelative:employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12F93A32-3DB1-401B-95F6-195C8C88A9F0}|EmployeePayrollSystem.csproj|c:\\users\\shivaar\\source\\repos\\shiv0130\\c-sharp\\oop exercises\\employeepayrollsystem\\fulltimeemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12F93A32-3DB1-401B-95F6-195C8C88A9F0}|EmployeePayrollSystem.csproj|solutionrelative:fulltimeemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Contractor.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\EmployeePayrollSystem\\Contractor.cs",
+              "RelativeDocumentMoniker": "Contractor.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\EmployeePayrollSystem\\Contractor.cs",
+              "RelativeToolTip": "Contractor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T09:16:15.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FullTimeEmployee.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\EmployeePayrollSystem\\FullTimeEmployee.cs",
+              "RelativeDocumentMoniker": "FullTimeEmployee.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\EmployeePayrollSystem\\FullTimeEmployee.cs",
+              "RelativeToolTip": "FullTimeEmployee.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T09:15:23.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\EmployeePayrollSystem\\Employee.cs",
+              "RelativeDocumentMoniker": "Employee.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\EmployeePayrollSystem\\Employee.cs",
+              "RelativeToolTip": "Employee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T09:14:34.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\EmployeePayrollSystem\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\Shiv0130\\C-Sharp\\OOP Exercises\\EmployeePayrollSystem\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T09:13:32.784Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

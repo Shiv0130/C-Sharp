@@ -11,7 +11,15 @@ namespace BankAccountClass
         //Polymorphism (override)
         public override void Withdraw(double amount)
         {
-            balance -= amount;
+            if (amount <= balance) 
+            { 
+                balance -= amount;
+                Console.WriteLine("Withdrawal successful (Savings)");
+            }
+            else 
+            { 
+                Console.WriteLine("Insufficient funds (Savings)");
+            }
         }
     }
 }

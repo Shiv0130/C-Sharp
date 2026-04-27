@@ -25,3 +25,8 @@ acc1.Withdraw(1200); // Savings - should fail
 Console.WriteLine("Balance: " + acc1.GetBalance());
 
 Console.WriteLine();
+
+BankAccount acc2 = new CurrentAccount();
+acc2.Deposit(1000);
+acc2.Withdraw(1200); // Current - should allow overdraft
+Console.WriteLine("Balance: " + acc2.GetBalance());

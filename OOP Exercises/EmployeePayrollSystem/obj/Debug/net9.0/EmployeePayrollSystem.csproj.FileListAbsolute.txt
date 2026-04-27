@@ -1,0 +1,15 @@
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\bin\Debug\net9.0\EmployeePayrollSystem.exe
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\bin\Debug\net9.0\EmployeePayrollSystem.deps.json
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\bin\Debug\net9.0\EmployeePayrollSystem.runtimeconfig.json
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\bin\Debug\net9.0\EmployeePayrollSystem.dll
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\bin\Debug\net9.0\EmployeePayrollSystem.pdb
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\obj\Debug\net9.0\EmployeePayrollSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\obj\Debug\net9.0\EmployeePayrollSystem.AssemblyInfoInputs.cache
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\obj\Debug\net9.0\EmployeePayrollSystem.AssemblyInfo.cs
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\obj\Debug\net9.0\EmployeePayrollSystem.csproj.CoreCompileInputs.cache
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\obj\Debug\net9.0\EmployeePayrollSystem.sourcelink.json
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\obj\Debug\net9.0\EmployeePayrollSystem.dll
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\obj\Debug\net9.0\refint\EmployeePayrollSystem.dll
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\obj\Debug\net9.0\EmployeePayrollSystem.pdb
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\obj\Debug\net9.0\EmployeePayrollSystem.genruntimeconfig.cache
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\OOP Exercises\EmployeePayrollSystem\obj\Debug\net9.0\ref\EmployeePayrollSystem.dll

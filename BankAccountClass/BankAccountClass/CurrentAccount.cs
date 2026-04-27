@@ -18,6 +18,9 @@ namespace BankAccountClass
                 Console.WriteLine("Withdrawal successful (Current with overdraft)");
             } 
             else 
-    {
+            { 
+                Console.WriteLine("Overdraft limit exceeded");
+            }
+        }
     }
 }
