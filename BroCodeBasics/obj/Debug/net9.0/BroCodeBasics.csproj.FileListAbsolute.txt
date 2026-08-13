@@ -1,0 +1,15 @@
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\obj\Debug\net9.0\BroCodeBasics.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\obj\Debug\net9.0\BroCodeBasics.AssemblyInfoInputs.cache
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\obj\Debug\net9.0\BroCodeBasics.AssemblyInfo.cs
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\obj\Debug\net9.0\BroCodeBasics.csproj.CoreCompileInputs.cache
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\obj\Debug\net9.0\BroCodeBasics.sourcelink.json
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\bin\Debug\net9.0\BroCodeBasics.exe
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\bin\Debug\net9.0\BroCodeBasics.deps.json
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\bin\Debug\net9.0\BroCodeBasics.runtimeconfig.json
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\bin\Debug\net9.0\BroCodeBasics.dll
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\bin\Debug\net9.0\BroCodeBasics.pdb
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\obj\Debug\net9.0\BroCodeBasics.dll
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\obj\Debug\net9.0\refint\BroCodeBasics.dll
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\obj\Debug\net9.0\BroCodeBasics.pdb
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\obj\Debug\net9.0\BroCodeBasics.genruntimeconfig.cache
+C:\Users\Shivaar\source\repos\Shiv0130\C-Sharp\BroCodeBasics\obj\Debug\net9.0\ref\BroCodeBasics.dll
