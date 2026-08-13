@@ -1,0 +1,14 @@
+C:\Users\Shivaar\source\repos\QueueYT\bin\Debug\net9.0\QueueYT.exe
+C:\Users\Shivaar\source\repos\QueueYT\bin\Debug\net9.0\QueueYT.deps.json
+C:\Users\Shivaar\source\repos\QueueYT\bin\Debug\net9.0\QueueYT.runtimeconfig.json
+C:\Users\Shivaar\source\repos\QueueYT\bin\Debug\net9.0\QueueYT.dll
+C:\Users\Shivaar\source\repos\QueueYT\bin\Debug\net9.0\QueueYT.pdb
+C:\Users\Shivaar\source\repos\QueueYT\obj\Debug\net9.0\QueueYT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shivaar\source\repos\QueueYT\obj\Debug\net9.0\QueueYT.AssemblyInfoInputs.cache
+C:\Users\Shivaar\source\repos\QueueYT\obj\Debug\net9.0\QueueYT.AssemblyInfo.cs
+C:\Users\Shivaar\source\repos\QueueYT\obj\Debug\net9.0\QueueYT.csproj.CoreCompileInputs.cache
+C:\Users\Shivaar\source\repos\QueueYT\obj\Debug\net9.0\QueueYT.dll
+C:\Users\Shivaar\source\repos\QueueYT\obj\Debug\net9.0\refint\QueueYT.dll
+C:\Users\Shivaar\source\repos\QueueYT\obj\Debug\net9.0\QueueYT.pdb
+C:\Users\Shivaar\source\repos\QueueYT\obj\Debug\net9.0\QueueYT.genruntimeconfig.cache
+C:\Users\Shivaar\source\repos\QueueYT\obj\Debug\net9.0\ref\QueueYT.dll

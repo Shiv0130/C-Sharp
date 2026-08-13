@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Models/">
+    <File Path="Category.cs" />
+    <File Path="Product.cs" />
+  </Folder>
+  <Project Path="QueuesStacks/QueuesStacks.csproj" />
+</Solution>
