@@ -1,0 +1,5 @@
+C:\Users\Shivaar\source\repos\ExamDapperCRUD\obj\Debug\net9.0\ExamDapperCRUD.csproj.AssemblyReference.cache
+C:\Users\Shivaar\source\repos\ExamDapperCRUD\obj\Debug\net9.0\ExamDapperCRUD.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shivaar\source\repos\ExamDapperCRUD\obj\Debug\net9.0\ExamDapperCRUD.AssemblyInfoInputs.cache
+C:\Users\Shivaar\source\repos\ExamDapperCRUD\obj\Debug\net9.0\ExamDapperCRUD.AssemblyInfo.cs
+C:\Users\Shivaar\source\repos\ExamDapperCRUD\obj\Debug\net9.0\ExamDapperCRUD.csproj.CoreCompileInputs.cache
