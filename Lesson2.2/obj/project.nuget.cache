@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "dcEnaro/v/g=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Shivaar\\source\\repos\\Lesson2.2\\Lesson2.2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Shivaar\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\microsoft.visualstudio.azure.containers.tools.targets.1.22.1.nupkg.sha512"
+  ],
+  "logs": []
+}

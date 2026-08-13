@@ -1,0 +1,14 @@
+C:\Users\Shivaar\source\repos\Lesson2.2\bin\Debug\net9.0\Lesson2.2.exe
+C:\Users\Shivaar\source\repos\Lesson2.2\bin\Debug\net9.0\Lesson2.2.deps.json
+C:\Users\Shivaar\source\repos\Lesson2.2\bin\Debug\net9.0\Lesson2.2.runtimeconfig.json
+C:\Users\Shivaar\source\repos\Lesson2.2\bin\Debug\net9.0\Lesson2.2.dll
+C:\Users\Shivaar\source\repos\Lesson2.2\bin\Debug\net9.0\Lesson2.2.pdb
+C:\Users\Shivaar\source\repos\Lesson2.2\obj\Debug\net9.0\Lesson2.2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Shivaar\source\repos\Lesson2.2\obj\Debug\net9.0\Lesson2.2.AssemblyInfoInputs.cache
+C:\Users\Shivaar\source\repos\Lesson2.2\obj\Debug\net9.0\Lesson2.2.AssemblyInfo.cs
+C:\Users\Shivaar\source\repos\Lesson2.2\obj\Debug\net9.0\Lesson2.2.csproj.CoreCompileInputs.cache
+C:\Users\Shivaar\source\repos\Lesson2.2\obj\Debug\net9.0\Lesson2.2.dll
+C:\Users\Shivaar\source\repos\Lesson2.2\obj\Debug\net9.0\refint\Lesson2.2.dll
+C:\Users\Shivaar\source\repos\Lesson2.2\obj\Debug\net9.0\Lesson2.2.pdb
+C:\Users\Shivaar\source\repos\Lesson2.2\obj\Debug\net9.0\Lesson2.2.genruntimeconfig.cache
+C:\Users\Shivaar\source\repos\Lesson2.2\obj\Debug\net9.0\ref\Lesson2.2.dll
