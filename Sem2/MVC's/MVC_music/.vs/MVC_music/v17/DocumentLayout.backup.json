@@ -1,0 +1,136 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|c:\\users\\shivaar\\source\\repos\\mvc_music\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|c:\\users\\shivaar\\source\\repos\\mvc_music\\data\\migrations\\20260824203742_adddeleterules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|solutionrelative:data\\migrations\\20260824203742_adddeleterules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|c:\\users\\shivaar\\source\\repos\\mvc_music\\models\\song.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|solutionrelative:models\\song.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|c:\\users\\shivaar\\source\\repos\\mvc_music\\models\\genre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|solutionrelative:models\\genre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|c:\\users\\shivaar\\source\\repos\\mvc_music\\models\\artist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|solutionrelative:models\\artist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|c:\\users\\shivaar\\source\\repos\\mvc_music\\data\\migrations\\20260824201702_intialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF1B6521-511E-4442-A287-4B10A16D5578}|MVC_music.csproj|solutionrelative:data\\migrations\\20260824201702_intialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20260824203742_AddDeleteRules.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Data\\Migrations\\20260824203742_AddDeleteRules.cs",
+              "RelativeDocumentMoniker": "Data\\Migrations\\20260824203742_AddDeleteRules.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Data\\Migrations\\20260824203742_AddDeleteRules.cs",
+              "RelativeToolTip": "Data\\Migrations\\20260824203742_AddDeleteRules.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwBYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T20:37:43.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T09:27:38.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20260824201702_IntialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Data\\Migrations\\20260824201702_IntialCreate.cs",
+              "RelativeDocumentMoniker": "Data\\Migrations\\20260824201702_IntialCreate.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Data\\Migrations\\20260824201702_IntialCreate.cs",
+              "RelativeToolTip": "Data\\Migrations\\20260824201702_IntialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T20:17:03.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Artist.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Models\\Artist.cs",
+              "RelativeDocumentMoniker": "Models\\Artist.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Models\\Artist.cs",
+              "RelativeToolTip": "Models\\Artist.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T09:25:46.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Genre.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Models\\Genre.cs",
+              "RelativeDocumentMoniker": "Models\\Genre.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Models\\Genre.cs",
+              "RelativeToolTip": "Models\\Genre.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T09:24:51.747Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Song.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Models\\Song.cs",
+              "RelativeDocumentMoniker": "Models\\Song.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_music\\Models\\Song.cs",
+              "RelativeToolTip": "Models\\Song.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T09:22:58.103Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|c:\\users\\shivaar\\source\\repos\\mvc_crud_app\\mvc_crud_app\\models\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|solutionrelative:mvc_crud_app\\models\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|c:\\users\\shivaar\\source\\repos\\mvc_crud_app\\mvc_crud_app\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|solutionrelative:mvc_crud_app\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|c:\\users\\shivaar\\source\\repos\\mvc_crud_app\\mvc_crud_app\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|solutionrelative:mvc_crud_app\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|c:\\users\\shivaar\\source\\repos\\mvc_crud_app\\mvc_crud_app\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|solutionrelative:mvc_crud_app\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|c:\\users\\shivaar\\source\\repos\\mvc_crud_app\\mvc_crud_app\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|solutionrelative:mvc_crud_app\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|c:\\users\\shivaar\\source\\repos\\mvc_crud_app\\mvc_crud_app\\data\\migrations\\20260819073012_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|solutionrelative:mvc_crud_app\\data\\migrations\\20260819073012_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|c:\\users\\shivaar\\source\\repos\\mvc_crud_app\\mvc_crud_app\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|solutionrelative:mvc_crud_app\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|c:\\users\\shivaar\\source\\repos\\mvc_crud_app\\mvc_crud_app\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|solutionrelative:mvc_crud_app\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|c:\\users\\shivaar\\source\\repos\\mvc_crud_app\\mvc_crud_app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{554246B6-72EA-4B65-9D13-D249D8C1F73E}|MVC_Crud_App\\MVC_Crud_App.csproj|solutionrelative:mvc_crud_app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "MVC_Crud_App\\Controllers\\EmployeeController.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "MVC_Crud_App\\Controllers\\EmployeeController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwCoAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T08:39:07.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "MVC_Crud_App\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "MVC_Crud_App\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-19T07:31:32.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "MVC_Crud_App\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "MVC_Crud_App\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-19T07:31:26.884Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20260819073012_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Data\\Migrations\\20260819073012_InitialCreate.cs",
+              "RelativeDocumentMoniker": "MVC_Crud_App\\Data\\Migrations\\20260819073012_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Data\\Migrations\\20260819073012_InitialCreate.cs",
+              "RelativeToolTip": "MVC_Crud_App\\Data\\Migrations\\20260819073012_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T07:30:12.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "MVC_Crud_App\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "MVC_Crud_App\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAUwC0AAAAEAgAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T06:45:44.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Department.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Models\\Department.cs",
+              "RelativeDocumentMoniker": "MVC_Crud_App\\Models\\Department.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Models\\Department.cs",
+              "RelativeToolTip": "MVC_Crud_App\\Models\\Department.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T06:29:04.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "MVC_Crud_App\\Models\\Employee.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Models\\Employee.cs",
+              "RelativeToolTip": "MVC_Crud_App\\Models\\Employee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T06:30:46.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DepartmentController.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Controllers\\DepartmentController.cs",
+              "RelativeDocumentMoniker": "MVC_Crud_App\\Controllers\\DepartmentController.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Controllers\\DepartmentController.cs",
+              "RelativeToolTip": "MVC_Crud_App\\Controllers\\DepartmentController.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAADwvwwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T07:42:59.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Program.cs",
+              "RelativeDocumentMoniker": "MVC_Crud_App\\Program.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\MVC_Crud_App\\MVC_Crud_App\\Program.cs",
+              "RelativeToolTip": "MVC_Crud_App\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T08:05:15.726Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
