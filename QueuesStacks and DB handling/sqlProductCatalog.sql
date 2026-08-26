@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿CREATE TABLE Categories (
     CategoryId INT IDENTITY(1,1) PRIMARY KEY,
     NAME NVARCHAR(50) NOT NULL UNIQUE,
@@ -16,3 +17,23 @@ CREATE TABLE Products (
 
 SELECT* FROM Products;
 SELECT* FROM Categories;
+=======
+﻿CREATE TABLE Categories (
+    CategoryId INT IDENTITY(1,1) PRIMARY KEY,
+    NAME NVARCHAR(50) NOT NULL UNIQUE,
+    Description NVARCHAR(500) NULL
+);
+
+
+CREATE TABLE Products (
+    ProductId INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    Price DECIMAL(10,2) NOT NULL CHECK (Price >=0),
+    StockQuantity INT NOT NULL DEFAULT 0,
+    CategoryId INT NOT NULL,
+    FOREIGN KEY (CategoryId) REFERENCES Categories(CategoryId) ON DELETE CASCADE
+);
+
+SELECT* FROM Products;
+SELECT* FROM Categories;
+>>>>>>> f1fd9259c06725f9a30786509326a6e923171712

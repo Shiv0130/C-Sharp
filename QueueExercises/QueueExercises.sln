@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
@@ -23,3 +24,30 @@ Global
 		SolutionGuid = {C75ABC93-9A1C-4DB4-A07A-8D18FA2AF39D}
 	EndGlobalSection
 EndGlobal
+=======
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37012.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueExercises", "QueueExercises.csproj", "{B7505FA4-6679-489D-80E8-0ACCA26CD0B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7505FA4-6679-489D-80E8-0ACCA26CD0B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7505FA4-6679-489D-80E8-0ACCA26CD0B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7505FA4-6679-489D-80E8-0ACCA26CD0B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7505FA4-6679-489D-80E8-0ACCA26CD0B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C75ABC93-9A1C-4DB4-A07A-8D18FA2AF39D}
+	EndGlobalSection
+EndGlobal
+>>>>>>> f1fd9259c06725f9a30786509326a6e923171712

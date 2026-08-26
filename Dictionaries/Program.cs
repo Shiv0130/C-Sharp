@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿//// CompanyDepts
 //// ── Bring the Dictionaries namespace into scope ──────────────
 //// This lets us use StaffMember without writing Dictionaries.StaffMember
@@ -658,3 +659,51 @@ DisplayTopPlayer();
 //   #3  CodeKing — 7650 pts
 //   #4  NightOwl — 3100 pts
 DisplaySorted();
+=======
+﻿//Dictionary- stores data in pairs
+
+//first data type keys are strings and second data type values are integers
+//Dictionary<string, int> ageDictionary = new Dictionary<string, int>()
+//{
+//    {"Alice", 30 },
+//    {"Bob",25 },
+//    {"Charlie", 35 }
+//};
+//ageDictionary.Add("Diana", 40); // Adding a new user
+//Console.WriteLine("Alices's age:" + ageDictionary);
+
+//ageDictionary.Remove("Bob"); // Removing Bob
+//Console.WriteLine("Contains Alice:" + ageDictionary);
+
+//Dictionary<int, string> myDictionary = new Dictionary<int, string>();
+
+//myDictionary.Add(1,"Something");
+//myDictionary.Add(5, "Something");
+//myDictionary.Add(9, "Something");
+
+//foreach (var item in myDictionary) 
+//{
+//    Console.WriteLine(item);
+//}
+
+Dictionary<int, string> myDictionary = new Dictionary<int, string>();
+
+myDictionary.Add(1, "Something");
+myDictionary.Add(5, "Something");
+myDictionary.Add(9, "Something");
+
+foreach (var item in myDictionary)
+{
+    if (item.Key == 5) 
+    {
+        Console.WriteLine(item.Value);   
+    } else 
+    {
+        Console.WriteLine(item.Key);
+    }
+
+}
+
+
+
+>>>>>>> f1fd9259c06725f9a30786509326a6e923171712

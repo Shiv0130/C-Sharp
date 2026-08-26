@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <Solution>
   <Folder Name="/Models/">
     <File Path="Category.cs" />
@@ -5,3 +6,12 @@
   </Folder>
   <Project Path="QueuesStacks/QueuesStacks.csproj" />
 </Solution>
+=======
+<Solution>
+  <Folder Name="/Models/">
+    <File Path="Category.cs" />
+    <File Path="Product.cs" />
+  </Folder>
+  <Project Path="QueuesStacks/QueuesStacks.csproj" />
+</Solution>
+>>>>>>> f1fd9259c06725f9a30786509326a6e923171712

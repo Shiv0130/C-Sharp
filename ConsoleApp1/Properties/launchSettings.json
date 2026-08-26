@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "profiles": {
     "ConsoleApp1": {
@@ -7,4 +8,15 @@
       "commandName": "Docker"
     }
   }
+=======
+{
+  "profiles": {
+    "ConsoleApp1": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+>>>>>>> f1fd9259c06725f9a30786509326a6e923171712
 }
