@@ -1,0 +1,43 @@
+@model IEnumerable<MVC_music.Models.Artist>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Songs
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Name)
+            </td>
+            <td>
+                @* Songs is a collection, so show a count instead of DisplayFor
+                   (which rendered blank for a collection type). *@
+                @item.Songs.Count
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ArtistId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ArtistId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ArtistId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

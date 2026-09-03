@@ -1,0 +1,48 @@
+@model IEnumerable<MVC_music.Models.Song>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                Genre
+            </th>
+            <th>
+                Artist
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Title)
+            </td>
+            <td>
+                @* Show the Genre's Name, not the raw GenreId or the whole object. *@
+                @item.Genre?.Name
+            </td>
+            <td>
+                @item.Artist?.Name
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SongId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SongId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SongId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
