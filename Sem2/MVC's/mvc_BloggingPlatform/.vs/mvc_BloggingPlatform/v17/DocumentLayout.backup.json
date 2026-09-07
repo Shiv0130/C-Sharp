@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\Data\\Migrations\\20260825214326_AddBlogTables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\Migrations\\20260825214326_AddBlogTables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{510E8663-FC37-4DD6-B015-7F2980A7F698}|mvc_BloggingPlatform.csproj|c:\\users\\shivaar\\source\\repos\\mvc_bloggingplatform\\controllers\\blogpostcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{510E8663-FC37-4DD6-B015-7F2980A7F698}|mvc_BloggingPlatform.csproj|solutionrelative:controllers\\blogpostcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\Data\\Migrations\\20260825214235_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\Migrations\\20260825214235_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{510E8663-FC37-4DD6-B015-7F2980A7F698}|mvc_BloggingPlatform.csproj|c:\\users\\shivaar\\source\\repos\\mvc_bloggingplatform\\controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{510E8663-FC37-4DD6-B015-7F2980A7F698}|mvc_BloggingPlatform.csproj|solutionrelative:controllers\\authorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{510E8663-FC37-4DD6-B015-7F2980A7F698}|mvc_BloggingPlatform.csproj|c:\\users\\shivaar\\source\\repos\\mvc_bloggingplatform\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{510E8663-FC37-4DD6-B015-7F2980A7F698}|mvc_BloggingPlatform.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510E8663-FC37-4DD6-B015-7F2980A7F698}|mvc_BloggingPlatform.csproj|c:\\users\\shivaar\\source\\repos\\mvc_bloggingplatform\\data\\migrations\\20260825214326_addblogtables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{510E8663-FC37-4DD6-B015-7F2980A7F698}|mvc_BloggingPlatform.csproj|solutionrelative:data\\migrations\\20260825214326_addblogtables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{510E8663-FC37-4DD6-B015-7F2980A7F698}|mvc_BloggingPlatform.csproj|c:\\users\\shivaar\\source\\repos\\mvc_bloggingplatform\\data\\migrations\\20260825214235_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{510E8663-FC37-4DD6-B015-7F2980A7F698}|mvc_BloggingPlatform.csproj|solutionrelative:data\\migrations\\20260825214235_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{510E8663-FC37-4DD6-B015-7F2980A7F698}|mvc_BloggingPlatform.csproj|c:\\users\\shivaar\\source\\repos\\mvc_bloggingplatform\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,6 +43,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "BlogPostController.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\Controllers\\BlogPostController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BlogPostController.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\Controllers\\BlogPostController.cs*",
+              "RelativeToolTip": "Controllers\\BlogPostController.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-07T22:18:47.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthorController.cs",
+              "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\Controllers\\AuthorController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthorController.cs",
+              "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\Controllers\\AuthorController.cs*",
+              "RelativeToolTip": "Controllers\\AuthorController.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-07T22:08:55.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "20260825214326_AddBlogTables.cs",
               "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\Data\\Migrations\\20260825214326_AddBlogTables.cs",
               "RelativeDocumentMoniker": "Data\\Migrations\\20260825214326_AddBlogTables.cs",
@@ -42,12 +76,11 @@
               "RelativeToolTip": "Data\\Migrations\\20260825214326_AddBlogTables.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-25T21:43:27.045Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-25T21:43:27.045Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "20260825214235_InitialCreate.cs",
               "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\Data\\Migrations\\20260825214235_InitialCreate.cs",
               "RelativeDocumentMoniker": "Data\\Migrations\\20260825214235_InitialCreate.cs",
@@ -55,8 +88,7 @@
               "RelativeToolTip": "Data\\Migrations\\20260825214235_InitialCreate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-25T21:42:36.46Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-25T21:42:36.46Z"
             },
             {
               "$type": "Document",
@@ -68,25 +100,23 @@
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAYwDwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-25T20:50:40.005Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-25T20:50:40.005Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "BlogPost.cs",
               "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\Models\\BlogPost.cs",
               "RelativeDocumentMoniker": "Models\\BlogPost.cs",
               "ToolTip": "C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\Models\\BlogPost.cs",
               "RelativeToolTip": "Models\\BlogPost.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAA2wDUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAUwDUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-25T20:43:43.069Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-25T20:43:43.069Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Author.cs",
               "DocumentMoniker": "C:\\Users\\Shivaar\\source\\repos\\mvc_BloggingPlatform\\Models\\Author.cs",
               "RelativeDocumentMoniker": "Models\\Author.cs",
@@ -94,8 +124,7 @@
               "RelativeToolTip": "Models\\Author.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAAACgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-25T20:36:36.3Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-25T20:36:36.3Z"
             }
           ]
         },
