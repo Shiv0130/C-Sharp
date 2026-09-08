@@ -8,7 +8,7 @@ namespace mvcMovieWatchList.Models
         public int UserId { get; set; }// Primary Key
         [Required]
         [StringLength(50)]
-        public string? UserName { get; set; }
+        public string? UserName { get; set; } = string.Empty;
 
         public DateTime MembershipDate { get; set; }
 

@@ -1,0 +1,65 @@
+@model IEnumerable<mvcMovieWatchList.Models.WatchListEntry>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WatchedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.MovieId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.WatchedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.User)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Movie)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.WatchListId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.WatchListId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.WatchListId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
