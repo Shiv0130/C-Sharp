@@ -9,11 +9,9 @@ namespace Property24.Models
         [Required]
         [StringLength(50)]
         [Display(Name = "Property Type")]
-
         public string Name { get; set; } = string.Empty;
 
-        //Navigation property: one category has many properties
-        public ICollection<Property>? Properties  { get; set; }
-
+        // Navigation property: one category has many properties
+        public ICollection<Property>? Properties { get; set; }
     }
 }

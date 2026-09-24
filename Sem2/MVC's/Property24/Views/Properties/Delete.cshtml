@@ -1,5 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Property24.Models.Property
+
 @{
+    ViewData["Title"] = "Delete Property";
 }
+
+<h1>Delete Property</h1>
+
+<div class="alert alert-warning">
+    Are you sure you want to delete this property? This action cannot be undone.
+</div>
+
+<div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+<div class="card shadow-sm mb-3">
+    <div class="card-body">
+        <h4 class="card-title">@Model.Title</h4>
+        <p class="text-muted mb-1">
+            <i class="bi bi-geo-alt"></i> @Model.Address
+        </p>
+        <p class="text-muted mb-1">
+            <span class="badge bg-secondary">@(Model.Category?.Name ?? "Uncategorised")</span>
+        </p>
+        <p class="text-success fw-bold">R @Model.Price.ToString("N0")</p>
+        <p class="mb-0 small">
+            @Model.Bedrooms bed &middot; @Model.Bathrooms bath
+        </p>
+    </div>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+    </div>
+</form>
