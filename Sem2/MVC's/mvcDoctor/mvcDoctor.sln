@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37614.0 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvcDoctor", "mvcDoctor.csproj", "{2639FD42-93A9-4796-ABA4-B155BE40970A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2639FD42-93A9-4796-ABA4-B155BE40970A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2639FD42-93A9-4796-ABA4-B155BE40970A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2639FD42-93A9-4796-ABA4-B155BE40970A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2639FD42-93A9-4796-ABA4-B155BE40970A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55E7741E-9F58-485B-BB17-F95C7EFDC4C0}
+	EndGlobalSection
+EndGlobal

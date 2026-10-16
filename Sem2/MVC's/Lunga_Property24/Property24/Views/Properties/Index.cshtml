@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Property24.Models.Property>
+
+@{
+    ViewData["Title"] = "Properties";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Properties</h1>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> List a New Property
+    </a>
+</div>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No properties listed yet. Click <strong>List a New Property</strong> to get started.
+    </div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://placehold.co/600x400?text=@Uri.EscapeDataString(item.Category?.Name ?? "Property")"
+                         class="card-img-top" alt="@item.Title" />
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge bg-secondary align-self-start mb-2">
+                            @(item.Category?.Name ?? "Uncategorised")
+                        </span>
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text text-muted small mb-1">
+                            <i class="bi bi-geo-alt"></i> @item.Address
+                        </p>
+                        <p class="card-text text-muted small">
+                            <i class="bi bi-door-closed"></i> @item.Bedrooms bed &nbsp;
+                            <i class="bi bi-droplet"></i> @item.Bathrooms bath
+                        </p>
+                        <h4 class="text-success mt-2">R @item.Price.ToString("N0")</h4>
+                        <p class="card-text small text-muted">
+                            Listed by <strong>@(item.Agent?.FullName ?? "—")</strong>
+                        </p>
+
+                        <div class="mt-auto d-flex gap-1">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">View</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

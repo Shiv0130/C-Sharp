@@ -1,0 +1,26 @@
+﻿@using Property24.Models;
+
+@model IEnumerable<Agent>
+
+@{
+    ViewData["Title"] = "Agents";
+}
+
+<h1>This is a List of Agents</h1>
+
+
+<table class="prop-table">
+    <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+    </tr>
+    @foreach(var agent in Model)
+    {
+        <tr>
+            <td>@agent.FullName</td>
+            <td>@agent.Email</td>
+            <td>@agent.PhoneNumber</td>
+        </tr>   
+    }
+</table>
