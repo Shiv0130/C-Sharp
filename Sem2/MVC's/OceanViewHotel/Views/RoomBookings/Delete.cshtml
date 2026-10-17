@@ -1,0 +1,21 @@
+﻿@model OceanViewHotel.Models.RoomBooking
+@{
+    ViewData["Title"] = "Delete";
+}
+<h1>Delete</h1>
+<p class="text-danger">Are you sure?</p>
+<dl class="row">
+    <dt class="col-sm-3">Check-In</dt>
+    <dd class="col-sm-9">@Model.CheckInDate.ToShortDateString()</dd>
+    <dt class="col-sm-3">Check-Out</dt>
+    <dd class="col-sm-9">@Model.CheckOutDate.ToShortDateString()</dd>
+    <dt class="col-sm-3">Room</dt>
+    <dd class="col-sm-9">@Model.HotelRoom?.RoomNumber</dd>
+    <dt class="col-sm-3">Guest</dt>
+    <dd class="col-sm-9">@Model.Guest?.FullName</dd>
+</dl>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

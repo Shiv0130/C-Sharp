@@ -1,0 +1,21 @@
+﻿@model ActiveLife.Models.PersonalTrainingSession
+@{
+    ViewData["Title"] = "Delete";
+}
+<h1>Delete</h1>
+<p class="text-danger">Are you sure?</p>
+<dl class="row">
+    <dt class="col-sm-3">Date/Time</dt>
+    <dd class="col-sm-9">@Model.SessionDateTime</dd>
+    <dt class="col-sm-3">Trainer</dt>
+    <dd class="col-sm-9">@Model.Trainer?.TrainerName</dd>
+    <dt class="col-sm-3">Member</dt>
+    <dd class="col-sm-9">@Model.GymMember?.FullName</dd>
+    <dt class="col-sm-3">Fee</dt>
+    <dd class="col-sm-9">@Model.SessionFee</dd>
+</dl>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

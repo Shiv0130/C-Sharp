@@ -1,0 +1,36 @@
+﻿@model OceanViewHotel.Models.RoomBooking
+@{
+    ViewData["Title"] = "Create Booking";
+}
+<h1>Create Booking</h1>
+<form asp-action="Create">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="mb-2">
+        <label asp-for="CheckInDate" class="form-label"></label>
+        <input asp-for="CheckInDate" class="form-control" type="date" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="CheckOutDate" class="form-label"></label>
+        <input asp-for="CheckOutDate" class="form-control" type="date" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="NumberOfGuests" class="form-label"></label>
+        <input asp-for="NumberOfGuests" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="TotalCharge" class="form-label"></label>
+        <input asp-for="TotalCharge" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="HotelRoomId" class="form-label">Room</label>
+        <select asp-for="HotelRoomId" class="form-select" asp-items="ViewBag.HotelRoomId"></select>
+    </div>
+    <div class="mb-2">
+        <label asp-for="GuestId" class="form-label">Guest</label>
+        <select asp-for="GuestId" class="form-select" asp-items="ViewBag.GuestId"></select>
+    </div>
+    <div class="mt-3">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+</form>

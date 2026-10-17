@@ -1,0 +1,37 @@
+﻿@model ActiveLife.Models.PersonalTrainingSession
+@{
+    ViewData["Title"] = "Edit Session";
+}
+<h1>Edit Session</h1>
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-2">
+        <label asp-for="SessionDateTime" class="form-label"></label>
+        <input asp-for="SessionDateTime" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="DurationMinutes" class="form-label"></label>
+        <input asp-for="DurationMinutes" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="SessionFee" class="form-label"></label>
+        <input asp-for="SessionFee" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="WorkoutFocus" class="form-label"></label>
+        <input asp-for="WorkoutFocus" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="TrainerId" class="form-label">Trainer</label>
+        <select asp-for="TrainerId" class="form-select" asp-items="ViewBag.TrainerId"></select>
+    </div>
+    <div class="mb-2">
+        <label asp-for="GymMemberId" class="form-label">Member</label>
+        <select asp-for="GymMemberId" class="form-select" asp-items="ViewBag.GymMemberId"></select>
+    </div>
+    <div class="mt-3">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+</form>

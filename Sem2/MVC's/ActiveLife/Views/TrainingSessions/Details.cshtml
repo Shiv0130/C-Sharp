@@ -1,0 +1,21 @@
+﻿@model ActiveLife.Models.PersonalTrainingSession
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+<dl class="row">
+    <dt class="col-sm-3">Date/Time</dt>
+    <dd class="col-sm-9">@Model.SessionDateTime</dd>
+    <dt class="col-sm-3">Duration</dt>
+    <dd class="col-sm-9">@Model.DurationMinutes</dd>
+    <dt class="col-sm-3">Fee</dt>
+    <dd class="col-sm-9">@Model.SessionFee</dd>
+    <dt class="col-sm-3">Focus</dt>
+    <dd class="col-sm-9">@Model.WorkoutFocus</dd>
+    <dt class="col-sm-3">Trainer</dt>
+    <dd class="col-sm-9">@Model.Trainer?.TrainerName</dd>
+    <dt class="col-sm-3">Member</dt>
+    <dd class="col-sm-9">@Model.GymMember?.FullName</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back</a>

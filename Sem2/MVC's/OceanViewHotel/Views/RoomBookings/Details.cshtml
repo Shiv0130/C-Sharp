@@ -1,0 +1,21 @@
+﻿@model OceanViewHotel.Models.RoomBooking
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+<dl class="row">
+    <dt class="col-sm-3">Check-In</dt>
+    <dd class="col-sm-9">@Model.CheckInDate.ToShortDateString()</dd>
+    <dt class="col-sm-3">Check-Out</dt>
+    <dd class="col-sm-9">@Model.CheckOutDate.ToShortDateString()</dd>
+    <dt class="col-sm-3">Guests</dt>
+    <dd class="col-sm-9">@Model.NumberOfGuests</dd>
+    <dt class="col-sm-3">Total</dt>
+    <dd class="col-sm-9">@Model.TotalCharge</dd>
+    <dt class="col-sm-3">Room</dt>
+    <dd class="col-sm-9">@Model.HotelRoom?.RoomNumber</dd>
+    <dt class="col-sm-3">Guest</dt>
+    <dd class="col-sm-9">@Model.Guest?.FullName</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back</a>

@@ -1,0 +1,21 @@
+﻿@model LogisticsCore.Models.DeliveryTruck
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+<dl class="row">
+    <dt class="col-sm-3">Registration</dt>
+    <dd class="col-sm-9">@Model.RegistrationNumber</dd>
+    <dt class="col-sm-3">Model</dt>
+    <dd class="col-sm-9">@Model.Model</dd>
+    <dt class="col-sm-3">Odometer</dt>
+    <dd class="col-sm-9">@Model.OdometerKm</dd>
+    <dt class="col-sm-3">Max Payload</dt>
+    <dd class="col-sm-9">@Model.MaxPayloadKg</dd>
+    <dt class="col-sm-3">Depot</dt>
+    <dd class="col-sm-9">@Model.Depot?.DepotName</dd>
+    <dt class="col-sm-3">Driver</dt>
+    <dd class="col-sm-9">@Model.Driver?.FullName</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back</a>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<OceanViewHotel.Models.RoomBooking>
+@{
+    ViewData["Title"] = "Room Bookings";
+}
+<h1>Room Bookings</h1>
+<p><a asp-action="Create" class="btn btn-primary">Create New</a></p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <th>Guests</th>
+            <th>Total</th>
+            <th>Room</th>
+            <th>Guest</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CheckInDate.ToShortDateString()</td>
+                <td>@item.CheckOutDate.ToShortDateString()</td>
+                <td>@item.NumberOfGuests</td>
+                <td>@item.TotalCharge</td>
+                <td>@item.HotelRoom?.RoomNumber</td>
+                <td>@item.Guest?.FullName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
