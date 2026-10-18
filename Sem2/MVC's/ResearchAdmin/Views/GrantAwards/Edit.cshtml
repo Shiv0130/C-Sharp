@@ -1,0 +1,38 @@
+﻿@model ResearchAdmin.Models.GrantAward
+@{
+    ViewData["Title"] = "Edit Grant Award";
+}
+<h1>Edit Grant Award</h1>
+<form asp-action="Edit">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-2">
+        <label asp-for="ProjectTitle" class="form-label">Project Title</label>
+        <input asp-for="ProjectTitle" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="AwardedAmount" class="form-label">Awarded Amount</label>
+        <input asp-for="AwardedAmount" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="ApprovalDate" class="form-label">Approval Date</label>
+        <input asp-for="ApprovalDate" class="form-control" type="date" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="EthicsClearanceCode" class="form-label">Ethics Clearance Code</label>
+        <input asp-for="EthicsClearanceCode" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="FundingAgency" class="form-label">Funding Agency</label>
+        <input asp-for="FundingAgency" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="LeadResearcher" class="form-label">Lead Researcher</label>
+        <select asp-for="LeadResearcher" class="form-select" asp-items="ViewBag.LeadResearcher"></select>
+    </div>
+    <div class="mt-3">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+    
+</form>

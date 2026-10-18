@@ -1,0 +1,23 @@
+﻿@model ServiceDesk.Models.SupportTicket
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+<dl class="row">
+    <dt class="col-sm-3">Title</dt>
+    <dd class="col-sm-9">@Model.Title</dd>
+    <dt class="col-sm-3">Description</dt>
+    <dd class="col-sm-9">@Model.Description</dd>
+    <dt class="col-sm-3">Priority</dt>
+    <dd class="col-sm-9">@Model.Priority</dd>
+    <dt class="col-sm-3">Created</dt>
+    <dd class="col-sm-9">@Model.CreatedAt</dd>
+    <dt class="col-sm-3">Resolved</dt>
+    <dd class="col-sm-9">@Model.IsResolved</dd>
+    <dt class="col-sm-3">Employee</dt>
+    <dd class="col-sm-9">@Model.Employee?.FullName</dd>
+    <dt class="col-sm-3">Technician</dt>
+    <dd class="col-sm-9">@Model.ItTechnician?.TechnicianName</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back</a>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ResearchAdmin.Models.GrantAward>
+@{
+    ViewData["Title"] = "Grant Awards";
+}
+<h1>Grant Awards</h1>
+<p><a asp-action="Create" class="btn btn-primary">Create New</a></p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Project Title</th>
+            <th>Awarded Amount</th>
+            <th>Approval Date</th>
+            <th>Ethics Clearance Code</th>
+            <th>Funding Agency</th>
+            <th>Lead Researcher</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProjectTitle</td>
+                <td>@item.AwardedAmount</td>
+                <td>@item.ApprovalDate.ToShortDateString()</td>
+                <td>@item.EthicsClearanceCode</td>
+                <td>@item.FundingAgency?.AgencyName</td>
+                <td>@item.LeadResearcher?.FullName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

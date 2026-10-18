@@ -1,0 +1,25 @@
+﻿@model ResearchAdmin.Models.GrantAward
+@{
+    ViewData["Title"] = "Delete";
+}
+<h1>Delete</h1>
+<p class="text-danger">Are you sure?</p>
+<dl class="row">
+    <dt class="col-sm-3">Project Title</dt>
+    <dd class="col-sm-9">@Model.ProjectTitle</dd>
+    <dt class="col-sm-3">Awarded Amount</dt>
+    <dd class="col-sm-9">@Model.AwardedAmount</dd>
+    <dt class="col-sm-3">Approval Date</dt>
+    <dd class="col-sm-9">@Model.ApprovalDate.ToShortDateString()</dd>
+    <dt class="col-sm-3">Ethics Clearance Code</dt>
+    <dd class="col-sm-9">@Model.EthicsClearanceCode</dd>
+    <dt class="col-sm-3">Funding Agency</dt>
+    <dd class="col-sm-9">@Model.FundingAgency</dd>
+    <dt class="col-sm-3">Lead Researcher</dt>
+    <dd class="col-sm-9">@Model.LeadResearcher</dd>
+</dl>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

@@ -1,0 +1,21 @@
+﻿@model ServiceDesk.Models.SupportTicket
+@{
+    ViewData["Title"] = "Delete";
+}
+<h1>Delete</h1>
+<p class="text-danger">Are you sure?</p>
+<dl class="row">
+    <dt class="col-sm-3">Title</dt>
+    <dd class="col-sm-9">@Model.Title</dd>
+    <dt class="col-sm-3">Priority</dt>
+    <dd class="col-sm-9">@Model.Priority</dd>
+    <dt class="col-sm-3">Employee</dt>
+    <dd class="col-sm-9">@Model.Employee?.FullName</dd>
+    <dt class="col-sm-3">Technician</dt>
+    <dd class="col-sm-9">@Model.ItTechnician?.TechnicianName</dd>
+</dl>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>
