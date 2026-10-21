@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Home";
+}
+<div class="text-center mb-4">
+    <h1 class="display-5 fw-bold">Relax. Unwind. Choose your next stay.</h1>
+    <p class="lead">Staybnb — book unique places or become a host.</p>
+    <a class="btn btn-primary btn-lg" asp-controller="Properties" asp-action="Index">Explore properties</a>
+    @if (User.IsInRole("Guest"))
+    {
+        <a class="btn btn-outline-primary btn-lg" asp-controller="HostApplications" asp-action="Create">Become a Host</a>
+    }
+</div>
