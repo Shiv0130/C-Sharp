@@ -1,0 +1,31 @@
+@model IEnumerable<Staybnb.Models.ActivityLog>
+@{
+    ViewData["Title"] = "Admin dashboard";
+}
+<h1>Admin dashboard</h1>
+<div class="row mb-4">
+    <div class="col-md-3"><div class="card p-3"><strong>@ViewBag.TotalUsers</strong><br/>Users</div></div>
+    <div class="col-md-3"><div class="card p-3"><strong>@ViewBag.PendingApps</strong><br/>Pending apps</div></div>
+    <div class="col-md-3"><div class="card p-3"><strong>@ViewBag.ActiveProperties</strong><br/>Active properties</div></div>
+    <div class="col-md-3"><div class="card p-3"><strong>@ViewBag.TotalBookings</strong><br/>Bookings</div></div>
+</div>
+<p>
+    <a class="btn btn-primary" asp-action="Applications">Review applications</a>
+    <a class="btn btn-secondary" asp-action="ActivityLogs">Activity logs</a>
+    <a class="btn btn-outline-dark" asp-action="Users">Users (SuperAdmin)</a>
+</p>
+<h3>Recent activity</h3>
+<table class="table table-sm">
+    <thead><tr><th>User</th><th>Action</th><th>Type</th><th>When</th></tr></thead>
+    <tbody>
+    @foreach (var log in Model)
+    {
+        <tr>
+            <td>@log.User?.Email</td>
+            <td>@log.Action</td>
+            <td>@log.ActivityType</td>
+            <td>@log.CreatedAt.ToLocalTime()</td>
+        </tr>
+    }
+    </tbody>
+</table>

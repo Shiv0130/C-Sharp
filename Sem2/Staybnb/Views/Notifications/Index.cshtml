@@ -1,0 +1,29 @@
+@model IEnumerable<Staybnb.Models.Notification>
+@{
+    ViewData["Title"] = "Notifications";
+}
+<h1>Notifications</h1>
+<form asp-action="MarkAllRead" method="post" class="mb-2">
+    @Html.AntiForgeryToken()
+    <button class="btn btn-sm btn-outline-primary">Mark all read</button>
+</form>
+<ul class="list-group">
+@foreach (var n in Model)
+{
+    <li class="list-group-item d-flex justify-content-between align-items-start @(n.IsRead ? "" : "list-group-item-info")">
+        <div>
+            <div class="fw-bold">@n.Title</div>
+            <div>@n.Message</div>
+            <small class="text-muted">@n.CreatedAt.ToLocalTime()</small>
+        </div>
+        @if (!n.IsRead)
+        {
+            <form asp-action="MarkRead" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@n.Id" />
+                <button class="btn btn-sm btn-outline-secondary">Read</button>
+            </form>
+        }
+    </li>
+}
+</ul>

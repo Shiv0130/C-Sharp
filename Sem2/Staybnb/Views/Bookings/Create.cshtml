@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Request booking";
+    var property = ViewBag.Property as Staybnb.Models.HostProperty;
+}
+<h1>Book: @property?.Title</h1>
+<p>R @property?.PricePerNight / night + cleaning R250 + service R150</p>
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" name="propertyId" value="@property?.Id" />
+    <div class="mb-2">
+        <label class="form-label">Check-in</label>
+        <input type="date" name="checkInDate" class="form-control" required />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Check-out</label>
+        <input type="date" name="checkOutDate" class="form-control" required />
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Guests</label>
+        <input type="number" name="numberOfGuests" class="form-control" min="1" value="1" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Request booking</button>
+</form>

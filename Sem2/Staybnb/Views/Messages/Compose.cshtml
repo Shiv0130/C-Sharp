@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Compose";
+}
+<h1>New message</h1>
+<form asp-action="Compose" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="mb-2">
+        <label class="form-label">Receiver user id</label>
+        <input name="receiverId" class="form-control" value="@ViewBag.ReceiverId" required />
+        <div class="form-text">Paste the AspNetUsers Id of the other user (from Admin users / SQL for now).</div>
+    </div>
+    <div class="mb-2">
+        <label class="form-label">Message</label>
+        <textarea name="content" class="form-control" rows="4" required></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Send</button>
+</form>

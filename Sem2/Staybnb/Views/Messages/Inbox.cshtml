@@ -1,0 +1,31 @@
+@model IEnumerable<Staybnb.Models.Message>
+@{
+    ViewData["Title"] = "Inbox";
+}
+<h1>Messages</h1>
+<a class="btn btn-primary mb-2" asp-action="Compose">Compose</a>
+<table class="table">
+    <thead><tr><th>From</th><th>To</th><th>Content</th><th>When</th><th>Read</th><th></th></tr></thead>
+    <tbody>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.Sender?.Email</td>
+            <td>@m.Receiver?.Email</td>
+            <td>@m.Content</td>
+            <td>@m.Timestamp.ToLocalTime()</td>
+            <td>@(m.IsRead ? "Yes" : "No")</td>
+            <td>
+                @if (!m.IsRead && m.ReceiverId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
+                {
+                    <form asp-action="MarkRead" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@m.Id" />
+                        <button class="btn btn-sm btn-outline-secondary">Mark read</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

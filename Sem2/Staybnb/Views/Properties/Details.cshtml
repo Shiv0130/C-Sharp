@@ -1,0 +1,19 @@
+@model Staybnb.Models.HostProperty
+@{
+    ViewData["Title"] = Model.Title;
+}
+<h1>@Model.Title</h1>
+<p>@Model.City · @Model.PropertyType · Host: @Model.Host?.FirstName @Model.Host?.LastName</p>
+<div class="row mb-3">
+@foreach (var img in Model.Images)
+{
+    <div class="col-md-4"><img src="@img.ImageUrl" class="img-fluid rounded mb-2" alt="" /></div>
+}
+</div>
+<p>@Model.Description</p>
+<p><strong>R @Model.PricePerNight.ToString("0.00")</strong> / night</p>
+<p>@Model.Address</p>
+@if (User.IsInRole("Guest"))
+{
+    <a class="btn btn-primary" asp-controller="Bookings" asp-action="Create" asp-route-propertyId="@Model.Id">Request booking</a>
+}

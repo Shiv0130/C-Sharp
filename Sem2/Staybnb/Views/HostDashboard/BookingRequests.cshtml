@@ -1,0 +1,37 @@
+@model IEnumerable<Staybnb.Models.Booking>
+@{
+    ViewData["Title"] = "Booking requests";
+}
+<h1>Booking requests</h1>
+<table class="table table-striped">
+    <thead>
+        <tr><th>Property</th><th>Guest</th><th>Dates</th><th>Total</th><th>Status</th><th></th></tr>
+    </thead>
+    <tbody>
+    @foreach (var b in Model)
+    {
+        <tr>
+            <td>@b.Property?.Title</td>
+            <td>@b.Guest?.Email</td>
+            <td>@b.CheckInDate.ToShortDateString() → @b.CheckOutDate.ToShortDateString()</td>
+            <td>R @b.TotalPrice.ToString("0.00")</td>
+            <td>@b.Status</td>
+            <td>
+                @if (b.Status == "Pending")
+                {
+                    <form asp-action="ApproveBooking" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@b.Id" />
+                        <button class="btn btn-sm btn-success">Approve</button>
+                    </form>
+                    <form asp-action="RejectBooking" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@b.Id" />
+                        <button class="btn btn-sm btn-danger">Reject</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,46 @@
+@model IEnumerable<Staybnb.Models.HostApplication>
+@{
+    ViewData["Title"] = "Host applications";
+}
+<h1>Host applications</h1>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Applicant</th>
+            <th>Property</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var a in Model)
+    {
+        <tr>
+            <td>@a.Applicant?.Email</td>
+            <td>@a.Property?.Title</td>
+            <td>@a.Status</td>
+            <td>@a.AppliedAt.ToLocalTime().ToString("g")</td>
+            <td>
+                @if (a.Status == "Pending")
+                {
+                    <form asp-action="Approve" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@a.Id" />
+                        <button class="btn btn-sm btn-success">Approve</button>
+                    </form>
+                    <form asp-action="Reject" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@a.Id" />
+                        <button class="btn btn-sm btn-danger">Reject</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

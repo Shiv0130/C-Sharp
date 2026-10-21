@@ -1,0 +1,26 @@
+@model IEnumerable<Staybnb.Models.HostProperty>
+@{
+    ViewData["Title"] = "My properties";
+}
+<h1>My properties</h1>
+<table class="table">
+    <thead><tr><th>Title</th><th>City</th><th>Price</th><th>Active</th><th></th></tr></thead>
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.Title</td>
+            <td>@p.City</td>
+            <td>R @p.PricePerNight.ToString("0.00")</td>
+            <td>@(p.IsActive ? "Yes" : "No")</td>
+            <td>
+                <form asp-action="ToggleActive" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@p.Id" />
+                    <button class="btn btn-sm btn-outline-primary">Toggle active</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
