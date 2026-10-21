@@ -22,7 +22,10 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge();
+            if (user == null)
+            {
+                return Challenge();
+            }
 
             var properties = await _context.HostProperties
                 .Where(p => p.HostId == user.Id)
@@ -41,7 +44,10 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> MyProperties()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge();
+            if (user == null)
+            {
+                return Challenge();
+            }
 
             var list = await _context.HostProperties
                 .Include(p => p.Images)
@@ -56,8 +62,18 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> ToggleActive(int id)
         {
             var user = await _userManager.GetUserAsync(User);
-            var property = await _context.HostProperties.FirstOrDefaultAsync(p => p.Id == id && p.HostId == user!.Id);
-            if (property == null) return NotFound();
+            if (user == null)
+            {
+                return Challenge();
+            }
+
+            var property = await _context.HostProperties
+                .FirstOrDefaultAsync(p => p.Id == id && p.HostId == user.Id);
+
+            if (property == null)
+            {
+                return NotFound();
+            }
 
             property.IsActive = !property.IsActive;
             await _context.SaveChangesAsync();
@@ -67,7 +83,10 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> BookingRequests()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge();
+            if (user == null)
+            {
+                return Challenge();
+            }
 
             var bookings = await _context.Bookings
                 .Include(b => b.Property)
@@ -84,14 +103,21 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> ApproveBooking(int id)
         {
             var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Challenge();
+            }
+
             var booking = await _context.Bookings
                 .Include(b => b.Property)
-                .FirstOrDefaultAsync(b => b.Id == id && b.Property!.HostId == user!.Id);
+                .FirstOrDefaultAsync(b => b.Id == id && b.Property!.HostId == user.Id);
 
-            if (booking == null) return NotFound();
+            if (booking == null)
+            {
+                return NotFound();
+            }
 
             booking.Status = "Approved";
-            if (booking.Payment != null) { /* optional */ }
 
             _context.Notifications.Add(new Notification
             {
@@ -104,8 +130,8 @@ namespace Staybnb.Controllers
 
             _context.ActivityLogs.Add(new ActivityLog
             {
-                UserId = user!.Id,
-                Action = $"Booking {id} approved",
+                UserId = user.Id,
+                Action = "Booking " + id + " approved",
                 ActivityType = "Booking",
                 CreatedAt = DateTime.UtcNow
             });
@@ -119,13 +145,22 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> RejectBooking(int id)
         {
             var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Challenge();
+            }
+
             var booking = await _context.Bookings
                 .Include(b => b.Property)
-                .FirstOrDefaultAsync(b => b.Id == id && b.Property!.HostId == user!.Id);
+                .FirstOrDefaultAsync(b => b.Id == id && b.Property!.HostId == user.Id);
 
-            if (booking == null) return NotFound();
+            if (booking == null)
+            {
+                return NotFound();
+            }
 
             booking.Status = "Rejected";
+
             _context.Notifications.Add(new Notification
             {
                 UserId = booking.GuestId,
@@ -134,6 +169,7 @@ namespace Staybnb.Controllers
                 Type = "Booking",
                 CreatedAt = DateTime.UtcNow
             });
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(BookingRequests));
         }

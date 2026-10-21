@@ -42,6 +42,7 @@ namespace Staybnb.Controllers
                 .Include(a => a.Property)!.ThenInclude(p => p!.Images)
                 .OrderByDescending(a => a.AppliedAt)
                 .ToListAsync();
+
             return View(apps);
         }
 
@@ -53,23 +54,35 @@ namespace Staybnb.Controllers
                 .Include(a => a.Property)
                 .FirstOrDefaultAsync(a => a.Id == id);
 
-            if (app == null) return NotFound();
-            if (app.Status != "Pending") return RedirectToAction(nameof(Applications));
+            if (app == null)
+            {
+                return NotFound();
+            }
+
+            if (app.Status != "Pending")
+            {
+                return RedirectToAction(nameof(Applications));
+            }
 
             var user = await _userManager.FindByIdAsync(app.ApplicantUserId);
-            if (user == null) return NotFound();
+            if (user == null)
+            {
+                return NotFound();
+            }
 
-            // Brief: add Host, remove Guest (user is either Guest or Host, not both)
+            // Assignment rule: Host replaces Guest (not both)
             if (await _userManager.IsInRoleAsync(user, AppRoles.Guest))
             {
                 await _userManager.RemoveFromRoleAsync(user, AppRoles.Guest);
             }
+
             if (!await _userManager.IsInRoleAsync(user, AppRoles.Host))
             {
                 await _userManager.AddToRoleAsync(user, AppRoles.Host);
             }
 
             app.Status = "Approved";
+
             if (app.Property != null)
             {
                 app.Property.IsActive = true;
@@ -78,7 +91,7 @@ namespace Staybnb.Controllers
             _context.ActivityLogs.Add(new ActivityLog
             {
                 UserId = user.Id,
-                Action = "Host application approved — role swapped Guest → Host",
+                Action = "Host application approved - role swapped Guest to Host",
                 ActivityType = "RoleChange",
                 CreatedAt = DateTime.UtcNow
             });
@@ -102,9 +115,13 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> Reject(int id)
         {
             var app = await _context.HostApplications.FindAsync(id);
-            if (app == null) return NotFound();
+            if (app == null)
+            {
+                return NotFound();
+            }
 
             app.Status = "Rejected";
+
             _context.Notifications.Add(new Notification
             {
                 UserId = app.ApplicantUserId,
@@ -113,6 +130,7 @@ namespace Staybnb.Controllers
                 Type = "HostApplication",
                 CreatedAt = DateTime.UtcNow
             });
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Applications));
         }
@@ -124,20 +142,26 @@ namespace Staybnb.Controllers
                 .OrderByDescending(a => a.CreatedAt)
                 .Take(100)
                 .ToListAsync();
+
             return View(logs);
         }
 
-        // SuperAdmin only — promote Guest to Admin
         [Authorize(Roles = AppRoles.SuperAdmin)]
         public async Task<IActionResult> Users()
         {
             var users = await _userManager.Users.OrderBy(u => u.Email).ToListAsync();
-            var model = new List<(ApplicationUser User, IList<string> Roles)>();
+            var rows = new List<AdminUserRow>();
+
             foreach (var u in users)
             {
-                model.Add((u, await _userManager.GetRolesAsync(u)));
+                rows.Add(new AdminUserRow
+                {
+                    User = u,
+                    Roles = await _userManager.GetRolesAsync(u)
+                });
             }
-            return View(model);
+
+            return View(rows);
         }
 
         [HttpPost]
@@ -146,7 +170,10 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> PromoteToAdmin(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
-            if (user == null) return NotFound();
+            if (user == null)
+            {
+                return NotFound();
+            }
 
             if (!await _userManager.IsInRoleAsync(user, AppRoles.Admin))
             {
@@ -160,8 +187,15 @@ namespace Staybnb.Controllers
                 ActivityType = "RoleChange",
                 CreatedAt = DateTime.UtcNow
             });
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Users));
         }
+    }
+
+    public class AdminUserRow
+    {
+        public ApplicationUser User { get; set; } = null!;
+        public IList<string> Roles { get; set; } = new List<string>();
     }
 }

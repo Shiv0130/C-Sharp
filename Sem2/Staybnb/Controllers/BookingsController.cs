@@ -13,7 +13,6 @@ namespace Staybnb.Controllers
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        // Simple fixed fees for the assignment formula
         private const decimal CleaningFee = 250m;
         private const decimal ServiceFee = 150m;
 
@@ -23,12 +22,14 @@ namespace Staybnb.Controllers
             _userManager = userManager;
         }
 
-        // Guest: my bookings
         [Authorize(Roles = AppRoles.Guest + "," + AppRoles.Host)]
         public async Task<IActionResult> MyBookings()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge();
+            if (user == null)
+            {
+                return Challenge();
+            }
 
             var bookings = await _context.Bookings
                 .Include(b => b.Property)!.ThenInclude(p => p!.Images)
@@ -46,7 +47,11 @@ namespace Staybnb.Controllers
                 .Include(p => p.Images)
                 .FirstOrDefaultAsync(p => p.Id == propertyId && p.IsActive);
 
-            if (property == null) return NotFound();
+            if (property == null)
+            {
+                return NotFound();
+            }
+
             ViewBag.Property = property;
             return View();
         }
@@ -54,14 +59,13 @@ namespace Staybnb.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = AppRoles.Guest)]
-        public async Task<IActionResult> Create(
-            int propertyId,
-            DateTime checkInDate,
-            DateTime checkOutDate,
-            int numberOfGuests)
+        public async Task<IActionResult> Create(int propertyId, DateTime checkInDate, DateTime checkOutDate, int numberOfGuests)
         {
             var property = await _context.HostProperties.FindAsync(propertyId);
-            if (property == null || !property.IsActive) return NotFound();
+            if (property == null || !property.IsActive)
+            {
+                return NotFound();
+            }
 
             if (checkOutDate <= checkInDate)
             {
@@ -80,11 +84,14 @@ namespace Staybnb.Controllers
                 return View();
             }
 
-            // TotalPrice = (PricePerNight x Nights) + CleaningFee + ServiceFee
+            // Brief: TotalPrice = (PricePerNight x Nights) + CleaningFee + ServiceFee
             var total = (property.PricePerNight * nights) + CleaningFee + ServiceFee;
 
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge();
+            if (user == null)
+            {
+                return Challenge();
+            }
 
             var booking = new Booking
             {
@@ -113,7 +120,7 @@ namespace Staybnb.Controllers
             {
                 UserId = property.HostId,
                 Title = "New booking request",
-                Message = $"A guest requested {property.Title} ({nights} nights).",
+                Message = "A guest requested " + property.Title + " (" + nights + " nights).",
                 Type = "Booking",
                 CreatedAt = DateTime.UtcNow
             });
@@ -121,13 +128,13 @@ namespace Staybnb.Controllers
             _context.ActivityLogs.Add(new ActivityLog
             {
                 UserId = user.Id,
-                Action = $"Booking created for property {propertyId}",
+                Action = "Booking created for property " + propertyId,
                 ActivityType = "Booking",
                 CreatedAt = DateTime.UtcNow
             });
 
             await _context.SaveChangesAsync();
-            TempData["Success"] = $"Booking requested. Total: R {total:0.00}";
+            TempData["Success"] = "Booking requested. Total: R " + total.ToString("0.00");
             return RedirectToAction(nameof(MyBookings));
         }
     }

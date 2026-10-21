@@ -22,7 +22,10 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> Inbox()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge();
+            if (user == null)
+            {
+                return Challenge();
+            }
 
             var messages = await _context.Messages
                 .Include(m => m.Sender)
@@ -45,7 +48,10 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> Compose(string receiverId, string content)
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge();
+            if (user == null)
+            {
+                return Challenge();
+            }
 
             if (string.IsNullOrWhiteSpace(content) || string.IsNullOrWhiteSpace(receiverId))
             {
@@ -81,12 +87,20 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> MarkRead(int id)
         {
             var user = await _userManager.GetUserAsync(User);
-            var msg = await _context.Messages.FirstOrDefaultAsync(m => m.Id == id && m.ReceiverId == user!.Id);
+            if (user == null)
+            {
+                return Challenge();
+            }
+
+            var msg = await _context.Messages
+                .FirstOrDefaultAsync(m => m.Id == id && m.ReceiverId == user.Id);
+
             if (msg != null)
             {
                 msg.IsRead = true;
                 await _context.SaveChangesAsync();
             }
+
             return RedirectToAction(nameof(Inbox));
         }
     }

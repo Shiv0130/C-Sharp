@@ -24,17 +24,25 @@ namespace Staybnb.Controllers
             _env = env;
         }
 
-        // Guest: start / continue check-in for an approved booking
         [Authorize(Roles = AppRoles.Guest)]
         public async Task<IActionResult> Start(int bookingId)
         {
             var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Challenge();
+            }
+
             var booking = await _context.Bookings
                 .Include(b => b.GuestCheckIn)!.ThenInclude(c => c!.Documents)
                 .Include(b => b.Property)
-                .FirstOrDefaultAsync(b => b.Id == bookingId && b.GuestId == user!.Id);
+                .FirstOrDefaultAsync(b => b.Id == bookingId && b.GuestId == user.Id);
 
-            if (booking == null) return NotFound();
+            if (booking == null)
+            {
+                return NotFound();
+            }
+
             if (booking.Status != "Approved" && booking.Status != "CheckedIn")
             {
                 TempData["Error"] = "Check-in is only available for approved bookings.";
@@ -43,14 +51,15 @@ namespace Staybnb.Controllers
 
             if (booking.GuestCheckIn == null)
             {
-                booking.GuestCheckIn = new GuestCheckIn
+                var checkIn = new GuestCheckIn
                 {
                     BookingId = booking.Id,
                     Status = "Pending",
                     CreatedAt = DateTime.UtcNow
                 };
-                _context.GuestCheckIns.Add(booking.GuestCheckIn);
+                _context.GuestCheckIns.Add(checkIn);
                 await _context.SaveChangesAsync();
+                booking.GuestCheckIn = checkIn;
             }
 
             return View(booking.GuestCheckIn);
@@ -62,11 +71,20 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> UploadDocument(int guestCheckInId, string documentType, IFormFile file)
         {
             var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Challenge();
+            }
+
             var checkIn = await _context.GuestCheckIns
                 .Include(c => c.Booking)
-                .FirstOrDefaultAsync(c => c.Id == guestCheckInId && c.Booking!.GuestId == user!.Id);
+                .FirstOrDefaultAsync(c => c.Id == guestCheckInId && c.Booking!.GuestId == user.Id);
 
-            if (checkIn == null) return NotFound();
+            if (checkIn == null)
+            {
+                return NotFound();
+            }
+
             if (file == null || file.Length == 0)
             {
                 TempData["Error"] = "Please choose a file.";
@@ -75,8 +93,10 @@ namespace Staybnb.Controllers
 
             var folder = Path.Combine(_env.WebRootPath, "uploads", "documents");
             Directory.CreateDirectory(folder);
-            var name = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+
+            var name = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
             var path = Path.Combine(folder, name);
+
             using (var stream = System.IO.File.Create(path))
             {
                 await file.CopyToAsync(stream);
@@ -86,19 +106,22 @@ namespace Staybnb.Controllers
             {
                 GuestCheckInId = checkIn.Id,
                 DocumentType = documentType,
-                FilePath = $"/uploads/documents/{name}",
+                FilePath = "/uploads/documents/" + name,
                 Status = "Pending"
             });
 
             checkIn.Status = "DocumentsSubmitted";
 
+            var hostId = await _context.HostProperties
+                .Where(p => p.Id == checkIn.Booking!.PropertyId)
+                .Select(p => p.HostId)
+                .FirstAsync();
+
             _context.Notifications.Add(new Notification
             {
-                UserId = checkIn.Booking!.Property != null
-                    ? (await _context.HostProperties.Where(p => p.Id == checkIn.Booking.PropertyId).Select(p => p.HostId).FirstAsync())
-                    : checkIn.Booking.GuestId,
+                UserId = hostId,
                 Title = "Guest document uploaded",
-                Message = $"A guest uploaded a {documentType} for booking #{checkIn.BookingId}.",
+                Message = "A guest uploaded a " + documentType + " for booking #" + checkIn.BookingId + ".",
                 Type = "CheckIn",
                 CreatedAt = DateTime.UtcNow
             });
@@ -108,16 +131,20 @@ namespace Staybnb.Controllers
             return RedirectToAction(nameof(Start), new { bookingId = checkIn.BookingId });
         }
 
-        // Host: review documents
         [Authorize(Roles = AppRoles.Host)]
         public async Task<IActionResult> HostQueue()
         {
             var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Challenge();
+            }
+
             var items = await _context.GuestCheckIns
                 .Include(c => c.Booking)!.ThenInclude(b => b!.Property)
                 .Include(c => c.Booking)!.ThenInclude(b => b!.Guest)
                 .Include(c => c.Documents)
-                .Where(c => c.Booking!.Property!.HostId == user!.Id)
+                .Where(c => c.Booking!.Property!.HostId == user.Id)
                 .OrderByDescending(c => c.CreatedAt)
                 .ToListAsync();
 
@@ -130,12 +157,19 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> VerifyDocument(int documentId, bool approve)
         {
             var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Challenge();
+            }
+
             var doc = await _context.GuestDocuments
                 .Include(d => d.GuestCheckIn)!.ThenInclude(c => c!.Booking)!.ThenInclude(b => b!.Property)
                 .FirstOrDefaultAsync(d => d.Id == documentId);
 
-            if (doc == null || doc.GuestCheckIn?.Booking?.Property?.HostId != user!.Id)
+            if (doc == null || doc.GuestCheckIn?.Booking?.Property?.HostId != user.Id)
+            {
                 return NotFound();
+            }
 
             doc.Status = approve ? "Verified" : "Rejected";
 
@@ -159,7 +193,7 @@ namespace Staybnb.Controllers
             _context.ActivityLogs.Add(new ActivityLog
             {
                 UserId = user.Id,
-                Action = $"Document {documentId} {(approve ? "verified" : "rejected")}",
+                Action = "Document " + documentId + (approve ? " verified" : " rejected"),
                 ActivityType = "CheckIn",
                 CreatedAt = DateTime.UtcNow
             });

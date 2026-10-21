@@ -22,7 +22,10 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge();
+            if (user == null)
+            {
+                return Challenge();
+            }
 
             var list = await _context.Notifications
                 .Where(n => n.UserId == user.Id)
@@ -37,12 +40,20 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> MarkRead(int id)
         {
             var user = await _userManager.GetUserAsync(User);
-            var n = await _context.Notifications.FirstOrDefaultAsync(x => x.Id == id && x.UserId == user!.Id);
+            if (user == null)
+            {
+                return Challenge();
+            }
+
+            var n = await _context.Notifications
+                .FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
+
             if (n != null)
             {
                 n.IsRead = true;
                 await _context.SaveChangesAsync();
             }
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -51,10 +62,20 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> MarkAllRead()
         {
             var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Challenge();
+            }
+
             var unread = await _context.Notifications
-                .Where(n => n.UserId == user!.Id && !n.IsRead)
+                .Where(n => n.UserId == user.Id && !n.IsRead)
                 .ToListAsync();
-            foreach (var n in unread) n.IsRead = true;
+
+            foreach (var item in unread)
+            {
+                item.IsRead = true;
+            }
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

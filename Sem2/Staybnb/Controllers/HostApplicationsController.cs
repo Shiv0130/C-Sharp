@@ -24,13 +24,11 @@ namespace Staybnb.Controllers
             _env = env;
         }
 
-        // GET: Become a Host form
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: property + at least one image required
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
@@ -47,13 +45,21 @@ namespace Staybnb.Controllers
                 ModelState.AddModelError(string.Empty, "At least one property image is required.");
             }
 
+            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(address))
+            {
+                ModelState.AddModelError(string.Empty, "Title and address are required.");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge();
+            if (user == null)
+            {
+                return Challenge();
+            }
 
             var property = new HostProperty
             {
@@ -63,7 +69,7 @@ namespace Staybnb.Controllers
                 Address = address,
                 City = city,
                 PropertyType = propertyType,
-                IsActive = false, // inactive until Admin approves
+                IsActive = false,
                 HostId = user.Id
             };
 
@@ -75,8 +81,9 @@ namespace Staybnb.Controllers
 
             foreach (var file in images.Where(f => f.Length > 0))
             {
-                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
                 var path = Path.Combine(uploadsRoot, fileName);
+
                 using (var stream = System.IO.File.Create(path))
                 {
                     await file.CopyToAsync(stream);
@@ -85,7 +92,7 @@ namespace Staybnb.Controllers
                 _context.PropertyImages.Add(new PropertyImage
                 {
                     PropertyId = property.Id,
-                    ImageUrl = $"/uploads/properties/{fileName}"
+                    ImageUrl = "/uploads/properties/" + fileName
                 });
             }
 
@@ -96,6 +103,7 @@ namespace Staybnb.Controllers
                 Status = "Pending",
                 AppliedAt = DateTime.UtcNow
             };
+
             _context.HostApplications.Add(application);
 
             _context.ActivityLogs.Add(new ActivityLog
@@ -123,7 +131,10 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> Status()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null) return Challenge();
+            if (user == null)
+            {
+                return Challenge();
+            }
 
             var apps = await _context.HostApplications
                 .Include(a => a.Property)

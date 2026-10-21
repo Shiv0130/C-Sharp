@@ -1,10 +1,17 @@
-@model List<(Staybnb.Models.ApplicationUser User, IList<string> Roles)>
+@model List<Staybnb.Controllers.AdminUserRow>
 @{
     ViewData["Title"] = "Users (SuperAdmin)";
 }
 <h1>Users</h1>
 <table class="table">
-    <thead><tr><th>Email</th><th>Name</th><th>Roles</th><th></th></tr></thead>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Roles</th>
+            <th></th>
+        </tr>
+    </thead>
     <tbody>
     @foreach (var row in Model)
     {
@@ -18,7 +25,7 @@
                     <form asp-action="PromoteToAdmin" method="post">
                         @Html.AntiForgeryToken()
                         <input type="hidden" name="userId" value="@row.User.Id" />
-                        <button class="btn btn-sm btn-warning">Promote to Admin</button>
+                        <button type="submit" class="btn btn-sm btn-warning">Promote to Admin</button>
                     </form>
                 }
             </td>
