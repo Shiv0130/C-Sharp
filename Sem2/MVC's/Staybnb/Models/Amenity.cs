@@ -1,4 +1,4 @@
-﻿namespace Staybnb.Models
+namespace Staybnb.Models
 {
     public class Amenity
     {

@@ -1,0 +1,51 @@
+@model IEnumerable<Staybnb.Models.HostProperty>
+@{
+    ViewData["Title"] = "Host Dashboard";
+}
+<h2 class="mb-1">Welcome back!</h2>
+<p class="text-muted mb-4">Here's what's happening with your properties today.</p>
+
+<div class="d-flex gap-2 mb-4 flex-wrap">
+    <a class="btn btn-airbnb" asp-controller="HostApplications" asp-action="Create">+ Add New Property</a>
+    <a class="btn btn-outline-airbnb" asp-action="BookingRequests">View Booking Requests</a>
+    <a class="btn btn-outline-airbnb" asp-action="MyProperties">My Properties</a>
+</div>
+
+<div class="stat-row">
+    <div class="stat-card">
+        <div class="num">@ViewBag.PropertyCount</div>
+        <div class="label">Total Properties</div>
+        <div class="sub">@ViewBag.ActiveCount active</div>
+    </div>
+    <div class="stat-card">
+        <div class="num">@ViewBag.PendingBookings</div>
+        <div class="label">Pending Bookings</div>
+        <div class="sub">needs review</div>
+    </div>
+    <div class="stat-card">
+        <div class="num">—</div>
+        <div class="label">Total Earnings</div>
+        <div class="sub">this month</div>
+    </div>
+    <div class="stat-card">
+        <div class="num">0.0</div>
+        <div class="label">Average Rating</div>
+        <div class="sub">from reviews</div>
+    </div>
+</div>
+
+<div class="panel">
+    <h5 class="mb-3">Your listings</h5>
+    @foreach (var p in Model)
+    {
+        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+            <div>
+                <strong>@p.Title</strong>
+                <span class="text-muted ms-2">@p.City</span>
+            </div>
+            <span class="@(p.IsActive ? "badge-active" : "badge-pending")">
+                @(p.IsActive ? "Active" : "Inactive")
+            </span>
+        </div>
+    }
+</div>

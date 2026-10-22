@@ -1,4 +1,4 @@
-﻿namespace Staybnb.Models
+namespace Staybnb.Models
 {
     public class HostProperty
     {
@@ -12,7 +12,6 @@
         public bool IsActive { get; set; } = true;
         public string HostId { get; set; } = string.Empty;
         public ApplicationUser? Host { get; set; }
-
         public ICollection<PropertyImage> Images { get; set; } = new List<PropertyImage>();
         public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
         public ICollection<Review> Reviews { get; set; } = new List<Review>();

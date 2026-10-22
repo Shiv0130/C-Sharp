@@ -1,4 +1,4 @@
-﻿namespace Staybnb.Models
+namespace Staybnb.Models
 {
     public class Booking
     {
@@ -11,9 +11,8 @@
         public DateTime CheckOutDate { get; set; }
         public int NumberOfGuests { get; set; }
         public decimal TotalPrice { get; set; }
-        public string Status { get; set; } = "Pending"; // Pending, Approved, Rejected, CheckedIn
+        public string Status { get; set; } = "Pending";
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
         public Payment? Payment { get; set; }
         public GuestCheckIn? GuestCheckIn { get; set; }
     }

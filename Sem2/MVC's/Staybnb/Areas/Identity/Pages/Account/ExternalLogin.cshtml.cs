@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Staybnb.Data;
+using Staybnb.Models;
 
 namespace Staybnb.Areas.Identity.Pages.Account;
 

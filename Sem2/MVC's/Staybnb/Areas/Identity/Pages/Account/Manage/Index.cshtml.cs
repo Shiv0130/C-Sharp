@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Staybnb.Data;
+using Staybnb.Models;
 
 namespace Staybnb.Areas.Identity.Pages.Account.Manage;
 

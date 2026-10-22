@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Staybnb.Data;
+using Staybnb.Models;
 namespace Staybnb.Areas.Identity.Pages.Account;
 
 public class ConfirmEmailChangeModel : PageModel

@@ -1,0 +1,59 @@
+@model IEnumerable<Staybnb.Models.ActivityLog>
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<h2 class="mb-4">Dashboard Overview</h2>
+
+<div class="stat-row">
+    <div class="stat-card">
+        <div class="num">@ViewBag.TotalUsers</div>
+        <div class="label">Total Users</div>
+        <div class="sub">Active users</div>
+    </div>
+    <div class="stat-card">
+        <div class="num">@ViewBag.PendingApps</div>
+        <div class="label">Pending Host Apps</div>
+        <div class="sub">Require review</div>
+    </div>
+    <div class="stat-card">
+        <div class="num">@ViewBag.ActiveProperties</div>
+        <div class="label">Active Properties</div>
+        <div class="sub">Listings available</div>
+    </div>
+    <div class="stat-card">
+        <div class="num">@ViewBag.TotalBookings</div>
+        <div class="label">Total Bookings</div>
+        <div class="sub">Platform activity</div>
+    </div>
+</div>
+
+<div class="d-flex gap-2 mb-4 flex-wrap">
+    <a class="btn btn-airbnb" asp-action="Applications">Review host requests</a>
+    <a class="btn btn-outline-airbnb" asp-action="ActivityLogs">Activity logs</a>
+    <a class="btn btn-outline-airbnb" asp-action="Users">Users (SuperAdmin)</a>
+</div>
+
+<div class="panel">
+    <h5 class="mb-3">Recent Activity</h5>
+    <table class="table table-sm align-middle mb-0">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Action</th>
+                <th>Type</th>
+                <th>When</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var log in Model)
+            {
+                <tr>
+                    <td>@log.User?.Email</td>
+                    <td>@log.Action</td>
+                    <td>@log.ActivityType</td>
+                    <td>@log.CreatedAt.ToLocalTime().ToString("g")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

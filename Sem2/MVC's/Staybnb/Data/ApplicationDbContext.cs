@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Staybnb.Models;
 
@@ -37,14 +37,12 @@ namespace Staybnb.Data
             builder.Entity<Payment>()
                 .Property(p => p.Amount).HasPrecision(18, 2);
 
-            // HostProperty → Host
             builder.Entity<HostProperty>()
                 .HasOne(p => p.Host)
                 .WithMany(u => u.Properties)
                 .HasForeignKey(p => p.HostId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Booking → Guest / Property
             builder.Entity<Booking>()
                 .HasOne(b => b.Guest)
                 .WithMany(u => u.Bookings)
@@ -57,14 +55,12 @@ namespace Staybnb.Data
                 .HasForeignKey(b => b.PropertyId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Booking ↔ Payment (1:1)
             builder.Entity<Payment>()
                 .HasOne(p => p.Booking)
                 .WithOne(b => b.Payment)
                 .HasForeignKey<Payment>(p => p.BookingId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // Message sender / receiver
             builder.Entity<Message>()
                 .HasOne(m => m.Sender)
                 .WithMany(u => u.SentMessages)
@@ -77,19 +73,16 @@ namespace Staybnb.Data
                 .HasForeignKey(m => m.ReceiverId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // HostProperty ↔ Amenity (many-to-many)
             builder.Entity<HostProperty>()
                 .HasMany(p => p.Amenities)
                 .WithMany(a => a.Properties);
 
-            // CheckInProcess 1:1 with property
             builder.Entity<CheckInProcess>()
                 .HasOne(c => c.Property)
                 .WithOne(p => p.CheckInProcess)
                 .HasForeignKey<CheckInProcess>(c => c.PropertyId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // GuestCheckIn 1:1 with booking
             builder.Entity<GuestCheckIn>()
                 .HasOne(g => g.Booking)
                 .WithOne(b => b.GuestCheckIn)

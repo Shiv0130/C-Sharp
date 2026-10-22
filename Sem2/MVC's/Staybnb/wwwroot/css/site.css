@@ -1,31 +1,324 @@
+/* Force light UI even if Windows/browser is dark */
 html {
-  font-size: 14px;
+    color-scheme: only light;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+:root {
+    --airbnb: #FF385C;
+    --airbnb-dark: #E31C5F;
+    --ink: #222222;
+    --muted: #717171;
+    --border: #DDDDDD;
+    --bg: #FFFFFF;
+    --soft: #F7F7F7;
+    --radius: 16px;
+    --shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+html, body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink) !important;
+    background: var(--bg) !important;
+    margin: 0;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+/* Kill Bootstrap dark-ish leftovers */
+body, .container, main, .card, .table, .form-control, .form-select, .navbar, .modal-content {
+    background-color: #fff !important;
+    color: #222 !important;
 }
 
-body {
-  margin-bottom: 60px;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+    a:hover {
+        color: var(--airbnb) !important;
+    }
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--airbnb) !important;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.brand-mark {
+    width: 28px;
+    height: 28px;
+    background: var(--airbnb);
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    display: inline-block;
+}
+
+.sb-nav {
+    background: #fff !important;
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.search-pill {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.05);
+    overflow: hidden;
+    background: #fff !important;
+    max-width: 420px;
+}
+
+    .search-pill span {
+        padding: 0.55rem 1rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-right: 1px solid var(--border);
+        white-space: nowrap;
+        color: #222 !important;
+        background: #fff !important;
+    }
+
+        .search-pill span:last-of-type {
+            border-right: none;
+        }
+
+    .search-pill input {
+        color: #222 !important;
+        background: transparent !important;
+    }
+
+.search-btn {
+    background: var(--airbnb) !important;
+    color: #fff !important;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    margin: 0 0.4rem 0 0.2rem;
+}
+
+.nav-link-sb {
+    color: #222 !important;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.75rem !important;
+    border-radius: 22px;
+}
+
+    .nav-link-sb:hover {
+        background: var(--soft) !important;
+    }
+
+.hero-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 1.5rem 0 1rem;
+    color: #222 !important;
+}
+
+.prop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.prop-card {
+    border: none;
+    background: transparent !important;
+    color: #222 !important;
+}
+
+    .prop-card img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: var(--radius);
+        background: #eee;
+    }
+
+    .prop-card .loc {
+        font-size: 0.92rem;
+        font-weight: 600;
+        margin-top: 0.55rem;
+        color: #222 !important;
+    }
+
+    .prop-card .meta {
+        font-size: 0.85rem;
+        color: #717171 !important;
+    }
+
+    .prop-card .price {
+        font-size: 0.92rem;
+        color: #222 !important;
+    }
+
+.star {
+    color: #222 !important;
+    font-size: 0.85rem;
+}
+
+.dash-wrap {
+    display: flex;
+    min-height: 100vh;
+    background: #F7F7F7 !important;
+}
+
+.dash-side {
+    width: 240px;
+    background: #fff !important;
+    border-right: 1px solid var(--border);
+    padding: 1.25rem 0.75rem;
+}
+
+    .dash-side .side-brand {
+        color: var(--airbnb) !important;
+        font-weight: 700;
+        font-size: 1.15rem;
+        padding: 0.5rem 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    .dash-side a {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.65rem 0.85rem;
+        border-radius: 10px;
+        color: #222 !important;
+        font-size: 0.92rem;
+        margin-bottom: 0.15rem;
+    }
+
+        .dash-side a:hover,
+        .dash-side a.active {
+            background: #FFF0F3 !important;
+            color: var(--airbnb) !important;
+            font-weight: 600;
+        }
+
+.dash-main {
+    flex: 1;
+    padding: 1.5rem 2rem;
+    background: #F7F7F7 !important;
+}
+
+.stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-card {
+    background: #fff !important;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.1rem 1.25rem;
+    box-shadow: var(--shadow);
+    color: #222 !important;
+}
+
+    .stat-card .num {
+        font-size: 1.6rem;
+        font-weight: 700;
+    }
+
+    .stat-card .label {
+        font-size: 0.82rem;
+        color: #717171 !important;
+    }
+
+    .stat-card .sub {
+        font-size: 0.78rem;
+        color: #008A05 !important;
+        margin-top: 0.25rem;
+    }
+
+.btn-airbnb {
+    background: var(--airbnb) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.55rem 1.1rem;
+}
+
+    .btn-airbnb:hover {
+        background: var(--airbnb-dark) !important;
+        color: #fff !important;
+    }
+
+.btn-outline-airbnb {
+    border: 1px solid #222 !important;
+    background: #fff !important;
+    color: #222 !important;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+}
+
+.panel, .book-box {
+    background: #fff !important;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    color: #222 !important;
+}
+
+    .book-box .price-lg {
+        font-size: 1.35rem;
+        font-weight: 700;
+    }
+
+.badge-active {
+    background: #E7F8ED !important;
+    color: #008A05 !important;
+    border-radius: 20px;
+    padding: 0.2rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-pending {
+    background: #FFF4E5 !important;
+    color: #B54708 !important;
+    border-radius: 20px;
+    padding: 0.2rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.table {
+    color: #222 !important;
+}
+
+    .table thead th {
+        color: #717171 !important;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 0;
+    color: #717171 !important;
+    font-size: 0.85rem;
+    margin-top: 3rem;
+    background: #fff !important;
+}
+
+.form-control, .form-select {
+    background: #fff !important;
+    color: #222 !important;
+    border: 1px solid #DDDDDD !important;
 }

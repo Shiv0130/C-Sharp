@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Staybnb.Data;
+using Staybnb.Models;
 
 namespace Staybnb.Areas.Identity.Pages.Account;
 

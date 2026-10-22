@@ -1,4 +1,4 @@
-﻿namespace Staybnb.Models
+namespace Staybnb.Models
 {
     public class GuestCheckIn
     {
@@ -9,7 +9,6 @@
         public CheckInProcess? CheckInProcess { get; set; }
         public string Status { get; set; } = "Pending";
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
         public ICollection<GuestDocument> Documents { get; set; } = new List<GuestDocument>();
     }
 }

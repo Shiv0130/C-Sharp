@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Staybnb.Models;
 
 namespace Staybnb.Data
@@ -28,7 +27,6 @@ namespace Staybnb.Data
                 }
             }
 
-            // SuperAdmin — only account that can promote others to Admin
             const string superEmail = "superadmin@staybnb.local";
             const string superPassword = "SuperAdmin@123";
 
