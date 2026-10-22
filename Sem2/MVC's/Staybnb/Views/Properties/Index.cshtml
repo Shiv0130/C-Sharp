@@ -2,39 +2,55 @@
 @{
     ViewData["Title"] = "Explore";
 }
+
 <h1 class="hero-title">Relax. Unwind. Choose your next stay.</h1>
 
-<form method="get" class="row g-2 mb-4">
+<form method="get" class="row g-2 mb-4 align-items-center">
     <div class="col-auto">
-        <input name="city" value="@ViewBag.City" class="form-control rounded-pill" placeholder="City" />
+        <input name="city" value="@ViewBag.City" class="form-control rounded-pill px-3" placeholder="City" />
     </div>
     <div class="col-auto">
-        <select name="propertyType" class="form-select rounded-pill">
+        <select name="propertyType" class="form-select rounded-pill px-3">
             <option value="">Any type</option>
-            <option>Apartment</option>
-            <option>House</option>
-            <option>Cabin</option>
-            <option>Villa</option>
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Cabin">Cabin</option>
+            <option value="Villa">Villa</option>
         </select>
     </div>
     <div class="col-auto">
-        <button class="btn btn-airbnb rounded-pill" type="submit">Search</button>
+        <button class="btn btn-airbnb rounded-pill px-4" type="submit">Search</button>
     </div>
 </form>
 
-<div class="prop-grid">
-    @foreach (var p in Model)
-    {
-        var img = p.Images.FirstOrDefault()?.ImageUrl ?? "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600";
-        <a class="prop-card" asp-action="Details" asp-route-id="@p.Id">
-            <img src="@img" alt="@p.Title" />
-            <div class="d-flex justify-content-between align-items-start">
-                <div class="loc">@p.City, South Africa</div>
-                <div class="star">&#9733; 4.9</div>
-            </div>
-            <div class="meta">@p.Title</div>
-            <div class="meta">@p.PropertyType</div>
-            <div class="price"><strong>R @p.PricePerNight.ToString("0")</strong> <span class="text-muted">night</span></div>
-        </a>
-    }
-</div>
+@if (!Model.Any())
+{
+    <div class="panel text-center text-muted py-5">
+        No active properties yet. Log in as host@staybnb.local or approve a host application.
+    </div>
+}
+else
+{
+    <div class="prop-grid">
+        @foreach (var p in Model)
+        {
+            var img = p.Images != null && p.Images.Any()
+                ? p.Images.First().ImageUrl
+                : "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80";
+
+            <a class="prop-card" asp-action="Details" asp-route-id="@p.Id">
+                <img src="@img" alt="@p.Title" loading="lazy" />
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="loc">@(string.IsNullOrWhiteSpace(p.City) ? "South Africa" : p.City + ", South Africa")</div>
+                    <div class="star">&#9733; 4.9</div>
+                </div>
+                <div class="meta">@p.Title</div>
+                <div class="meta">@p.PropertyType</div>
+                <div class="price">
+                    <strong>R @p.PricePerNight.ToString("0")</strong>
+                    <span class="text-muted"> night</span>
+                </div>
+            </a>
+        }
+    </div>
+}

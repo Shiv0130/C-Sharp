@@ -1,0 +1,45 @@
+STAYBNB — paste files + test accounts
+=====================================
+
+WHERE TO PASTE
+--------------
+1. Data/DbSeeder.cs                    → overwrite entire file
+2. Controllers/HomeController.cs       → overwrite entire file
+3. wwwroot/css/site.css                → overwrite entire file
+4. Views/Shared/_Layout.cshtml         → overwrite entire file
+5. Views/Properties/Index.cshtml       → overwrite entire file
+
+THEN
+----
+1. Close browser tabs for localhost
+2. In VS: Build → Clean Solution, then Rebuild
+3. Delete database if seed already ran without sample properties:
+   PMC:  Drop-Database
+         Update-Database
+   (Or delete StaybnbDb in SQL Server Object Explorer, then Update-Database)
+4. F5 — sample properties load on first run
+
+TEST ACCOUNTS (created by seeder)
+---------------------------------
+SuperAdmin:  superadmin@staybnb.local  /  SuperAdmin@123
+             → redirects to Admin dashboard
+
+Host:        host@staybnb.local        /  Host@123456
+             → redirects to Host dashboard
+             → 6 sample listings with Unsplash photos already Active
+
+Guest:       guest@staybnb.local       /  Guest@123456
+             → Explore + Become a Host + book
+
+Or Register a new user → auto Guest role
+
+SMOKE TEST
+----------
+1. F5 → should show property gallery (not empty)
+2. Login host@staybnb.local → Host dashboard sidebar
+3. Logout → Login superadmin → Admin dashboard
+4. Logout → Login guest → Explore → open Cozy Forest Cabin → Reserve
+5. Login host → Booking Requests → Approve
+6. Login guest → My bookings → Check-in upload
+
+Images use Unsplash CDN (internet required while testing).

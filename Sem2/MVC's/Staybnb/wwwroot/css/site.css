@@ -1,7 +1,4 @@
-/* Force light UI even if Windows/browser is dark */
-html {
-    color-scheme: only light;
-}
+html { color-scheme: only light; }
 
 :root {
     --airbnb: #FF385C;
@@ -22,20 +19,13 @@ html, body {
     margin: 0;
 }
 
-/* Kill Bootstrap dark-ish leftovers */
 body, .container, main, .card, .table, .form-control, .form-select, .navbar, .modal-content {
     background-color: #fff !important;
     color: #222 !important;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-    a:hover {
-        color: var(--airbnb) !important;
-    }
+a { text-decoration: none; color: inherit; }
+a:hover { color: var(--airbnb) !important; }
 
 .brand {
     display: flex;
@@ -45,7 +35,6 @@ a {
     font-size: 1.35rem;
     color: var(--airbnb) !important;
 }
-
 .brand-mark {
     width: 28px;
     height: 28px;
@@ -71,28 +60,25 @@ a {
     box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.05);
     overflow: hidden;
     background: #fff !important;
-    max-width: 420px;
+    max-width: 440px;
 }
-
-    .search-pill span {
-        padding: 0.55rem 1rem;
-        font-size: 0.85rem;
-        font-weight: 600;
-        border-right: 1px solid var(--border);
-        white-space: nowrap;
-        color: #222 !important;
-        background: #fff !important;
-    }
-
-        .search-pill span:last-of-type {
-            border-right: none;
-        }
-
-    .search-pill input {
-        color: #222 !important;
-        background: transparent !important;
-    }
-
+.search-pill span {
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-right: 1px solid var(--border);
+    white-space: nowrap;
+    color: #222 !important;
+    background: #fff !important;
+}
+.search-pill span:last-of-type { border-right: none; }
+.search-pill input {
+    color: #222 !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    width: 100px;
+}
 .search-btn {
     background: var(--airbnb) !important;
     color: #fff !important;
@@ -101,6 +87,7 @@ a {
     height: 34px;
     border-radius: 50%;
     margin: 0 0.4rem 0 0.2rem;
+    cursor: pointer;
 }
 
 .nav-link-sb {
@@ -110,10 +97,7 @@ a {
     padding: 0.4rem 0.75rem !important;
     border-radius: 22px;
 }
-
-    .nav-link-sb:hover {
-        background: var(--soft) !important;
-    }
+.nav-link-sb:hover { background: var(--soft) !important; }
 
 .hero-title {
     font-size: 1.75rem;
@@ -126,85 +110,62 @@ a {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 1.5rem;
+    padding-bottom: 2rem;
 }
-
 .prop-card {
     border: none;
     background: transparent !important;
     color: #222 !important;
+    display: block;
 }
-
-    .prop-card img {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-        border-radius: var(--radius);
-        background: #eee;
-    }
-
-    .prop-card .loc {
-        font-size: 0.92rem;
-        font-weight: 600;
-        margin-top: 0.55rem;
-        color: #222 !important;
-    }
-
-    .prop-card .meta {
-        font-size: 0.85rem;
-        color: #717171 !important;
-    }
-
-    .prop-card .price {
-        font-size: 0.92rem;
-        color: #222 !important;
-    }
-
-.star {
-    color: #222 !important;
-    font-size: 0.85rem;
+.prop-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: #eee;
 }
+.prop-card .loc { font-size: 0.92rem; font-weight: 600; margin-top: 0.55rem; color: #222 !important; }
+.prop-card .meta { font-size: 0.85rem; color: #717171 !important; }
+.prop-card .price { font-size: 0.92rem; color: #222 !important; }
+.star { color: #222 !important; font-size: 0.85rem; }
 
 .dash-wrap {
     display: flex;
     min-height: 100vh;
     background: #F7F7F7 !important;
 }
-
 .dash-side {
     width: 240px;
     background: #fff !important;
     border-right: 1px solid var(--border);
     padding: 1.25rem 0.75rem;
 }
-
-    .dash-side .side-brand {
-        color: var(--airbnb) !important;
-        font-weight: 700;
-        font-size: 1.15rem;
-        padding: 0.5rem 0.75rem 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-    }
-
-    .dash-side a {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        padding: 0.65rem 0.85rem;
-        border-radius: 10px;
-        color: #222 !important;
-        font-size: 0.92rem;
-        margin-bottom: 0.15rem;
-    }
-
-        .dash-side a:hover,
-        .dash-side a.active {
-            background: #FFF0F3 !important;
-            color: var(--airbnb) !important;
-            font-weight: 600;
-        }
-
+.dash-side .side-brand {
+    color: var(--airbnb) !important;
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 0.5rem 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.dash-side a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 10px;
+    color: #222 !important;
+    font-size: 0.92rem;
+    margin-bottom: 0.15rem;
+}
+.dash-side a:hover,
+.dash-side a.active {
+    background: #FFF0F3 !important;
+    color: var(--airbnb) !important;
+    font-weight: 600;
+}
 .dash-main {
     flex: 1;
     padding: 1.5rem 2rem;
@@ -217,7 +178,6 @@ a {
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
-
 .stat-card {
     background: #fff !important;
     border: 1px solid var(--border);
@@ -226,22 +186,9 @@ a {
     box-shadow: var(--shadow);
     color: #222 !important;
 }
-
-    .stat-card .num {
-        font-size: 1.6rem;
-        font-weight: 700;
-    }
-
-    .stat-card .label {
-        font-size: 0.82rem;
-        color: #717171 !important;
-    }
-
-    .stat-card .sub {
-        font-size: 0.78rem;
-        color: #008A05 !important;
-        margin-top: 0.25rem;
-    }
+.stat-card .num { font-size: 1.6rem; font-weight: 700; }
+.stat-card .label { font-size: 0.82rem; color: #717171 !important; }
+.stat-card .sub { font-size: 0.78rem; color: #008A05 !important; margin-top: 0.25rem; }
 
 .btn-airbnb {
     background: var(--airbnb) !important;
@@ -251,12 +198,7 @@ a {
     font-weight: 600;
     padding: 0.55rem 1.1rem;
 }
-
-    .btn-airbnb:hover {
-        background: var(--airbnb-dark) !important;
-        color: #fff !important;
-    }
-
+.btn-airbnb:hover { background: var(--airbnb-dark) !important; color: #fff !important; }
 .btn-outline-airbnb {
     border: 1px solid #222 !important;
     background: #fff !important;
@@ -274,11 +216,7 @@ a {
     box-shadow: var(--shadow);
     color: #222 !important;
 }
-
-    .book-box .price-lg {
-        font-size: 1.35rem;
-        font-weight: 700;
-    }
+.book-box .price-lg { font-size: 1.35rem; font-weight: 700; }
 
 .badge-active {
     background: #E7F8ED !important;
@@ -288,7 +226,6 @@ a {
     font-size: 0.75rem;
     font-weight: 600;
 }
-
 .badge-pending {
     background: #FFF4E5 !important;
     color: #B54708 !important;
@@ -298,15 +235,12 @@ a {
     font-weight: 600;
 }
 
-.table {
+.table { color: #222 !important; }
+.form-control, .form-select {
+    background: #fff !important;
     color: #222 !important;
+    border: 1px solid #DDDDDD !important;
 }
-
-    .table thead th {
-        color: #717171 !important;
-        font-weight: 600;
-        font-size: 0.85rem;
-    }
 
 footer {
     border-top: 1px solid var(--border);
@@ -315,10 +249,4 @@ footer {
     font-size: 0.85rem;
     margin-top: 3rem;
     background: #fff !important;
-}
-
-.form-control, .form-select {
-    background: #fff !important;
-    color: #222 !important;
-    border: 1px solid #DDDDDD !important;
 }
