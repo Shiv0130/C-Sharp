@@ -1,0 +1,68 @@
+@model IEnumerable<Staybnb.Models.ActivityLog>
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2 class="mb-4 fw-bold">Dashboard Overview</h2>
+
+<div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+        <div class="p-3 bg-white border rounded-3 shadow-sm h-100">
+            <div class="text-muted small">Total Users</div>
+            <div class="fs-3 fw-bold">@(ViewBag.TotalUsers ?? 0)</div>
+            <div class="small" style="color:#008A05;">Active users</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="p-3 bg-white border rounded-3 shadow-sm h-100">
+            <div class="text-muted small">Pending Host Apps</div>
+            <div class="fs-3 fw-bold">@(ViewBag.PendingApps ?? 0)</div>
+            <div class="small" style="color:#B54708;">Require review</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="p-3 bg-white border rounded-3 shadow-sm h-100">
+            <div class="text-muted small">Active Properties</div>
+            <div class="fs-3 fw-bold">@(ViewBag.ActiveProperties ?? 0)</div>
+            <div class="small" style="color:#008A05;">Listings available</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="p-3 bg-white border rounded-3 shadow-sm h-100">
+            <div class="text-muted small">Total Bookings</div>
+            <div class="fs-3 fw-bold">@(ViewBag.TotalBookings ?? 0)</div>
+            <div class="small text-muted">Platform activity</div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex gap-2 mb-4 flex-wrap">
+    <a class="btn" style="background:#FF385C;color:#fff;font-weight:600;" asp-action="Applications">Review host requests</a>
+    <a class="btn btn-outline-dark" asp-action="ActivityLogs">Activity logs</a>
+    <a class="btn btn-outline-dark" asp-action="Users">Users (SuperAdmin)</a>
+</div>
+
+<div class="bg-white border rounded-3 shadow-sm p-3">
+    <h5 class="mb-3">Recent Activity</h5>
+    <table class="table table-sm align-middle mb-0">
+        <thead>
+            <tr class="text-muted small">
+                <th>User</th>
+                <th>Action</th>
+                <th>Type</th>
+                <th>When</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var log in Model)
+        {
+            <tr>
+                <td>@log.User?.Email</td>
+                <td>@log.Action</td>
+                <td>@log.ActivityType</td>
+                <td>@log.CreatedAt.ToLocalTime().ToString("g")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

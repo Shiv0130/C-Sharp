@@ -1,0 +1,52 @@
+@model IEnumerable<Staybnb.Models.GuestCheckIn>
+@{
+    ViewData["Title"] = "Check-in documents";
+}
+<h1>Guest check-in documents</h1>
+@foreach (var c in Model)
+{
+    <div class="card mb-3">
+        <div class="card-header">
+            Booking #@c.BookingId — @c.Booking?.Property?.Title — Guest: @c.Booking?.Guest?.Email — <strong>@c.Status</strong>
+        </div>
+        <div class="card-body">
+            @if (c.Documents.Any())
+            {
+                <table class="table table-sm">
+                    <thead><tr><th>Type</th><th>File</th><th>Status</th><th></th></tr></thead>
+                    <tbody>
+                    @foreach (var d in c.Documents)
+                    {
+                        <tr>
+                            <td>@d.DocumentType</td>
+                            <td><a href="@d.FilePath" target="_blank">Open</a></td>
+                            <td>@d.Status</td>
+                            <td>
+                                @if (d.Status == "Pending")
+                                {
+                                    <form asp-action="VerifyDocument" method="post" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="documentId" value="@d.Id" />
+                                        <input type="hidden" name="approve" value="true" />
+                                        <button class="btn btn-sm btn-success">Verify</button>
+                                    </form>
+                                    <form asp-action="VerifyDocument" method="post" class="d-inline">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="documentId" value="@d.Id" />
+                                        <input type="hidden" name="approve" value="false" />
+                                        <button class="btn btn-sm btn-danger">Reject</button>
+                                    </form>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="text-muted mb-0">No documents yet.</p>
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Home";
+}
+<h1 class="hero-title">Relax. Unwind. Choose your next stay.</h1>
+<p class="text-muted mb-4">
+    <a asp-controller="Properties" asp-action="Index" class="me-3 fw-semibold">Properties</a>
+    @if (User.IsInRole("Guest"))
+    {
+        <a asp-controller="HostApplications" asp-action="Create" class="fw-semibold">Become a Host</a>
+    }
+</p>
+<div class="text-center my-4">
+    <a class="btn btn-airbnb btn-lg" asp-controller="Properties" asp-action="Index">Explore stays</a>
+</div>

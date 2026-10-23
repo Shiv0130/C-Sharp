@@ -1,0 +1,60 @@
+@model IEnumerable<Staybnb.Models.HostApplication>
+@{
+    ViewData["Title"] = "Host Requests";
+}
+
+<h2 class="mb-4 fw-bold">Host Requests</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<div class="bg-white border rounded-3 shadow-sm p-3">
+    <table class="table align-middle mb-0">
+        <thead>
+            <tr class="text-muted small">
+                <th>Applicant</th>
+                <th>Property</th>
+                <th>City</th>
+                <th>Applied</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>
+                    <div class="fw-semibold">@a.Applicant?.FirstName @a.Applicant?.LastName</div>
+                    <div class="small text-muted">@a.Applicant?.Email</div>
+                </td>
+                <td>@a.Property?.Title</td>
+                <td>@a.Property?.City</td>
+                <td>@a.AppliedAt.ToLocalTime().ToString("g")</td>
+                <td>@a.Status</td>
+                <td class="text-nowrap">
+                    @if (a.Status == "Pending")
+                    {
+                        <form asp-action="Approve" method="post" class="d-inline">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@a.Id" />
+                            <button class="btn btn-sm btn-success">Approve</button>
+                        </form>
+                        <form asp-action="Reject" method="post" class="d-inline">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@a.Id" />
+                            <button class="btn btn-sm btn-outline-danger">Reject</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    @if (!Model.Any())
+    {
+        <p class="text-muted text-center py-4 mb-0">No host applications.</p>
+    }
+</div>

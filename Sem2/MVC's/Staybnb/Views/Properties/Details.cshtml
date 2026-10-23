@@ -1,0 +1,70 @@
+@model Staybnb.Models.HostProperty
+@{
+    ViewData["Title"] = Model.Title;
+    var images = Model.Images?.ToList() ?? new List<Staybnb.Models.PropertyImage>();
+    var mainImg = images.FirstOrDefault()?.ImageUrl
+        ?? "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=80";
+}
+
+<div class="mb-2 text-muted small">
+    @Model.City, South Africa · @Model.PropertyType
+</div>
+
+<h1 class="fw-bold mb-1">@Model.Title</h1>
+<div class="text-muted small mb-3">
+    Hosted by @(Model.Host?.FirstName ?? "Staybnb") @(Model.Host?.LastName)
+    <span class="badge ms-2" style="background:#FF385C;color:#fff;">Verified host</span>
+</div>
+
+<div class="row g-2 mb-4">
+    <div class="col-md-8">
+        <img src="@mainImg" alt="@Model.Title" class="w-100 rounded-4" style="max-height:420px;object-fit:cover;" />
+    </div>
+    <div class="col-md-4">
+        <div class="row g-2">
+            @foreach (var img in images.Skip(1).Take(4))
+            {
+                <div class="col-6">
+                    <img src="@img.ImageUrl" class="w-100 rounded-3" style="height:130px;object-fit:cover;" alt="" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-7">
+        <div class="bg-white border rounded-4 p-4 mb-3 shadow-sm">
+            <h5 class="mb-3">About this place</h5>
+            <p class="mb-0" style="white-space:pre-line;line-height:1.6;">@Model.Description</p>
+        </div>
+        <div class="bg-white border rounded-4 p-4 shadow-sm">
+            <h5 class="mb-2">Location</h5>
+            <p class="mb-0">@Model.Address, @Model.City</p>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="bg-white border rounded-4 p-4 shadow sticky-top" style="top:90px;">
+            <div class="mb-3">
+                <span class="fs-4 fw-bold">R @Model.PricePerNight.ToString("0")</span>
+                <span class="text-muted"> / night</span>
+            </div>
+            <p class="small text-muted">Total = (price × nights) + R250 cleaning + R150 service</p>
+            @if (User.IsInRole("Guest"))
+            {
+                <a class="btn w-100 py-2 fw-semibold" style="background:#FF385C;color:#fff;"
+                   asp-controller="Bookings" asp-action="Create" asp-route-propertyId="@Model.Id">Reserve</a>
+                <p class="text-muted small text-center mt-2 mb-0">You won't be charged yet</p>
+            }
+            else if (User.Identity?.IsAuthenticated != true)
+            {
+                <a class="btn w-100 py-2 fw-semibold" style="background:#FF385C;color:#fff;"
+                   asp-area="Identity" asp-page="/Account/Login">Log in to book</a>
+            }
+            else
+            {
+                <p class="text-muted small mb-0">Guest accounts can request bookings.</p>
+            }
+        </div>
+    </div>
+</div>

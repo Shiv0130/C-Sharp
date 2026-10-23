@@ -1,0 +1,49 @@
+@model Staybnb.Models.GuestCheckIn
+@{
+    ViewData["Title"] = "Guest check-in";
+}
+<h1>Check-in — Booking #@Model.BookingId</h1>
+<p>Status: <strong>@Model.Status</strong></p>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<h3>Upload ID / Passport</h3>
+<form asp-action="UploadDocument" method="post" enctype="multipart/form-data" class="mb-4">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="guestCheckInId" value="@Model.Id" />
+    <div class="mb-2">
+        <label class="form-label">Document type</label>
+        <select name="documentType" class="form-select">
+            <option>ID</option>
+            <option>Passport</option>
+        </select>
+    </div>
+    <div class="mb-2">
+        <label class="form-label">File</label>
+        <input type="file" name="file" class="form-control" accept="image/*,.pdf" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<h3>Submitted documents</h3>
+<table class="table">
+    <thead><tr><th>Type</th><th>File</th><th>Status</th></tr></thead>
+    <tbody>
+    @foreach (var d in Model.Documents)
+    {
+        <tr>
+            <td>@d.DocumentType</td>
+            <td><a href="@d.FilePath" target="_blank">View</a></td>
+            <td>@d.Status</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<a asp-controller="Bookings" asp-action="MyBookings" class="btn btn-secondary">Back to bookings</a>

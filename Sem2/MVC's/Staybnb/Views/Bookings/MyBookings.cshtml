@@ -1,0 +1,45 @@
+@model IEnumerable<Staybnb.Models.Booking>
+@{
+    ViewData["Title"] = "My bookings";
+}
+<h1>My bookings</h1>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Dates</th>
+            <th>Guests</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var b in Model)
+    {
+        <tr>
+            <td>@b.Property?.Title</td>
+            <td>@b.CheckInDate.ToShortDateString() → @b.CheckOutDate.ToShortDateString()</td>
+            <td>@b.NumberOfGuests</td>
+            <td>R @b.TotalPrice.ToString("0.00")</td>
+            <td>@b.Status</td>
+            <td>
+                @if (b.Status == "Approved" || b.Status == "CheckedIn")
+                {
+                    <a class="btn btn-sm btn-outline-primary"
+                       asp-controller="CheckIn" asp-action="Start" asp-route-bookingId="@b.Id">Check-in</a>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<a class="btn btn-secondary" asp-controller="Properties" asp-action="Index">Explore stays</a>
