@@ -1,32 +1,85 @@
 @model IEnumerable<Staybnb.Models.HostProperty>
 @{
     ViewData["Title"] = "Explore";
+    var selectedType = (ViewBag.PropertyType as string) ?? "";
+    var selectedCity = (ViewBag.City as string) ?? "";
 }
 
 <h1 class="hero-title">Relax. Unwind. Choose your next stay.</h1>
 
-<form method="get" class="row g-2 mb-4 align-items-center">
+<form method="get" action="/Properties" class="row g-2 mb-4 align-items-center">
     <div class="col-auto">
-        <input name="city" value="@ViewBag.City" class="form-control rounded-pill px-3" placeholder="City" />
+        <input type="text" name="city" value="@selectedCity" class="form-control rounded-pill px-3" placeholder="City" />
     </div>
     <div class="col-auto">
         <select name="propertyType" class="form-select rounded-pill px-3">
-            <option value="">Any type</option>
-            <option value="Apartment">Apartment</option>
-            <option value="House">House</option>
-            <option value="Cabin">Cabin</option>
-            <option value="Villa">Villa</option>
+            @if (string.IsNullOrEmpty(selectedType))
+            {
+                <option value="" selected>Any type</option>
+            }
+            else
+            {
+                <option value="">Any type</option>
+            }
+            @if (selectedType == "Apartment")
+            {
+                <option value="Apartment" selected>Apartment</option>
+            }
+            else
+            {
+                <option value="Apartment">Apartment</option>
+            }
+            @if (selectedType == "House")
+            {
+                <option value="House" selected>House</option>
+            }
+            else
+            {
+                <option value="House">House</option>
+            }
+            @if (selectedType == "Cabin")
+            {
+                <option value="Cabin" selected>Cabin</option>
+            }
+            else
+            {
+                <option value="Cabin">Cabin</option>
+            }
+            @if (selectedType == "Villa")
+            {
+                <option value="Villa" selected>Villa</option>
+            }
+            else
+            {
+                <option value="Villa">Villa</option>
+            }
         </select>
     </div>
     <div class="col-auto">
-        <button class="btn btn-airbnb rounded-pill px-4" type="submit">Search</button>
+        <button type="submit" class="btn btn-airbnb rounded-pill px-4">Search</button>
+    </div>
+    <div class="col-auto">
+        <a href="/Properties" class="btn btn-outline-secondary rounded-pill">Clear</a>
     </div>
 </form>
+
+<p class="text-muted small">
+    Results: <strong>@(ViewBag.ResultCount ?? Model.Count())</strong>
+    @if (!string.IsNullOrEmpty(selectedCity))
+    {
+        <span> · city: <strong>@selectedCity</strong></span>
+    }
+    @if (!string.IsNullOrEmpty(selectedType))
+    {
+        <span> · type: <strong>@selectedType</strong></span>
+    }
+</p>
 
 @if (!Model.Any())
 {
     <div class="panel text-center text-muted py-5">
-        No active properties yet. Log in as host@staybnb.local or approve a host application.
+        No properties match this filter.
+        <a href="/Properties">Show all</a>
     </div>
 }
 else
@@ -35,12 +88,12 @@ else
         @foreach (var p in Model)
         {
             var img = p.Images != null && p.Images.Any()
-                ? p.Images.First().ImageUrl
-                : "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80";
+            ? p.Images.First().ImageUrl
+            : "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80";
 
-            <a class="prop-card" asp-action="Details" asp-route-id="@p.Id">
-                <img src="@img" alt="@p.Title" loading="lazy" />
-                <div class="d-flex justify-content-between align-items-start">
+            <a class="prop-card text-decoration-none" asp-action="Details" asp-route-id="@p.Id">
+                <img src="@img" alt="@p.Title" />
+                <div class="d-flex justify-content-between align-items-start mt-2">
                     <div class="loc">@(string.IsNullOrWhiteSpace(p.City) ? "South Africa" : p.City + ", South Africa")</div>
                     <div class="star">&#9733; 4.9</div>
                 </div>

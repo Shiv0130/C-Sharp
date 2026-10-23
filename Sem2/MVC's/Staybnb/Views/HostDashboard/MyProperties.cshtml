@@ -1,26 +1,55 @@
 @model IEnumerable<Staybnb.Models.HostProperty>
 @{
-    ViewData["Title"] = "My properties";
+    ViewData["Title"] = "My Properties";
 }
-<h1>My properties</h1>
-<table class="table">
-    <thead><tr><th>Title</th><th>City</th><th>Price</th><th>Active</th><th></th></tr></thead>
-    <tbody>
-    @foreach (var p in Model)
+
+<h2 class="mb-4 fw-bold">My Properties</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="bg-white border rounded-3 p-4 text-muted">
+        No properties yet.
+        <a asp-controller="HostApplications" asp-action="Create">Add one</a>
+    </div>
+}
+else
+{
+    foreach (var p in Model)
     {
-        <tr>
-            <td>@p.Title</td>
-            <td>@p.City</td>
-            <td>R @p.PricePerNight.ToString("0.00")</td>
-            <td>@(p.IsActive ? "Yes" : "No")</td>
-            <td>
-                <form asp-action="ToggleActive" method="post" class="d-inline">
-                    @Html.AntiForgeryToken()
-                    <input type="hidden" name="id" value="@p.Id" />
-                    <button class="btn btn-sm btn-outline-primary">Toggle active</button>
-                </form>
-            </td>
-        </tr>
+        var img = p.Images != null && p.Images.Any()
+            ? p.Images.First().ImageUrl
+            : "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80";
+
+        <div class="bg-white border rounded-3 shadow-sm p-3 mb-3">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-3">
+                    <img src="@img" alt="@p.Title" class="w-100 rounded-3" style="height:140px;object-fit:cover;" />
+                </div>
+                <div class="col-md-6">
+                    <h5 class="mb-1">@p.Title</h5>
+                    <div class="text-muted small mb-1">@p.City, South Africa</div>
+                    <div class="small text-muted mb-2">@p.PropertyType</div>
+                    @if (p.IsActive)
+                    {
+                        <span class="badge rounded-pill" style="background:#E7F8ED;color:#008A05;">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge rounded-pill" style="background:#FFF4E5;color:#B54708;">Inactive</span>
+                    }
+                </div>
+                <div class="col-md-3 text-md-end">
+                    <div class="fw-bold mb-2">R @p.PricePerNight.ToString("0") <span class="fw-normal text-muted">/night</span></div>
+                    <a class="btn btn-sm btn-outline-dark me-1" asp-controller="Properties" asp-action="Details" asp-route-id="@p.Id">View</a>
+                    <form asp-action="ToggleActive" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@p.Id" />
+                        <button type="submit" class="btn btn-sm" style="background:#FF385C;color:#fff;">
+                            @(p.IsActive ? "Deactivate" : "Activate")
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     }
-    </tbody>
-</table>
+}

@@ -8,7 +8,7 @@ using Staybnb.Models;
 
 namespace Staybnb.Controllers
 {
-    [Authorize(Roles = AppRoles.Guest)]
+    [Authorize]
     public class HostApplicationsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -27,6 +27,10 @@ namespace Staybnb.Controllers
 
         public IActionResult Create()
         {
+            if (!User.IsInRole(AppRoles.Guest))
+            {
+                return RedirectToAction("Index", "HostDashboard");
+            }
             return View();
         }
 
@@ -41,6 +45,11 @@ namespace Staybnb.Controllers
             string propertyType,
             List<IFormFile> images)
         {
+            if (!User.IsInRole(AppRoles.Guest))
+            {
+                return RedirectToAction("Index", "HostDashboard");
+            }
+
             if (images == null || images.Count == 0 || images.All(i => i.Length == 0))
             {
                 ModelState.AddModelError(string.Empty, "At least one property image is required.");

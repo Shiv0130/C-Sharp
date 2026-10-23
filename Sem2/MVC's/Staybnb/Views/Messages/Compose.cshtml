@@ -1,17 +1,48 @@
 @{
-    ViewData["Title"] = "Compose";
+    ViewData["Title"] = "New message";
+    var users = ViewBag.Users as IEnumerable<dynamic> ?? Enumerable.Empty<dynamic>();
+    var preselect = ViewBag.ReceiverId as string;
 }
+
 <h1>New message</h1>
+
 <form asp-action="Compose" method="post">
+    @Html.AntiForgeryToken()
     <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="mb-2">
-        <label class="form-label">Receiver user id</label>
-        <input name="receiverId" class="form-control" value="@ViewBag.ReceiverId" required />
-        <div class="form-text">Paste the AspNetUsers Id of the other user (from Admin users / SQL for now).</div>
+
+    <div class="mb-3">
+        <label class="form-label">Send to</label>
+        <select name="receiverId" class="form-select" required>
+            <option value="">— Choose a user —</option>
+            @foreach (var u in users)
+            {
+                var label = $"{u.FirstName} {u.LastName} ({u.Email})".Trim();
+                if (string.IsNullOrWhiteSpace(label) || label.StartsWith("("))
+                    label = u.Email;
+                if (preselect == u.Id)
+                {
+                    <option value="@u.Id" selected>@label</option>
+                }
+                else
+                {
+                    <option value="@u.Id">@label</option>
+                }
+            }
+        </select>
+        <div class="form-text">Pick from the list. You do not need the long user id.</div>
     </div>
-    <div class="mb-2">
+
+    <div class="mb-3">
+        <label class="form-label">Or type their email</label>
+        <input name="receiverEmail" class="form-control" placeholder="e.g. host@staybnb.local" />
+        <div class="form-text">Optional. Used only if the dropdown is empty.</div>
+    </div>
+
+    <div class="mb-3">
         <label class="form-label">Message</label>
-        <textarea name="content" class="form-control" rows="4" required></textarea>
+        <textarea name="content" class="form-control" rows="4" required placeholder="Write your message..."></textarea>
     </div>
-    <button class="btn btn-primary" type="submit">Send</button>
+
+    <button class="btn" style="background:#FF385C;color:#fff;" type="submit">Send</button>
+    <a class="btn btn-outline-secondary" asp-action="Inbox">Cancel</a>
 </form>

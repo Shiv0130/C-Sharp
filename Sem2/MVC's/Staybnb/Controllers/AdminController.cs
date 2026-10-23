@@ -22,92 +22,115 @@ namespace Staybnb.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.PendingApps = await _context.HostApplications.CountAsync(a => a.Status == "Pending");
-            ViewBag.ActiveProperties = await _context.HostProperties.CountAsync(p => p.IsActive);
-            ViewBag.TotalUsers = await _userManager.Users.CountAsync();
-            ViewBag.TotalBookings = await _context.Bookings.CountAsync();
+            try
+            {
+                ViewBag.PendingApps = await _context.HostApplications.CountAsync(a => a.Status == "Pending");
+                ViewBag.ActiveProperties = await _context.HostProperties.CountAsync(p => p.IsActive);
+                ViewBag.TotalUsers = await _userManager.Users.CountAsync();
+                ViewBag.TotalBookings = await _context.Bookings.CountAsync();
 
-            var recent = await _context.ActivityLogs
-                .Include(a => a.User)
-                .OrderByDescending(a => a.CreatedAt)
-                .Take(10)
-                .ToListAsync();
+                var recent = await _context.ActivityLogs
+                    .Include(a => a.User)
+                    .OrderByDescending(a => a.CreatedAt)
+                    .Take(10)
+                    .ToListAsync();
 
-            return View(recent);
+                return View(recent);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Could not load dashboard: " + ex.Message;
+                return View(new List<ActivityLog>());
+            }
         }
 
         public async Task<IActionResult> Applications()
         {
-            var apps = await _context.HostApplications
-                .Include(a => a.Applicant)
-                .Include(a => a.Property)!.ThenInclude(p => p!.Images)
-                .OrderByDescending(a => a.AppliedAt)
-                .ToListAsync();
+            try
+            {
+                var apps = await _context.HostApplications
+                    .Include(a => a.Applicant)
+                    .Include(a => a.Property)!.ThenInclude(p => p!.Images)
+                    .OrderByDescending(a => a.AppliedAt)
+                    .ToListAsync();
 
-            return View(apps);
+                return View(apps);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Could not load applications: " + ex.Message;
+                return View(new List<HostApplication>());
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Approve(int id)
         {
-            var app = await _context.HostApplications
-                .Include(a => a.Property)
-                .FirstOrDefaultAsync(a => a.Id == id);
-
-            if (app == null)
+            try
             {
-                return NotFound();
+                var app = await _context.HostApplications
+                    .Include(a => a.Property)
+                    .FirstOrDefaultAsync(a => a.Id == id);
+
+                if (app == null)
+                {
+                    return NotFound();
+                }
+
+                if (app.Status != "Pending")
+                {
+                    return RedirectToAction(nameof(Applications));
+                }
+
+                var user = await _userManager.FindByIdAsync(app.ApplicantUserId);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                if (await _userManager.IsInRoleAsync(user, AppRoles.Guest))
+                {
+                    await _userManager.RemoveFromRoleAsync(user, AppRoles.Guest);
+                }
+
+                if (!await _userManager.IsInRoleAsync(user, AppRoles.Host))
+                {
+                    await _userManager.AddToRoleAsync(user, AppRoles.Host);
+                }
+
+                app.Status = "Approved";
+
+                if (app.Property != null)
+                {
+                    app.Property.IsActive = true;
+                }
+
+                _context.ActivityLogs.Add(new ActivityLog
+                {
+                    UserId = user.Id,
+                    Action = "Host application approved - role swapped Guest to Host",
+                    ActivityType = "RoleChange",
+                    CreatedAt = DateTime.UtcNow
+                });
+
+                _context.Notifications.Add(new Notification
+                {
+                    UserId = user.Id,
+                    Title = "Host application approved",
+                    Message = "You are now a Host. Your property is active.",
+                    Type = "HostApplication",
+                    CreatedAt = DateTime.UtcNow
+                });
+
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "Application approved. User is now a Host.";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Approve failed: " + ex.Message;
             }
 
-            if (app.Status != "Pending")
-            {
-                return RedirectToAction(nameof(Applications));
-            }
-
-            var user = await _userManager.FindByIdAsync(app.ApplicantUserId);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            // Assignment rule: Host replaces Guest (not both)
-            if (await _userManager.IsInRoleAsync(user, AppRoles.Guest))
-            {
-                await _userManager.RemoveFromRoleAsync(user, AppRoles.Guest);
-            }
-
-            if (!await _userManager.IsInRoleAsync(user, AppRoles.Host))
-            {
-                await _userManager.AddToRoleAsync(user, AppRoles.Host);
-            }
-
-            app.Status = "Approved";
-
-            if (app.Property != null)
-            {
-                app.Property.IsActive = true;
-            }
-
-            _context.ActivityLogs.Add(new ActivityLog
-            {
-                UserId = user.Id,
-                Action = "Host application approved - role swapped Guest to Host",
-                ActivityType = "RoleChange",
-                CreatedAt = DateTime.UtcNow
-            });
-
-            _context.Notifications.Add(new Notification
-            {
-                UserId = user.Id,
-                Title = "Host application approved",
-                Message = "You are now a Host. Your property is active.",
-                Type = "HostApplication",
-                CreatedAt = DateTime.UtcNow
-            });
-
-            await _context.SaveChangesAsync();
-            TempData["Success"] = "Application approved. User is now a Host.";
             return RedirectToAction(nameof(Applications));
         }
 
@@ -115,54 +138,79 @@ namespace Staybnb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Reject(int id)
         {
-            var app = await _context.HostApplications.FindAsync(id);
-            if (app == null)
+            try
             {
-                return NotFound();
+                var app = await _context.HostApplications.FindAsync(id);
+                if (app == null)
+                {
+                    return NotFound();
+                }
+
+                app.Status = "Rejected";
+
+                _context.Notifications.Add(new Notification
+                {
+                    UserId = app.ApplicantUserId,
+                    Title = "Host application rejected",
+                    Message = "Your host application was not approved.",
+                    Type = "HostApplication",
+                    CreatedAt = DateTime.UtcNow
+                });
+
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "Application rejected.";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Reject failed: " + ex.Message;
             }
 
-            app.Status = "Rejected";
-
-            _context.Notifications.Add(new Notification
-            {
-                UserId = app.ApplicantUserId,
-                Title = "Host application rejected",
-                Message = "Your host application was not approved.",
-                Type = "HostApplication",
-                CreatedAt = DateTime.UtcNow
-            });
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Applications));
         }
 
         public async Task<IActionResult> ActivityLogs()
         {
-            var logs = await _context.ActivityLogs
-                .Include(a => a.User)
-                .OrderByDescending(a => a.CreatedAt)
-                .Take(100)
-                .ToListAsync();
+            try
+            {
+                var logs = await _context.ActivityLogs
+                    .Include(a => a.User)
+                    .OrderByDescending(a => a.CreatedAt)
+                    .Take(100)
+                    .ToListAsync();
 
-            return View(logs);
+                return View(logs);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Could not load logs: " + ex.Message;
+                return View(new List<ActivityLog>());
+            }
         }
 
         [Authorize(Roles = AppRoles.SuperAdmin)]
         public async Task<IActionResult> Users()
         {
-            var users = await _userManager.Users.OrderBy(u => u.Email).ToListAsync();
-            var rows = new List<AdminUserRow>();
-
-            foreach (var u in users)
+            try
             {
-                rows.Add(new AdminUserRow
-                {
-                    User = u,
-                    Roles = await _userManager.GetRolesAsync(u)
-                });
-            }
+                var users = await _userManager.Users.OrderBy(u => u.Email).ToListAsync();
+                var rows = new List<AdminUserRow>();
 
-            return View(rows);
+                foreach (var u in users)
+                {
+                    rows.Add(new AdminUserRow
+                    {
+                        User = u,
+                        Roles = await _userManager.GetRolesAsync(u)
+                    });
+                }
+
+                return View(rows);
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Could not load users: " + ex.Message;
+                return View(new List<AdminUserRow>());
+            }
         }
 
         [HttpPost]
@@ -170,26 +218,132 @@ namespace Staybnb.Controllers
         [Authorize(Roles = AppRoles.SuperAdmin)]
         public async Task<IActionResult> PromoteToAdmin(string userId)
         {
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
+            try
             {
-                return NotFound();
+                var user = await _userManager.FindByIdAsync(userId);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                if (!await _userManager.IsInRoleAsync(user, AppRoles.Admin))
+                {
+                    await _userManager.AddToRoleAsync(user, AppRoles.Admin);
+                }
+
+                _context.ActivityLogs.Add(new ActivityLog
+                {
+                    UserId = user.Id,
+                    Action = "Promoted to Admin by SuperAdmin",
+                    ActivityType = "RoleChange",
+                    CreatedAt = DateTime.UtcNow
+                });
+
+                await _context.SaveChangesAsync();
+                TempData["Success"] = user.Email + " is now an Admin.";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Promote failed: " + ex.Message;
             }
 
-            if (!await _userManager.IsInRoleAsync(user, AppRoles.Admin))
+            return RedirectToAction(nameof(Users));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = AppRoles.SuperAdmin)]
+        public async Task<IActionResult> ResetPassword(string userId, string newPassword)
+        {
+            try
             {
-                await _userManager.AddToRoleAsync(user, AppRoles.Admin);
+                if (string.IsNullOrWhiteSpace(newPassword) || newPassword.Length < 6)
+                {
+                    TempData["Error"] = "Password must be at least 6 characters.";
+                    return RedirectToAction(nameof(Users));
+                }
+
+                var user = await _userManager.FindByIdAsync(userId);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
+
+                if (!result.Succeeded)
+                {
+                    var errors = string.Join(" ", result.Errors.Select(e => e.Description));
+                    TempData["Error"] = "Password reset failed: " + errors;
+                    return RedirectToAction(nameof(Users));
+                }
+
+                _context.ActivityLogs.Add(new ActivityLog
+                {
+                    UserId = user.Id,
+                    Action = "Password reset by SuperAdmin",
+                    ActivityType = "Account",
+                    CreatedAt = DateTime.UtcNow
+                });
+
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "Password updated for " + user.Email + ". They can login with the new password.";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Reset failed: " + ex.Message;
             }
 
-            _context.ActivityLogs.Add(new ActivityLog
-            {
-                UserId = user.Id,
-                Action = "Promoted to Admin by SuperAdmin",
-                ActivityType = "RoleChange",
-                CreatedAt = DateTime.UtcNow
-            });
+            return RedirectToAction(nameof(Users));
+        }
 
-            await _context.SaveChangesAsync();
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = AppRoles.SuperAdmin)]
+        public async Task<IActionResult> SetRole(string userId, string role)
+        {
+            try
+            {
+                var user = await _userManager.FindByIdAsync(userId);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                if (role != AppRoles.Guest && role != AppRoles.Host && role != AppRoles.Admin)
+                {
+                    TempData["Error"] = "Invalid role.";
+                    return RedirectToAction(nameof(Users));
+                }
+
+                // Clear Guest/Host/Admin then add the chosen one (keep SuperAdmin if present)
+                foreach (var r in new[] { AppRoles.Guest, AppRoles.Host, AppRoles.Admin })
+                {
+                    if (await _userManager.IsInRoleAsync(user, r))
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, r);
+                    }
+                }
+
+                await _userManager.AddToRoleAsync(user, role);
+
+                _context.ActivityLogs.Add(new ActivityLog
+                {
+                    UserId = user.Id,
+                    Action = "Role set to " + role + " by SuperAdmin",
+                    ActivityType = "RoleChange",
+                    CreatedAt = DateTime.UtcNow
+                });
+
+                await _context.SaveChangesAsync();
+                TempData["Success"] = user.Email + " is now " + role + ".";
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Role change failed: " + ex.Message;
+            }
+
             return RedirectToAction(nameof(Users));
         }
     }

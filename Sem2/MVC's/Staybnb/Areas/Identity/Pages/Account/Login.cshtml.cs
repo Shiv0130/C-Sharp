@@ -117,6 +117,11 @@ public class LoginModel : PageModel
             if (result.Succeeded)
             {
                 _logger.LogInformation("User logged in.");
+                // Home/Index routes Admin→Admin, Host→HostDashboard, Guest→Explore
+                if (string.IsNullOrEmpty(returnUrl) || returnUrl == "/" || returnUrl == "~/")
+                {
+                    return LocalRedirect("~/Home/Index");
+                }
                 return LocalRedirect(returnUrl);
             }
             if (result.RequiresTwoFactor)

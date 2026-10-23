@@ -1,31 +1,49 @@
 @model IEnumerable<Staybnb.Models.Message>
 @{
-    ViewData["Title"] = "Inbox";
+    ViewData["Title"] = "Messages";
 }
+
 <h1>Messages</h1>
-<a class="btn btn-primary mb-2" asp-action="Compose">Compose</a>
-<table class="table">
-    <thead><tr><th>From</th><th>To</th><th>Content</th><th>When</th><th>Read</th><th></th></tr></thead>
-    <tbody>
-    @foreach (var m in Model)
-    {
-        <tr>
-            <td>@m.Sender?.Email</td>
-            <td>@m.Receiver?.Email</td>
-            <td>@m.Content</td>
-            <td>@m.Timestamp.ToLocalTime()</td>
-            <td>@(m.IsRead ? "Yes" : "No")</td>
-            <td>
-                @if (!m.IsRead && m.ReceiverId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+<a class="btn mb-3" style="background:#FF385C;color:#fff;" asp-action="Compose">New message</a>
+
+@if (!Model.Any())
+{
+    <div class="panel text-muted">No messages yet. Click <strong>New message</strong> and pick a user.</div>
+}
+else
+{
+    <div class="bg-white border rounded-3 p-3">
+        <table class="table align-middle mb-0">
+            <thead>
+                <tr><th>From</th><th>To</th><th>Message</th><th>When</th><th>Read</th><th></th></tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
                 {
-                    <form asp-action="MarkRead" method="post">
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="id" value="@m.Id" />
-                        <button class="btn btn-sm btn-outline-secondary">Mark read</button>
-                    </form>
+                    <tr>
+                        <td>@m.Sender?.Email</td>
+                        <td>@m.Receiver?.Email</td>
+                        <td>@m.Content</td>
+                        <td>@m.Timestamp.ToLocalTime().ToString("g")</td>
+                        <td>@(m.IsRead ? "Yes" : "No")</td>
+                        <td class="text-nowrap">
+                            @if (!m.IsRead && m.ReceiverId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)
+                            {
+                                <form asp-action="MarkRead" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@m.Id" />
+                                    <button class="btn btn-sm btn-outline-secondary">Mark read</button>
+                                </form>
+                            }
+                            <a class="btn btn-sm btn-outline-dark" asp-action="Compose" asp-route-receiverId="@(m.SenderId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ? m.ReceiverId : m.SenderId)">Reply</a>
+                        </td>
+                    </tr>
                 }
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+            </tbody>
+        </table>
+    </div>
+}

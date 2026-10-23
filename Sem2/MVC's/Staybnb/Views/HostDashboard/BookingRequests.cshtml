@@ -1,37 +1,54 @@
 @model IEnumerable<Staybnb.Models.Booking>
 @{
-    ViewData["Title"] = "Booking requests";
+    ViewData["Title"] = "Booking Requests";
 }
-<h1>Booking requests</h1>
-<table class="table table-striped">
-    <thead>
-        <tr><th>Property</th><th>Guest</th><th>Dates</th><th>Total</th><th>Status</th><th></th></tr>
-    </thead>
-    <tbody>
-    @foreach (var b in Model)
+
+<h2 class="mb-4 fw-bold">Booking Requests</h2>
+
+<div class="bg-white border rounded-3 shadow-sm p-3">
+    <table class="table align-middle mb-0">
+        <thead>
+            <tr class="text-muted small">
+                <th>Guest</th>
+                <th>Property</th>
+                <th>Dates</th>
+                <th>Guests</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var b in Model)
+        {
+            <tr>
+                <td>@b.Guest?.Email</td>
+                <td>@b.Property?.Title</td>
+                <td>@b.CheckInDate.ToString("dd MMM") – @b.CheckOutDate.ToString("dd MMM")</td>
+                <td>@b.NumberOfGuests</td>
+                <td>R @b.TotalPrice.ToString("0.00")</td>
+                <td>@b.Status</td>
+                <td class="text-nowrap">
+                    @if (b.Status == "Pending")
+                    {
+                        <form asp-action="ApproveBooking" method="post" class="d-inline">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@b.Id" />
+                            <button class="btn btn-sm btn-success">Approve</button>
+                        </form>
+                        <form asp-action="RejectBooking" method="post" class="d-inline">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@b.Id" />
+                            <button class="btn btn-sm btn-outline-danger">Reject</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    @if (!Model.Any())
     {
-        <tr>
-            <td>@b.Property?.Title</td>
-            <td>@b.Guest?.Email</td>
-            <td>@b.CheckInDate.ToShortDateString() → @b.CheckOutDate.ToShortDateString()</td>
-            <td>R @b.TotalPrice.ToString("0.00")</td>
-            <td>@b.Status</td>
-            <td>
-                @if (b.Status == "Pending")
-                {
-                    <form asp-action="ApproveBooking" method="post" class="d-inline">
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="id" value="@b.Id" />
-                        <button class="btn btn-sm btn-success">Approve</button>
-                    </form>
-                    <form asp-action="RejectBooking" method="post" class="d-inline">
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="id" value="@b.Id" />
-                        <button class="btn btn-sm btn-danger">Reject</button>
-                    </form>
-                }
-            </td>
-        </tr>
+        <p class="text-muted text-center py-4 mb-0">No booking requests yet.</p>
     }
-    </tbody>
-</table>
+</div>

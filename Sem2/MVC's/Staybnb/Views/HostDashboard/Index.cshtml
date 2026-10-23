@@ -1,51 +1,79 @@
 @model IEnumerable<Staybnb.Models.HostProperty>
 @{
     ViewData["Title"] = "Host Dashboard";
+    var hostName = ViewBag.HostName as string ?? "Host";
 }
-<h2 class="mb-1">Welcome back!</h2>
-<p class="text-muted mb-4">Here's what's happening with your properties today.</p>
 
-<div class="d-flex gap-2 mb-4 flex-wrap">
-    <a class="btn btn-airbnb" asp-controller="HostApplications" asp-action="Create">+ Add New Property</a>
-    <a class="btn btn-outline-airbnb" asp-action="BookingRequests">View Booking Requests</a>
-    <a class="btn btn-outline-airbnb" asp-action="MyProperties">My Properties</a>
+<div class="mb-2">
+    <h2 class="mb-1" style="color:#FF385C;font-weight:700;">Welcome back, @hostName!</h2>
+    <p class="text-muted mb-0">Here's what's happening with your properties today.</p>
 </div>
 
-<div class="stat-row">
-    <div class="stat-card">
-        <div class="num">@ViewBag.PropertyCount</div>
-        <div class="label">Total Properties</div>
-        <div class="sub">@ViewBag.ActiveCount active</div>
-    </div>
-    <div class="stat-card">
-        <div class="num">@ViewBag.PendingBookings</div>
-        <div class="label">Pending Bookings</div>
-        <div class="sub">needs review</div>
-    </div>
-    <div class="stat-card">
-        <div class="num">—</div>
-        <div class="label">Total Earnings</div>
-        <div class="sub">this month</div>
-    </div>
-    <div class="stat-card">
-        <div class="num">0.0</div>
-        <div class="label">Average Rating</div>
-        <div class="sub">from reviews</div>
-    </div>
+<div class="d-flex gap-2 mb-4 flex-wrap mt-3">
+    <a class="btn" style="background:#FF385C;color:#fff;font-weight:600;border-radius:8px;"
+       asp-controller="HostApplications" asp-action="Create">+ Add New Property</a>
+    <a class="btn btn-outline-dark" style="border-radius:8px;font-weight:600;"
+       asp-action="BookingRequests">View Booking Requests</a>
+    <a class="btn btn-outline-dark" style="border-radius:8px;font-weight:600;"
+       asp-action="MyProperties">My Properties</a>
 </div>
 
-<div class="panel">
-    <h5 class="mb-3">Your listings</h5>
-    @foreach (var p in Model)
-    {
-        <div class="d-flex justify-content-between align-items-center border-bottom py-2">
-            <div>
-                <strong>@p.Title</strong>
-                <span class="text-muted ms-2">@p.City</span>
-            </div>
-            <span class="@(p.IsActive ? "badge-active" : "badge-pending")">
-                @(p.IsActive ? "Active" : "Inactive")
-            </span>
+<div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+        <div class="p-3 bg-white border rounded-3 shadow-sm h-100">
+            <div class="text-muted small">Total Properties</div>
+            <div class="fs-3 fw-bold">@(ViewBag.PropertyCount ?? 0)</div>
+            <div class="small" style="color:#008A05;">@(ViewBag.ActiveCount ?? 0) active</div>
         </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="p-3 bg-white border rounded-3 shadow-sm h-100">
+            <div class="text-muted small">Total Bookings</div>
+            <div class="fs-3 fw-bold">@(ViewBag.TotalBookings ?? 0)</div>
+            <div class="small" style="color:#B54708;">@(ViewBag.PendingBookings ?? 0) pending</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="p-3 bg-white border rounded-3 shadow-sm h-100">
+            <div class="text-muted small">Total Earnings</div>
+            <div class="fs-3 fw-bold">R @(((decimal)(ViewBag.TotalEarnings ?? 0m)).ToString("0"))</div>
+            <div class="small text-muted">approved stays</div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="p-3 bg-white border rounded-3 shadow-sm h-100">
+            <div class="text-muted small">Average Rating</div>
+            <div class="fs-3 fw-bold">0,0</div>
+            <div class="small text-muted">0 reviews</div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white border rounded-3 shadow-sm p-3">
+    <h5 class="mb-3">Your listings</h5>
+    @if (Model == null || !Model.Any())
+    {
+        <p class="text-muted mb-0">No properties yet. Click <strong>Add New Property</strong>.</p>
+    }
+    else
+    {
+        foreach (var p in Model)
+        {
+            <div class="d-flex justify-content-between align-items-center border-bottom py-3">
+                <div>
+                    <strong>@p.Title</strong>
+                    <span class="text-muted ms-2">@p.City</span>
+                    <div class="text-muted small">R @p.PricePerNight.ToString("0") / night</div>
+                </div>
+                @if (p.IsActive)
+                {
+                    <span class="badge rounded-pill" style="background:#E7F8ED;color:#008A05;">Active</span>
+                }
+                else
+                {
+                    <span class="badge rounded-pill" style="background:#FFF4E5;color:#B54708;">Inactive</span>
+                }
+            </div>
+        }
     }
 </div>

@@ -3,119 +3,158 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light only" />
     <title>@ViewData["Title"] - Staybnb</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        html, body {
+            color-scheme: only light !important;
+            background: #ffffff !important;
+            color: #222222 !important;
+        }
+
+        @@media (prefers-color-scheme: dark) {
+            html, body, .container, main, header, footer,
+            .sb-nav, .dash-wrap, .dash-side, .dash-main,
+            .panel, .book-box, .stat-card, .card, .table, .modal-content,
+            .form-control, .form-select {
+                background-color: #ffffff !important;
+                color: #222222 !important;
+            }
+
+            .dash-wrap, .dash-main {
+                background-color: #F7F7F7 !important;
+            }
+        }
+
+        .auth-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 22px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-left: 6px;
+        }
+
+        .auth-btn-login {
+            background: #FF385C;
+            color: #fff !important;
+        }
+
+        .auth-btn-register {
+            border: 1px solid #222;
+            color: #222 !important;
+            background: #fff;
+        }
+    </style>
 </head>
-<body>
-@{
-    var controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
-    var isHostDash = User.IsInRole("Host") && (controller == "HostDashboard" || controller == "CheckIn");
-    var isAdminDash = (User.IsInRole("Admin") || User.IsInRole("SuperAdmin")) && controller == "Admin";
-}
+<body style="background:#ffffff;color:#222222;">
+    @{
+        var controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+        var isHostDash = User.IsInRole("Host") && (controller == "HostDashboard" || controller == "CheckIn");
+        var isAdminDash = (User.IsInRole("Admin") || User.IsInRole("SuperAdmin")) && controller == "Admin";
+    }
 
-@if (isHostDash || isAdminDash)
-{
-    <div class="dash-wrap">
-        <aside class="dash-side">
-            <div class="side-brand">
-                <span class="brand-mark"></span>
-                staybnb @(isHostDash ? "host" : "admin")
-            </div>
+    @if (isHostDash || isAdminDash)
+    {
+        <div class="dash-wrap">
+            <aside class="dash-side">
+                <div class="side-brand">
+                    <span class="brand-mark"></span>
+                    staybnb @(isHostDash ? "host" : "admin")
+                </div>
 
-            @if (isHostDash)
-            {
-                <a class="@(controller=="HostDashboard" ? "active" : "")" asp-controller="HostDashboard" asp-action="Index">Dashboard</a>
-                <a asp-controller="HostDashboard" asp-action="MyProperties">My Properties</a>
-                <a asp-controller="HostDashboard" asp-action="BookingRequests">Booking Requests</a>
-                <a asp-controller="Messages" asp-action="Inbox">Messages</a>
-                <a asp-controller="Notifications" asp-action="Index">Notifications</a>
-                <a asp-controller="CheckIn" asp-action="HostQueue">Check-in docs</a>
-            }
-            else
-            {
-                <a class="active" asp-controller="Admin" asp-action="Index">Dashboard</a>
-                <a asp-controller="Admin" asp-action="Users">Users</a>
-                <a asp-controller="Admin" asp-action="Applications">Host Requests</a>
-                <a asp-controller="Admin" asp-action="ActivityLogs">Activity Logs</a>
-                <a asp-controller="Messages" asp-action="Inbox">Messages</a>
-                <a asp-controller="Notifications" asp-action="Index">Notifications</a>
-            }
-
-            <hr />
-            <a asp-controller="Properties" asp-action="Index">Explore site</a>
-            <form asp-area="Identity" asp-page="/Account/Logout"
-                  asp-route-returnUrl="@Url.Action("Index", "Properties")" method="post">
-                <button type="submit" class="btn btn-link text-danger px-3">Logout</button>
-            </form>
-        </aside>
-        <main class="dash-main">
-            @RenderBody()
-        </main>
-    </div>
-}
-else
-{
-    <header class="sb-nav">
-        <div class="container d-flex align-items-center justify-content-between gap-3 flex-wrap">
-            <a class="brand" asp-controller="Properties" asp-action="Index">
-                <span class="brand-mark"></span> staybnb
-            </a>
-
-            <form asp-controller="Properties" asp-action="Index" method="get" class="search-pill d-none d-md-flex">
-                <span><input name="city" placeholder="Anywhere" value="@Context.Request.Query["city"]" /></span>
-                <span>Any week</span>
-                <span>Add guests</span>
-                <button type="submit" class="search-btn" title="Search">&#128269;</button>
-            </form>
-
-            <div class="d-flex align-items-center gap-1 flex-wrap">
-                @if (User.IsInRole("Guest"))
+                @if (isHostDash)
                 {
-                    <a class="nav-link-sb" asp-controller="HostApplications" asp-action="Status">Host Application Status</a>
-                    <a class="nav-link-sb" asp-controller="HostApplications" asp-action="Create">Become a Host</a>
-                    <a class="nav-link-sb" asp-controller="Bookings" asp-action="MyBookings">My bookings</a>
-                }
-                @if (User.IsInRole("Host"))
-                {
-                    <a class="nav-link-sb" asp-controller="HostDashboard" asp-action="Index">Host dashboard</a>
-                }
-                @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
-                {
-                    <a class="nav-link-sb" asp-controller="Admin" asp-action="Index">Admin</a>
-                }
-                @if (User.Identity?.IsAuthenticated == true)
-                {
-                    <a class="nav-link-sb" asp-controller="Notifications" asp-action="Index" title="Notifications">&#128276;</a>
-                    <a class="nav-link-sb" asp-controller="Messages" asp-action="Inbox" title="Messages">&#9993;</a>
-                    <span class="nav-link-sb">@User.Identity?.Name</span>
-                    <form class="d-inline" asp-area="Identity" asp-page="/Account/Logout"
-                          asp-route-returnUrl="@Url.Action("Index", "Properties")" method="post">
-                        <button type="submit" class="nav-link-sb btn btn-link">Logout</button>
-                    </form>
+                    <a class="@(controller == "HostDashboard" ? "active" : "")" asp-controller="HostDashboard" asp-action="Index">Dashboard</a>
+                    <a asp-controller="HostDashboard" asp-action="MyProperties">My Properties</a>
+                    <a asp-controller="HostDashboard" asp-action="BookingRequests">Booking Requests</a>
+                    <a asp-controller="Messages" asp-action="Inbox">Messages</a>
+                    <a asp-controller="Notifications" asp-action="Index">Notifications</a>
+                    <a asp-controller="CheckIn" asp-action="HostQueue">Check-in docs</a>
                 }
                 else
                 {
-                    <a class="nav-link-sb" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                    <a class="nav-link-sb" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    <a class="active" asp-controller="Admin" asp-action="Index">Dashboard</a>
+                    <a asp-controller="Admin" asp-action="Users">Users</a>
+                    <a asp-controller="Admin" asp-action="Applications">Host Requests</a>
+                    <a asp-controller="Admin" asp-action="ActivityLogs">Activity Logs</a>
+                    <a asp-controller="Messages" asp-action="Inbox">Messages</a>
+                    <a asp-controller="Notifications" asp-action="Index">Notifications</a>
                 }
-            </div>
+
+                <hr />
+                <a asp-controller="Properties" asp-action="Index">Explore site</a>
+                <form asp-area="Identity" asp-page="/Account/Logout"
+                      asp-route-returnUrl="@Url.Action("Index", "Properties")" method="post">
+                    <button type="submit" class="btn btn-link text-danger px-3">Logout</button>
+                </form>
+            </aside>
+            <main class="dash-main">@RenderBody()</main>
         </div>
-    </header>
+    }
+    else
+    {
+        <header class="sb-nav">
+            <div class="container d-flex align-items-center justify-content-between gap-3 flex-wrap">
+                <a class="brand" asp-controller="Properties" asp-action="Index">
+                    <span class="brand-mark"></span> staybnb
+                </a>
 
-    <div class="container pb-4">
-        @RenderBody()
-    </div>
+                <form asp-controller="Properties" asp-action="Index" method="get" class="search-pill d-none d-md-flex">
+                    <span style="border:none;">
+                        <input name="city" placeholder="Search by city" value="@Context.Request.Query["city"]" />
+                    </span>
+                    <button type="submit" class="search-btn" title="Search">&#128269;</button>
+                </form>
 
-    <footer>
-        <div class="container">&copy; 2026 Staybnb</div>
-    </footer>
-}
+                <div class="d-flex align-items-center gap-1 flex-wrap">
+                    @if (User.IsInRole("Guest"))
+                    {
+                        <a class="nav-link-sb" asp-controller="HostApplications" asp-action="Status">Host Application Status</a>
+                        <a class="nav-link-sb" asp-controller="HostApplications" asp-action="Create">Become a Host</a>
+                        <a class="nav-link-sb" asp-controller="Bookings" asp-action="MyBookings">My bookings</a>
+                    }
+                    @if (User.IsInRole("Host"))
+                    {
+                        <a class="nav-link-sb" asp-controller="HostDashboard" asp-action="Index">Host dashboard</a>
+                    }
+                    @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                    {
+                        <a class="nav-link-sb" asp-controller="Admin" asp-action="Index">Admin</a>
+                    }
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <a class="nav-link-sb" asp-controller="Notifications" asp-action="Index">&#128276;</a>
+                        <a class="nav-link-sb" asp-controller="Messages" asp-action="Inbox">&#9993;</a>
+                        <span class="nav-link-sb">@User.Identity?.Name</span>
+                        <form class="d-inline" asp-area="Identity" asp-page="/Account/Logout"
+                              asp-route-returnUrl="@Url.Action("Index", "Properties")" method="post">
+                            <button type="submit" class="nav-link-sb btn btn-link">Logout</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a class="auth-btn auth-btn-register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                        <a class="auth-btn auth-btn-login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    }
+                </div>
+            </div>
+        </header>
 
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+        <div class="container pb-4">
+            @RenderBody()
+        </div>
+
+        <footer>
+            <div class="container">&copy; 2026 Staybnb</div>
+        </footer>
+    }
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

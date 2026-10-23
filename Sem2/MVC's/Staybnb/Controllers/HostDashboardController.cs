@@ -38,6 +38,12 @@ namespace Staybnb.Controllers
             ViewBag.ActiveCount = properties.Count(p => p.IsActive);
             ViewBag.PendingBookings = await _context.Bookings
                 .CountAsync(b => propertyIds.Contains(b.PropertyId) && b.Status == "Pending");
+            ViewBag.TotalBookings = await _context.Bookings
+                .CountAsync(b => propertyIds.Contains(b.PropertyId));
+            ViewBag.TotalEarnings = await _context.Bookings
+                .Where(b => propertyIds.Contains(b.PropertyId) && (b.Status == "Approved" || b.Status == "CheckedIn"))
+                .SumAsync(b => (decimal?)b.TotalPrice) ?? 0m;
+            ViewBag.HostName = string.IsNullOrWhiteSpace(user.FirstName) ? user.Email : user.FirstName + " " + user.LastName;
 
             return View(properties);
         }

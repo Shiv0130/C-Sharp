@@ -23,10 +23,7 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> Inbox()
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return Challenge();
-            }
+            if (user == null) return Challenge();
 
             var messages = await _context.Messages
                 .Include(m => m.Sender)
@@ -38,48 +35,82 @@ namespace Staybnb.Controllers
             return View(messages);
         }
 
-        public IActionResult Compose(string? receiverId)
+        public async Task<IActionResult> Compose(string? receiverId)
         {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) return Challenge();
+
+            var others = await _userManager.Users
+                .Where(u => u.Id != user.Id)
+                .OrderBy(u => u.Email)
+                .Select(u => new { u.Id, u.Email, u.FirstName, u.LastName })
+                .ToListAsync();
+
+            ViewBag.Users = others;
             ViewBag.ReceiverId = receiverId;
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Compose(string receiverId, string content)
+        public async Task<IActionResult> Compose(string? receiverId, string? receiverEmail, string content)
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
+            if (user == null) return Challenge();
+
+            ApplicationUser? receiver = null;
+
+            if (!string.IsNullOrWhiteSpace(receiverId))
+                receiver = await _userManager.FindByIdAsync(receiverId);
+
+            if (receiver == null && !string.IsNullOrWhiteSpace(receiverEmail))
+                receiver = await _userManager.FindByEmailAsync(receiverEmail.Trim());
+
+            if (receiver == null || string.IsNullOrWhiteSpace(content))
             {
-                return Challenge();
+                ModelState.AddModelError(string.Empty, "Pick a user (or enter a valid email) and write a message.");
+                var others = await _userManager.Users
+                    .Where(u => u.Id != user.Id)
+                    .OrderBy(u => u.Email)
+                    .Select(u => new { u.Id, u.Email, u.FirstName, u.LastName })
+                    .ToListAsync();
+                ViewBag.Users = others;
+                ViewBag.ReceiverId = receiverId;
+                return View();
             }
 
-            if (string.IsNullOrWhiteSpace(content) || string.IsNullOrWhiteSpace(receiverId))
+            if (receiver.Id == user.Id)
             {
-                ModelState.AddModelError(string.Empty, "Receiver and message are required.");
-                ViewBag.ReceiverId = receiverId;
+                ModelState.AddModelError(string.Empty, "You cannot message yourself.");
+                var others = await _userManager.Users
+                    .Where(u => u.Id != user.Id)
+                    .OrderBy(u => u.Email)
+                    .Select(u => new { u.Id, u.Email, u.FirstName, u.LastName })
+                    .ToListAsync();
+                ViewBag.Users = others;
                 return View();
             }
 
             _context.Messages.Add(new Message
             {
                 SenderId = user.Id,
-                ReceiverId = receiverId,
-                Content = content,
+                ReceiverId = receiver.Id,
+                Content = content.Trim(),
                 Timestamp = DateTime.UtcNow,
                 IsRead = false
             });
 
             _context.Notifications.Add(new Notification
             {
-                UserId = receiverId,
+                UserId = receiver.Id,
                 Title = "New message",
-                Message = "You have a new inbox message.",
+                Message = $"New message from {user.Email}.",
                 Type = "Message",
                 CreatedAt = DateTime.UtcNow
             });
 
             await _context.SaveChangesAsync();
+            TempData["Success"] = "Message sent to " + receiver.Email;
             return RedirectToAction(nameof(Inbox));
         }
 
@@ -88,10 +119,7 @@ namespace Staybnb.Controllers
         public async Task<IActionResult> MarkRead(int id)
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return Challenge();
-            }
+            if (user == null) return Challenge();
 
             var msg = await _context.Messages
                 .FirstOrDefaultAsync(m => m.Id == id && m.ReceiverId == user.Id);
