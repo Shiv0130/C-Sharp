@@ -1,0 +1,86 @@
+@*
+=====================================================================================
+ Q3.2  CREATE VIEW & TempData DISPLAY   [15 marks]   Pointer 5: Razor Views, Pointer 6: Forms & Model Binding
+=====================================================================================
+
+ LESSON
+ ------
+ A Razor view is HTML with C# sprinkled in using the @ symbol.
+   @model X           first line: "this page is strongly typed to X". Now Model.Name has IntelliSense.
+   @if (...) { ... }  show something only when a condition is true
+   @foreach (...)     repeat HTML for each item in a list
+   at-star ... star-at   a Razor comment (like this very block)
+
+ TAG HELPERS are the clever bit. They are attributes starting with asp- that turn into real HTML:
+   <form asp-action="Create" method="post">    posts to the Create action (and adds the anti-forgery token)
+   <label asp-for="Title">                      a label made from the property name
+   <input asp-for="Title">                      an input with the right name, id, value and validation attributes
+   <span asp-validation-for="Title">            shows the error message for that property
+   <div asp-validation-summary="ModelOnly">     shows errors that belong to the whole model
+   <select asp-for="AuthorId" asp-items="ViewBag.Authors">   a dropdown filled from a SelectList
+
+ MODEL BINDING: when the form posts, MVC matches each input's name to a property of the same name
+ and builds the object for you. asp-for writes those names, so they match automatically.
+
+ WORKED EXAMPLE (a Book form)
+ ----------------------------
+   @model LibraryApp.Models.Book
+
+   @{ ViewData["Title"] = "Add Book"; }
+
+   @if (TempData["SuccessMessage"] != null)
+   {
+       <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+   }
+
+   <form asp-action="Create" method="post">
+       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+       <div class="mb-3">
+           <label asp-for="Title"></label>
+           <input asp-for="Title" class="form-control" />
+           <span asp-validation-for="Title" class="text-danger"></span>
+       </div>
+
+       <div class="mb-3">
+           <label asp-for="AuthorId">Author</label>
+           <select asp-for="AuthorId" class="form-select" asp-items="ViewBag.Authors"></select>
+       </div>
+
+       <button type="submit" class="btn btn-success">Save</button>
+   </form>
+
+ COMMON TRAPS
+ ------------
+ * method="post" is missing -> the form sends a GET and your POST action never runs.
+ * asp-for must name a PROPERTY of the @model class. A typo is a runtime error.
+ * Closing </form> forgotten: the browser is forgiving, the exam marker is not.
+ * TempData["x"] is compared with null before you show it. Without the @if you get an empty box.
+ * The page needs @model Patient (singular). The Index page uses IEnumerable<Patient>. Don't mix them.
+ * A Razor comment ends at the first star-at it meets, so never type that pair inside one.
+
+ THE TASK
+ --------
+ Write the Razor view for the Patient Create page. It must contain:
+   (a) the model declared as HospitalApp.Models.Patient
+   (b) the page title (ViewData["Title"])
+   (c) the TempData["SuccessMessage"] shown ONLY if it exists
+   (d) the TempData["ErrorMessage"] shown ONLY if it exists
+   (e) a form that posts to the Create action
+   (f) a validation summary
+   (g,h) label + input + validation span for FullName
+   (i,j) label + input + validation span for Age
+   (k) a dropdown (select) for DoctorId filled from the ViewBag
+   (l) a submit button
+   (m) the form closed
+ The GET Create action that fills the ViewBag lives in PatientsController (Q3.1 task d).
+
+ HINT
+ ----
+ The dropdown reads from  ViewBag.DoctorId  and binds with asp-for="DoctorId".
+ The success box is a normal div; Bootstrap classes are alert alert-success / alert-danger.
+ Tests only read this file as text, so you can check them without running the app. To see it live:
+ cd HospitalApp, then dotnet run, then open /Patients/Create.
+
+ >>>>> WRITE YOUR ANSWER BELOW THIS LINE <<<<<
+*@

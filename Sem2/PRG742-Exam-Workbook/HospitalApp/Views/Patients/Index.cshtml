@@ -1,0 +1,70 @@
+@*
+=====================================================================================
+ Q3.3  INDEX VIEW & TABLE LOOP   [15 marks]   Pointer 5: Razor Views (loops, displaying records)
+=====================================================================================
+
+ LESSON
+ ------
+ The Index action did  return View(patients);  That list arrives in the view as the variable Model.
+ To make Model know its type, declare it on line 1 with @model.
+ A list of things is  IEnumerable<T>  (that's what the paper uses), so:
+      @model IEnumerable<LibraryApp.Models.Book>
+
+ Then you loop with @foreach and print each value with @item.Something. One <tr> per record.
+
+ WORKED EXAMPLE (a table of Books)
+ ---------------------------------
+   @model IEnumerable<LibraryApp.Models.Book>
+
+   <h2>Book List</h2>
+
+   <table class="table">
+       <thead>
+           <tr>
+               <th>Title</th>
+               <th>Pages</th>
+           </tr>
+       </thead>
+       <tbody>
+           @foreach (var item in Model)
+           {
+               <tr>
+                   <td>@item.Title</td>
+                   <td>@item.Pages</td>
+               </tr>
+           }
+       </tbody>
+   </table>
+
+ The @ before foreach flips you from HTML into C#. Inside the braces, HTML starts again the moment
+ you write a tag like <tr>, then @item.Title flips back for one value.
+
+ COMMON TRAPS
+ ------------
+ * <tr> must sit INSIDE the foreach braces, or you only get one row, or none.
+ * @model (lowercase m, the type declaration) is not the same as Model (the data). Capital M for data.
+ * The headings (<th>) go in <thead>, outside the loop. If they're inside you repeat them every row.
+ * @item.DoctorId prints the number. To print the doctor's NAME you would need Include (bonus B3).
+ * A foreach over a null list crashes. The controller gives you a list, so empty list = zero rows,
+   no crash.
+
+ THE TASK
+ --------
+ Write the Razor view for the Patient Index page. The view receives a list of patients:
+   (a) set the model to IEnumerable of Patient
+   (b) a heading "Patient List" and an HTML table with a header row:  Full Name | Age | Doctor ID
+   (c) a @foreach loop over Model, one table row per patient
+   (d) show FullName, Age and DoctorId in table cells
+   (e) close the table
+   Optional nicety (not marked): an "Add Patient" link to the Create action. Try
+   <a asp-action="Create">. If you do add one, remember asp-action is a tag helper too.
+   Also show the TempData["SuccessMessage"] on this page, because after a successful Create
+   the app REDIRECTS here, so this is where the user actually sees the message.
+
+ HINT
+ ----
+ Run the app (dotnet run in HospitalApp, open /Patients) after check.sh is green and watch your rows
+ appear. Tests read this file as text.
+
+ >>>>> WRITE YOUR ANSWER BELOW THIS LINE <<<<<
+*@

@@ -1,0 +1,44 @@
+# Q1.2 Entity Framework Core Migrations  [5 marks]
+*Pointer 2: EF Core*
+
+## Lesson
+
+You change a model class (add a `Phone` property). But the database still has the old table. How do they get back in sync?
+**Migrations.**
+
+A migration is a **C# file that EF Core generates**, describing one change to the database structure (the **schema**): create
+this table, add that column. They stack up in a `Migrations` folder like a history of your database, a bit like git commits for the schema.
+
+Two steps, two commands (run them in the project folder):
+
+```
+dotnet ef migrations add AddPhoneToBook     <- 1. WRITES the migration file (compares your model to the last snapshot)
+dotnet ef database update                   <- 2. APPLIES pending migrations to the actual database
+```
+
+(In Visual Studio's Package Manager Console the same two are `Add-Migration AddPhoneToBook` and `Update-Database`.)
+
+Mental model: **add = write the plan, update = do the plan.**
+
+**Traps:**
+- `migrations add` does NOT touch the database. Only `database update` does.
+- Change the model again? You need a NEW migration, don't edit the old one.
+- Forgetting the name after `migrations add`. It needs one, e.g. `InitialCreate`.
+
+Want to try it for real? Bonus **B7** makes you run these on HospitalApp.
+
+## Question
+
+In Entity Framework Core, briefly explain what a Migration is and list the two main command-line commands used to create and
+apply a migration to the database.
+
+## My answer
+
+<!-- Type your answer here, in your own words. Write it like you would in the exam. No peeking at the rubric below until you are done. -->
+
+## Self-check rubric
+
+- [ ] Says a migration describes/records a change to the database schema (tables, columns), generated as code
+- [ ] Says it keeps the database in sync with the model classes (or acts like version history for the schema)
+- [ ] Command to CREATE it: `dotnet ef migrations add <Name>`
+- [ ] Command to APPLY it: `dotnet ef database update`

@@ -1,0 +1,58 @@
+@*
+=====================================================================================
+ BONUS B6  CONDITIONALS IN A VIEW: @if / else     Pointer 5: Razor Views
+=====================================================================================
+
+ LESSON
+ ------
+ You've used @foreach. The other Razor power tool is @if: show HTML only when a condition is true.
+ An else branch covers the other case. A nice combo is a loop inside a loop: for each doctor,
+ loop that doctor's patients, but if there are none, say so instead of showing an empty box.
+
+ WORKED EXAMPLE (each Author with their Books)
+ ---------------------------------------------
+   @model IEnumerable<LibraryApp.Models.Author>
+
+   @foreach (var author in Model)
+   {
+       <h4>@author.Name</h4>
+
+       @if (author.Books.Any())
+       {
+           <ul>
+               @foreach (var book in author.Books)
+               {
+                   <li>@book.Title</li>
+               }
+           </ul>
+       }
+       else
+       {
+           <p>No books yet.</p>
+       }
+   }
+
+ Any() asks "is there at least one item?" (it comes from LINQ and is already available in views).
+
+ COMMON TRAPS
+ ------------
+ * In Razor, the C# keyword else follows the closing brace of the @if on its own: } else { ... }
+   Don't put an @ in front of else.
+ * If the controller did not Include() the Patients, author.Books is null and Any() explodes (B3).
+ * Inside a code block, HTML must be wrapped in a tag. Plain text needs a tag like <p>.
+
+ THE TASK
+ --------
+ Write the Razor view for the Doctors Index page:
+   [B6] model = IEnumerable of Doctor (HospitalApp.Models.Doctor)
+   [B6] loop over the doctors and show each doctor's Name
+   [B6] with @if: when doctor.Patients has any patients, loop over them (nested foreach) and show
+        each FullName; otherwise show a "no patients" message using else.
+
+ HINT
+ ----
+ The Doctor class has a Patients collection. The controller that feeds this view is B3.
+ Seeded data (B2) gives you doctors with and without patients to see both branches.
+
+ >>>>> WRITE YOUR ANSWER BELOW THIS LINE <<<<<
+*@
