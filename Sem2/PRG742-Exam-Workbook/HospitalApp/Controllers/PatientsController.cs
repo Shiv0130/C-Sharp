@@ -99,9 +99,58 @@
 // >>>>> WRITE YOUR ANSWER BELOW THIS LINE (replace the empty shell) <<<<<
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using HospitalApp.Models;
 
 namespace HospitalApp.Controllers;
 
 public partial class PatientsController : Controller
 {
+    private readonly ApplicationDbContext _context;
+
+    // (a) Constructor with Dependency Injection
+    public PatientsController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    // (b) GET Index
+    [HttpGet]
+    public async Task<IActionResult> Index()
+    {
+        var patients = await _context.Patients.ToListAsync();
+        return View(patients);
+    }
+
+    // (d) GET Create: show the empty form with the doctor dropdown filled
+    [HttpGet]
+    public IActionResult Create()
+    {
+        LoadDoctors();
+        return View();
+    }
+
+    // (c) POST Create
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create([Bind("PatientId,FullName,Age,DoctorId")] Patient patient)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.Add(patient);
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Patient created successfully!";
+            return RedirectToAction(nameof(Index));
+        }
+
+        TempData["ErrorMessage"] = "Please fix the errors below and try again.";
+        LoadDoctors(patient.DoctorId);   // refill the dropdown or it shows empty
+        return View(patient);
+    }
+
+    private void LoadDoctors(int? selected = null)
+    {
+        ViewBag.DoctorId = new SelectList(_context.Doctors, "DoctorId", "Name", selected);
+    }
 }

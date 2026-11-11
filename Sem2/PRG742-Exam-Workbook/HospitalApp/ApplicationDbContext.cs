@@ -72,6 +72,7 @@
 // >>>>> WRITE YOUR ANSWER BELOW THIS LINE (replace the empty shell, keep the constructor) <<<<<
 
 using Microsoft.EntityFrameworkCore;
+using HospitalApp.Models;
 
 namespace HospitalApp;
 
@@ -79,4 +80,28 @@ public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options) { }
+
+    // (a) DbSets
+    public DbSet<Patient> Patients { get; set; }
+    public DbSet<Doctor> Doctors { get; set; }
+    public DbSet<DoctorPatient> DoctorPatients { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // (b) composite key for the join table
+        modelBuilder.Entity<DoctorPatient>()
+            .HasKey(dp => new { dp.DoctorId, dp.PatientId });
+
+        // (c) BONUS B2: seed data
+        modelBuilder.Entity<Doctor>().HasData(
+            new Doctor { DoctorId = 1, Name = "Dr. Naidoo", Specialty = "Cardiology" },
+            new Doctor { DoctorId = 2, Name = "Dr. Mokoena", Specialty = "Paediatrics" },
+            new Doctor { DoctorId = 3, Name = "Dr. Smith", Specialty = "General Practice" });
+
+        modelBuilder.Entity<Patient>().HasData(
+            new Patient { PatientId = 1, FullName = "Thandi Dlamini", Age = 34, DoctorId = 1 },
+            new Patient { PatientId = 2, FullName = "Pieter van Wyk", Age = 7, DoctorId = 2 });
+    }
 }

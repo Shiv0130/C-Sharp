@@ -78,9 +78,54 @@
 // >>>>> WRITE YOUR ANSWER BELOW THIS LINE (replace the empty shell) <<<<<
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using HospitalApp.Models;
 
 namespace HospitalApp.Controllers;
 
 public partial class PatientsController
 {
+    [HttpGet]
+    public async Task<IActionResult> Edit(int id)
+    {
+        var patient = await _context.Patients.FindAsync(id);
+        if (patient == null) return NotFound();
+        LoadDoctors(patient.DoctorId);
+        return View(patient);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(int id, Patient patient)
+    {
+        if (id != patient.PatientId) return NotFound();
+        if (ModelState.IsValid)
+        {
+            _context.Update(patient);
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Patient updated successfully!";
+            return RedirectToAction(nameof(Index));
+        }
+        LoadDoctors(patient.DoctorId);
+        return View(patient);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var patient = await _context.Patients.FindAsync(id);
+        if (patient == null) return NotFound();
+        return View(patient);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var patient = await _context.Patients.FindAsync(id);
+        if (patient != null) _context.Patients.Remove(patient);
+        await _context.SaveChangesAsync();
+        TempData["SuccessMessage"] = "Patient deleted.";
+        return RedirectToAction(nameof(Index));
+    }
 }

@@ -68,3 +68,32 @@
 
  >>>>> WRITE YOUR ANSWER BELOW THIS LINE <<<<<
 *@
+@model IEnumerable<HospitalApp.Models.Patient>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<h2>Patient List</h2>
+<p><a asp-action="Create" class="btn btn-primary">Add Patient</a></p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Age</th>
+            <th>Doctor ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FullName</td>
+                <td>@item.Age</td>
+                <td>@item.DoctorId</td>
+            </tr>
+        }
+    </tbody>
+</table>

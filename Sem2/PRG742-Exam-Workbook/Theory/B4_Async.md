@@ -31,7 +31,9 @@ and give two EF Core async methods.
 
 ## My answer
 
-<!-- Type your answer here, in your own words. Write it like you would in the exam. No peeking at the rubric below until you are done. -->
+Asynchronous database calls free the thread while it waits for the database instead of blocking it, so the same thread can serve other requests in the meantime. This makes the application more scalable and responsive when many users are connected.
+
+An async action has the return type Task<IActionResult> (marked async) and uses await. EF Core provides async methods such as ToListAsync(), FindAsync() and SaveChangesAsync(), for example: var patients = await _context.Patients.ToListAsync();
 
 ## Self-check rubric
 

@@ -84,3 +84,48 @@
 
  >>>>> WRITE YOUR ANSWER BELOW THIS LINE <<<<<
 *@
+@model HospitalApp.Models.Patient
+
+@{
+    ViewData["Title"] = "Create Patient";
+}
+
+<h2>Create Patient</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="FullName" class="form-label"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Age" class="form-label"></label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DoctorId" class="form-label">Doctor</label>
+        <select asp-for="DoctorId" class="form-select" asp-items="ViewBag.DoctorId"></select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Create</button>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

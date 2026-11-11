@@ -70,8 +70,30 @@
 //
 // >>>>> WRITE YOUR ANSWER BELOW THIS LINE (replace the empty shell) <<<<<
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace HospitalApp.Models;
 
 public class Patient
 {
+    // (a) Primary Key
+    [Key]
+    public int PatientId { get; set; }
+
+    // (b) Required, max length 100
+    [Required]
+    [StringLength(100)]
+    public string FullName { get; set; }
+
+    // (c) Range 0 to 120
+    [Range(0, 120)]
+    public int Age { get; set; }
+
+    // (d) Foreign Key
+    [ForeignKey("Doctor")]
+    public int DoctorId { get; set; }
+
+    // (e) Navigation Property
+    public Doctor Doctor { get; set; }
 }

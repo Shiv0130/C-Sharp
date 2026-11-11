@@ -56,3 +56,25 @@
 
  >>>>> WRITE YOUR ANSWER BELOW THIS LINE <<<<<
 *@
+@model IEnumerable<HospitalApp.Models.Doctor>
+
+<h2>Doctors</h2>
+
+@foreach (var doctor in Model)
+{
+    <h4>@doctor.Name</h4>
+
+    @if (doctor.Patients.Any())
+    {
+        <ul>
+            @foreach (var patient in doctor.Patients)
+            {
+                <li>@patient.FullName</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No patients yet.</p>
+    }
+}

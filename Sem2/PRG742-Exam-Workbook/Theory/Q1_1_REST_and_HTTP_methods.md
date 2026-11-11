@@ -36,7 +36,15 @@ HTTP methods (GET, POST, PUT, DELETE) to their corresponding CRUD operations.
 
 ## My answer
 
-<!-- Type your answer here, in your own words. Write it like you would in the exam. No peeking at the rubric below until you are done. -->
+REST (Representational State Transfer) is an architectural style for designing Web APIs around resources, each identified by a URL (for example /api/patients/5). Clients use the standard HTTP methods to act on those resources and the server usually answers with JSON.
+
+Statelessness means the server does not store any information about the client between requests. Every request must contain everything the server needs to process it (URL, data, authentication token), so each request is treated as independent. This makes the API simple and easy to scale.
+
+HTTP methods to CRUD:
+- GET = Read (retrieve data)
+- POST = Create (add a new resource)
+- PUT = Update (replace/modify an existing resource)
+- DELETE = Delete (remove a resource)
 
 ## Self-check rubric
 Tick these off honestly after you've written your answer. The marker looks for the ideas, not the exact words.

@@ -37,7 +37,11 @@ each one enforces.
 
 ## My answer
 
-<!-- Type your answer here, in your own words. Write it like you would in the exam. No peeking at the rubric below until you are done. -->
+Data annotations are attributes placed on model properties to add validation rules and metadata. MVC checks them when a form is posted (ModelState.IsValid) and EF Core uses them to shape the database table.
+
+1. [Required] enforces that the property must have a value: it cannot be null or empty. In the database the column becomes NOT NULL.
+2. [StringLength(100)] enforces a maximum length of 100 characters for the string (and sets the column's max length).
+(Another example: [Range(0, 120)] enforces that a number is between 0 and 120.)
 
 ## Self-check rubric
 

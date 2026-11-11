@@ -36,7 +36,21 @@ and FKs and show the cardinality. Then say in one or two sentences what kind of 
 
 ## My answer
 
-<!-- Type your answer here, in your own words. Write it like you would in the exam. No peeking at the rubric below until you are done. -->
+```
+ Doctor                   Patient                   DoctorPatient
++----------------+      +------------------+      +-------------------+
+| PK DoctorId    |1----*| PK PatientId     |      | PK,FK DoctorId    |
+|    Name        |      |    FullName      |      | PK,FK PatientId   |
+|    Specialty   |      |    Age           |      +-------------------+
++----------------+      | FK DoctorId      |
+   1                    +------------------+
+   |                           1
+   *                           |
+   +------ DoctorPatient *-----+
+```
+(Doctor 1 --- * DoctorPatient * --- 1 Patient)
+
+Doctor to Patient through Patient.DoctorId is a one-to-many relationship: one doctor has many patients, and the foreign key sits on the many side. DoctorPatient is the joining table that models a many-to-many relationship (a doctor sees many patients and a patient sees many doctors). Its primary key is a composite key made of DoctorId + PatientId, and each of those is also a foreign key.
 
 ## Self-check rubric
 

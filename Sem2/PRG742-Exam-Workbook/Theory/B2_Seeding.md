@@ -25,7 +25,11 @@ What is database seeding in EF Core, how do you do it, and what must you remembe
 
 ## My answer
 
-<!-- Type your answer here, in your own words. Write it like you would in the exam. No peeking at the rubric below until you are done. -->
+Seeding means inserting initial (starting) data into the database when it is created or migrated, so it is not empty.
+
+In EF Core you do it in OnModelCreating with modelBuilder.Entity<Doctor>().HasData(new Doctor { DoctorId = 1, Name = "Dr. Naidoo" }, ...). You must specify the primary key values explicitly, and seeded rows with foreign keys need their parent rows seeded too.
+
+Seed data is part of the model, so after changing it you create a new migration (dotnet ef migrations add) and run dotnet ef database update.
 
 ## Self-check rubric
 

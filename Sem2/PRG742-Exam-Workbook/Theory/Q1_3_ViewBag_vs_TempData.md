@@ -41,7 +41,11 @@ use TempData instead of ViewBag.
 
 ## My answer
 
-<!-- Type your answer here, in your own words. Write it like you would in the exam. No peeking at the rubric below until you are done. -->
+ViewBag is a dynamic wrapper around ViewData that passes data from a controller to its view for the current request only. When the request ends, or you redirect, the data is lost.
+
+TempData stores data so that it survives a redirect: it is kept until the next request reads it and is then removed (unless TempData.Keep() or Peek() is used). It is stored using a cookie or session.
+
+Scenario for TempData: after a user submits the Create Patient form, the POST action saves the patient, sets TempData["SuccessMessage"] = "Patient created successfully!" and redirects to Index. The Index view reads and shows the message. ViewBag would not work here because the redirect is a new request.
 
 ## Self-check rubric
 
